@@ -153,22 +153,21 @@ class IBAN
 	}
 	
 	private function getNumericLocaleCode($localeCode) {
-		$numericLocaleCode = '';
-        foreach(str_split($localeCode) as $char) {
-            $numericLocaleCode .= array_search($char, $this->letterMapping) + 9;
-        }
-        return $numericLocaleCode;
+		return $this->getNumericRepresentation($localeCode);
     }
     
     private function getNumericAccountIdentification($accountIdentification) {
-    	$accountIdentificationWithReplacedLetters = '';
-    	foreach(str_split($accountIdentification) as $char) {
+    	return $this->getNumericRepresentation($accountIdentification);
+    }
+    
+    private function getNumericRepresentation($letterRepresentation) {
+    	foreach(str_split($letterRepresentation) as $char) {
     		if (array_search($char, $this->letterMapping)) {
-    			$accountIdentificationWithReplacedLetters .= array_search($char, $this->letterMapping) + 9;
+    			$numericRepresentation .= array_search($char, $this->letterMapping) + 9;
     		} else {
-    			$accountIdentificationWithReplacedLetters .= $char;
+    			$numericRepresentation .= $char;
     		}
     	}
-    	return $accountIdentificationWithReplacedLetters;
+    	return $numericRepresentation;
     }
 }
