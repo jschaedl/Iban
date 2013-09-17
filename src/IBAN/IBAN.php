@@ -85,88 +85,88 @@ class IBAN
     	'GB'=>'[A-Z]{4}[0-9]{14}'
 	);
 
-	public function __construct($iban)	{
-		if (!empty($iban)) {
+	public function __construct($iban) {
+		if (! empty ( $iban )) {
 			$this->iban = $iban;
 		} else {
-			throw \InvalidArgumentException('iban is missing');
+			throw\InvalidArgumentException ( 'iban is missing' );
 		}
 	}
-
-	public function isValid() {	
-		if (!$this->hasIbanValidLenght()) {
+	
+	public function isValid() {
+		if (! $this->hasIbanValidLenght ()) {
 			return false;
 		}
 		
-		if (!$this->hasIbanValidLocaleCode()) {
+		if (! $this->hasIbanValidLocaleCode ()) {
 			return false;
 		}
 		
-		if (!$this->hasIbanValidFormat()) {
+		if (! $this->hasIbanValidFormat ()) {
 			return false;
 		}
 		
-		if (!$this->hasIbanValidChecksum())	{
+		if (! $this->hasIbanValidChecksum ()) {
 			return false;
 		}
 		
 		return true;
 	}
-
+	
 	private function hasIbanValidLenght() {
-		return strlen($this->iban) < 15 ? false : true;
+		return strlen ( $this->iban ) < 15 ? false : true;
 	}
 	
 	private function hasIbanValidLocaleCode() {
-		$localeCode = $this->getLocaleCode();
-		return !(isset($this->ibanFormatMap[$localeCode]) === false);
+		$localeCode = $this->getLocaleCode ();
+		return ! (isset ( $this->ibanFormatMap [$localeCode] ) === false);
 	}
 	
 	private function hasIbanValidFormat() {
-		$localeCode = $this->getLocaleCode();
-		$accountIdentification = $this->getAccountIdentification();
-		return !(preg_match('/' . $this->ibanFormatMap[$localeCode] . '/', $accountIdentification) !== 1);
+		$localeCode = $this->getLocaleCode ();
+		$accountIdentification = $this->getAccountIdentification ();
+		return ! (preg_match ( '/' . $this->ibanFormatMap [$localeCode] . '/', $accountIdentification ) !== 1);
 	}
 	
 	private function hasIbanValidChecksum() {
-		$localeCode = $this->getLocaleCode();
-		$numericLocalCode = $this->getNumericLocaleCode($localeCode);
-		$accountIdentification = $this->getAccountIdentification();
-		$numericAccountIdentification = $this->getNumericAccountIdentification($accountIdentification);
-		$checksum = $this->getChecksum();
-		$invertedIban = $numericAccountIdentification . $numericLocalCode . $checksum;        
-		return bcmod($invertedIban, 97) === '1';
+		$localeCode = $this->getLocaleCode ();
+		$numericLocalCode = $this->getNumericLocaleCode ( $localeCode );
+		$accountIdentification = $this->getAccountIdentification ();
+		$numericAccountIdentification = $this->getNumericAccountIdentification ( $accountIdentification );
+		$checksum = $this->getChecksum ();
+		$invertedIban = $numericAccountIdentification . $numericLocalCode . $checksum;
+		return bcmod ( $invertedIban, 97 ) === '1';
 	}
-
+	
 	private function getLocaleCode() {
-		return substr($this->iban, 0, 2);
+		return substr ( $this->iban, 0, 2 );
 	}
 	
 	private function getChecksum() {
-		return substr($this->iban, 2, 2);
+		return substr ( $this->iban, 2, 2 );
 	}
 	
 	private function getAccountIdentification() {
-		return substr($this->iban, 4);
+		return substr ( $this->iban, 4 );
 	}
 	
 	private function getNumericLocaleCode($localeCode) {
 		$numericLocaleCode = '';
-		foreach(str_split($localeCode) as $char) {
-			$numericLocaleCode .= array_search($char, $this->letterMapping) + 9;
+		foreach ( str_split ( $localeCode ) as $char ) {
+			$numericLocaleCode .= array_search ( $char, $this->letterMapping ) + 9;
 		}
 		return $numericLocaleCode;
-    }
-    
-    private function getNumericAccountIdentification($accountIdentification) {
-    	$accountIdentificationWithReplacedLetters = '';
-		foreach(str_split($accountIdentification) as $char) {
-			if (array_search($char, $this->letterMapping)) {
-				$accountIdentificationWithReplacedLetters .= array_search($char, $this->letterMapping) + 9;
+	}
+	
+	private function getNumericAccountIdentification($accountIdentification) {
+		$accountIdentificationWithReplacedLetters = '';
+		foreach ( str_split ( $accountIdentification ) as $char ) {
+			if (array_search ( $char, $this->letterMapping )) {
+				$accountIdentificationWithReplacedLetters .= array_search ( $char, $this->letterMapping ) + 9;
 			} else {
 				$accountIdentificationWithReplacedLetters .= $char;
 			}
 		}
 		return $accountIdentificationWithReplacedLetters;
-    }
+	}
 }
