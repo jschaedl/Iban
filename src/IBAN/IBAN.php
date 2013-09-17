@@ -96,10 +96,22 @@ class IBAN
 
 
 	public function isValid() {	
-		if (!$this->hasIbanValidLenght()) return false;
-		if (!$this->hasIbanValidLocaleCode()) return false;
-		if (!$this->hasIbanValidFormat()) return false;
-		if (!$this->hasIbanValidChecksum()) return false;
+		if (!$this->hasIbanValidLenght()) {
+			return false;
+		}
+		
+		if (!$this->hasIbanValidLocaleCode()) {
+			return false;
+		}
+		
+		if (!$this->hasIbanValidFormat()) {
+			return false;
+		}
+		
+		if (!$this->hasIbanValidChecksum())	{
+			return false;
+		}
+		
 		return true;
 	}
 

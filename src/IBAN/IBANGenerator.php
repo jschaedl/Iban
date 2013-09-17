@@ -2,14 +2,13 @@
 
 namespace IBAN;
 
-class IBANGenerator
+class IBANGenerator 
 {
 	function __construct() {
-		
 	}
-
-	public function validate($iban)	{
-		$iban = new IBAN($iban);
-		return $iban->isValid();
+	
+	public function validate($iban) {
+		$iban = new IBAN ( $iban );
+		return $iban->isValid ();
 	}
 }
