@@ -2,7 +2,7 @@
 
 namespace IBAN;
 
-class IBANGenerator 
+class IBANValidator 
 {	
 	function __construct() {
 	}
