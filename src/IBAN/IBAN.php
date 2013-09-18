@@ -97,7 +97,7 @@ class IBAN
         if (! empty($iban)) {
             $this->iban = $iban;
         } else {
-            throw\InvalidArgumentException('iban is missing');
+            throw \InvalidArgumentException('iban is missing');
         }
     }
 
@@ -105,19 +105,15 @@ class IBAN
         if (! $this->hasIbanValidLenght()) {
             return false;
         }
-        
         if (! $this->hasIbanValidLocaleCode()) {
             return false;
         }
-        
         if (! $this->hasIbanValidFormat()) {
             return false;
         }
-        
         if (! $this->hasIbanValidChecksum()) {
             return false;
         }
-        
         return true;
     }
 
