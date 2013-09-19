@@ -13,17 +13,15 @@ class IBAN
     public function validate() {
         if (! $this->hasIbanValidLenght()) {
             return false;
-        }
-        if (! $this->hasIbanValidLocaleCode()) {
+        } else if (! $this->hasIbanValidLocaleCode()) {
             return false;
-        }
-        if (! $this->hasIbanValidFormat()) {
+        } else if (! $this->hasIbanValidFormat()) {
             return false;
-        }
-        if (! $this->hasIbanValidChecksum()) {
+        } else if (! $this->hasIbanValidChecksum()) {
             return false;
+        } else {
+            return true;
         }
-        return true;
     }
 
     private function hasIbanValidLenght() {

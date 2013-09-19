@@ -13,6 +13,8 @@ class IBANValidatorTest extends PHPUnit_Framework_TestCase
 
     protected function tearDown() {
         $this->ibanValidator = null;
+        $this->validIbans = null;
+        $this->invalidIbans = null;
     }
 
     public function testValidate_IfIbanIsValid() {
