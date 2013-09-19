@@ -6,8 +6,8 @@ class IBANGenerator
 {
     private $ibanRuleFactory;
     
-    public function __construct($ibanRuleFactory) {
-        $this->ibanRuleFactory = $ibanRuleFactory;
+    public function __construct() {
+        $this->ibanRuleFactory = new \IBAN\Rule\IBANRuleFactory();
     }
     
     public function generate($localeCode, $instituteIdentification, $bankAccountNumber) {
