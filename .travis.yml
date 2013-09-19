@@ -1,2 +1,5 @@
+
+language: php
+
 php:
   - "5.4"
