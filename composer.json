@@ -1,4 +1,17 @@
 {
+    "name": "jschaedl/iban",
+    "type": "library",
+    "description": "validate and generate IBANs",
+    "keywords": ["iban", "validation", "generate"],
+    "homepage": "http://github.com/jschaedl/Iban",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jan Schädlich",
+            "email": "mail@janschaedlich.com",
+            "homepage": "https://github.com/jschaedl/"
+        }
+    ],
     "require-dev": {
         "phpunit/phpunit": "3.7.*"
     },
