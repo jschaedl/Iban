@@ -6,7 +6,7 @@ class IBANValidatorTest extends PHPUnit_Framework_TestCase
     protected $invalidIbans;
 
     protected function setUp() {
-        $this->ibanValidator = new \IBAN\IBANValidator();
+        $this->ibanValidator = new \IBAN\Validation\IBANValidator();
         $this->validIbans = file('tests/fixtures/valid_ibans.txt');
         $this->invalidIbans = file('tests/fixtures/invalid_ibans.txt');
     }

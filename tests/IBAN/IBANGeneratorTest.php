@@ -6,7 +6,7 @@ class IBANGeneratorTest extends PHPUnit_Framework_TestCase
     private $generatorTestData;
     
     protected function setUp() {
-        $this->ibanGenerator = new \IBAN\IBANGenerator(new \IBAN\Rule\IBANRuleFactory());
+        $this->ibanGenerator = new \IBAN\Generation\IBANGenerator(new \IBAN\Rule\IBANRuleFactory());
         $this->generatorTestData = file('tests/fixtures/test_data.txt');
     }
 

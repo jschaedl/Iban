@@ -1,6 +1,6 @@
 <?php
 
-namespace IBAN;
+namespace IBAN\Generation;
 
 class IBANGenerator
 {
@@ -17,7 +17,7 @@ class IBANGenerator
             throw new \InvalidArgumentException('instituteIdentification is missing');
         } else if (empty($bankAccountNumber)) {
             throw new \InvalidArgumentException('bankAccountNumber is missing');
-        } else if (empty(\IBAN\Constants::$ibanFormatMap[$localeCode])) {
+        } else if (empty(\IBAN\Core\Constants::$ibanFormatMap[$localeCode])) {
             throw new \InvalidArgumentException('localeCode not exists');
         } else {
             $ibanRule = $this->ibanRuleFactory->createIBANRule($localeCode, $instituteIdentification);

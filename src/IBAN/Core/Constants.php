@@ -1,6 +1,6 @@
 <?php
 
-namespace IBAN;
+namespace IBAN\Core;
 
 class Constants
 {

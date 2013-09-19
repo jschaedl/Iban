@@ -1,6 +1,6 @@
 <?php
 
-namespace IBAN;
+namespace IBAN\Core;
 
 class IBAN
 {
@@ -30,13 +30,13 @@ class IBAN
 
     private function hasIbanValidLocaleCode() {
         $localeCode = $this->getLocaleCode();
-        return ! (isset(\IBAN\Constants::$ibanFormatMap[$localeCode]) === false);
+        return ! (isset(\IBAN\Core\Constants::$ibanFormatMap[$localeCode]) === false);
     }
 
     private function hasIbanValidFormat() {
         $localeCode = $this->getLocaleCode();
         $accountIdentification = $this->getAccountIdentification();
-        return ! (preg_match('/' . \IBAN\Constants::$ibanFormatMap[$localeCode] . '/', $accountIdentification) !== 1);
+        return ! (preg_match('/' . \IBAN\Core\Constants::$ibanFormatMap[$localeCode] . '/', $accountIdentification) !== 1);
     }
 
     private function hasIbanValidChecksum() {
@@ -71,8 +71,8 @@ class IBAN
 
     private function getNumericRepresentation($letterRepresentation) {
         foreach (str_split($letterRepresentation) as $char) {
-            if (array_search($char, \IBAN\Constants::$letterMapping)) {
-                $numericRepresentation .= array_search($char, \IBAN\Constants::$letterMapping) + 9;
+            if (array_search($char, \IBAN\Core\Constants::$letterMapping)) {
+                $numericRepresentation .= array_search($char, \IBAN\Core\Constants::$letterMapping) + 9;
             } else {
                 $numericRepresentation .= $char;
             }
