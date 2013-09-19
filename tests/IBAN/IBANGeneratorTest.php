@@ -40,7 +40,7 @@ class IBANGeneratorTest extends PHPUnit_Framework_TestCase
      * @expectedException InvalidArgumentException
      */
     public function testGenerate_throwsInvalidArgumentExceptionOnWrongLocaleCode() {
-        $this->ibanGenerator->generate('FF', '1000000000', '10000000');
+        $this->ibanGenerator->generate('FF', '10000000', '1000000000');
     }
     
     public function testGenerate_ValidIban() {
@@ -49,5 +49,17 @@ class IBANGeneratorTest extends PHPUnit_Framework_TestCase
             $generatedIban = $this->ibanGenerator->generate(trim($testDataArray[0]), trim($testDataArray[1]), trim($testDataArray[2]));
             $this->assertEquals(trim($testDataArray[3]), trim($generatedIban));
         }
+    }
+    
+    public function testGenerate_IbanForRuleDE000200() {
+        $generatedIban = $this->ibanGenerator->generate('DE', '72020700', '1000000860');
+        $this->assertEquals('', trim($generatedIban));
+        $generatedIban = $this->ibanGenerator->generate('DE', '72020700', '1000000600');
+        $this->assertEquals('', trim($generatedIban));
+    }
+    
+    public function testGenerate_IbanForRuleDE000300() {
+    	$generatedIban = $this->ibanGenerator->generate('DE', '51010400', '6161604670');
+    	$this->assertEquals('', trim($generatedIban));
     }
 }

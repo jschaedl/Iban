@@ -11,8 +11,6 @@ class IBANRuleDE extends \IBAN\Rule\IBANRule
     const INSTITUTE_IDENTIFICATION_LENGHT = 8;
     const BANK_ACCOUNT_NUMBER_LENGHT = 10;
     
-    protected $bankAccountNumber;
-    
     public function __construct($localeCode, $instituteIdentification) {
         parent::__construct($localeCode, $instituteIdentification);
     }

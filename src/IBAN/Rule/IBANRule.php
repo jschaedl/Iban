@@ -10,6 +10,7 @@ class IBANRule
     
     protected $localeCode;
     protected $instituteIdentification;
+    protected $bankAccountNumber;
     
     public function __construct($localeCode, $instituteIdentification) {
         $this->localeCode = $localeCode;
