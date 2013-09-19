@@ -1,5 +1,7 @@
 # Iban
 
+https://travis-ci.org/jschaedl/Iban.png
+
 ## Usage
 
     <?php
