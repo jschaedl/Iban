@@ -1,6 +1,6 @@
 # Iban
 
-https://travis-ci.org/jschaedl/Iban.png
+![Build Status](https://travis-ci.org/jschaedl/Iban.png)
 
 ## Usage
 
