@@ -16,7 +16,7 @@ class IBANRule
         $this->instituteIdentification = $instituteIdentification;
     }
     
-    protected function generateIban() {
+    public function generateIban() {
         // override in subclass
     }
     
