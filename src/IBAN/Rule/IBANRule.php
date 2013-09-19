@@ -25,6 +25,7 @@ class IBANRule
     }
     
     protected function getNumericRepresentation($letterRepresentation) {
+        $numericRepresentation = '';
         foreach (str_split($letterRepresentation) as $char) {
             if (array_search($char, \IBAN\Core\Constants::$letterMapping)) {
                 $numericRepresentation .= array_search($char, \IBAN\Core\Constants::$letterMapping) + 9;
