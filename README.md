@@ -11,8 +11,7 @@
    	$isValid = $ibanValidator->validate('DE89370400440532013000');
    	
    	/* IBANGenerator */
-   	$ibanRuleFactory = new \IBAN\Rule\IBANRuleFactory();
-   	$ibanGenerator = new \IBAN\Generation\IBANGenerator($ibanRuleFactory);
+   	$ibanGenerator = new \IBAN\Generation\IBANGenerator();
    	$generatedIban = $ibanGenerator->generate('DE', '10010010', '1001001000');
    	
     
