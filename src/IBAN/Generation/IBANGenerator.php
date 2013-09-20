@@ -20,8 +20,9 @@ class IBANGenerator
         } else if (empty(\IBAN\Core\Constants::$ibanFormatMap[$localeCode])) {
             throw new \InvalidArgumentException('localeCode not exists');
         } else {
+            $iban = new \IBAN\Core\IBAN('');
             $ibanRule = $this->ibanRuleFactory->createIBANRule($localeCode, $instituteIdentification);
-            return $ibanRule->generateIban($bankAccountNumber);
+            return $iban->generate($ibanRule, $bankAccountNumber);
         }
     }
 }

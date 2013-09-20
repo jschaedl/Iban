@@ -17,21 +17,7 @@
     
 ## How to Install
 
-Install composer in your project:
-
-    curl -s https://getcomposer.org/installer | php
-
-Create a composer.json file in your project root:
-
-    {
-        "require": {
-            "jschaedl/iban": "*"
-        }
-    }
-
-Install via composer:
-
-    php composer.phar install
+...
 
 ## Contributions
 
