@@ -10,36 +10,36 @@ class IBAN
         $this->iban = $iban;
     }
     
-    public function validate() {
-        if (! $this->hasIbanValidLenght()) {
+    public function isValid() {
+        if (! $this->isLengthValid()) {
             return false;
-        } else if (! $this->hasIbanValidLocaleCode()) {
+        } else if (! $this->isLocalCodeValid()) {
             return false;
-        } else if (! $this->hasIbanValidFormat()) {
+        } else if (! $this->isFormatValid()) {
             return false;
-        } else if (! $this->hasIbanValidChecksum()) {
+        } else if (! $this->isChecksumValid()) {
             return false;
         } else {
             return true;
         }
     }
 
-    private function hasIbanValidLenght() {
+    private function isLengthValid() {
         return strlen($this->iban) < 15 ? false : true;
     }
 
-    private function hasIbanValidLocaleCode() {
+    private function isLocalCodeValid() {
         $localeCode = $this->getLocaleCode();
         return ! (isset(\IBAN\Core\Constants::$ibanFormatMap[$localeCode]) === false);
     }
 
-    private function hasIbanValidFormat() {
+    private function isFormatValid() {
         $localeCode = $this->getLocaleCode();
         $accountIdentification = $this->getAccountIdentification();
         return ! (preg_match('/' . \IBAN\Core\Constants::$ibanFormatMap[$localeCode] . '/', $accountIdentification) !== 1);
     }
 
-    private function hasIbanValidChecksum() {
+    private function isChecksumValid() {
         $localeCode = $this->getLocaleCode();
         $checksum = $this->getChecksum();
         $accountIdentification = $this->getAccountIdentification();
