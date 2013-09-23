@@ -9,11 +9,6 @@ class IBAN
     public function __construct($iban) {
         $this->iban = $iban;
     }
-
-    public function generate($ibanRule, $bankAccountNumber) {
-        $this->iban = $ibanRule->generateIban($bankAccountNumber);
-        return $this->iban;
-    }
     
     public function validate() {
         if (! $this->hasIbanValidLenght()) {
