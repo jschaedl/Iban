@@ -19,7 +19,7 @@ class IBANRuleFactory
 		} else if (trim($instituteIdentification) === '51010400') {
 			return '000300';
 		} else {
-			return '';
+			return '000000';
 		}
 	}
 }
