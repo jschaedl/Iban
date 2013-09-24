@@ -2,8 +2,8 @@
 
 class IBANGeneratorTest extends PHPUnit_Framework_TestCase
 {
-    private $ibanGenerator;
-    private $generatorTestData;
+    protected $ibanGenerator;
+    protected $generatorTestData;
     
     protected function setUp() {
         $this->ibanGenerator = new \IBAN\Generation\IBANGenerator();

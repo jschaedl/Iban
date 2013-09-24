@@ -11,10 +11,13 @@ class IBANGenerator
     }
     
     public function generate($localeCode, $instituteIdentification, $bankAccountNumber) {
+        $ibanRule = null;
+        $iban = null;
         if ($this->areArgumentsValid($localeCode, $instituteIdentification, $bankAccountNumber)) {
             $ibanRule = $this->ibanRuleFactory->createIBANRule($localeCode, $instituteIdentification);
-            return $ibanRule->generateIban($bankAccountNumber);
+            $iban = $ibanRule->generateIban($bankAccountNumber);
         }
+        return $iban;
     }
     
     private function areArgumentsValid($localeCode, $instituteIdentification, $bankAccountNumber) {

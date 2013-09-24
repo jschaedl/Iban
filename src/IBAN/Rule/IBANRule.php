@@ -18,11 +18,6 @@ class IBANRule
     }
     
     public function generateIban($bankAccountNumber) {
-        // override in subclass
-    }
-    
-    protected function checkBankAccountNumberChecksum($bankAccountNumber) {
-        // TODO: implement the checksum check for bankAccountNumber
     }
     
     protected function getNumericRepresentation($letterRepresentation) {
