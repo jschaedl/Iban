@@ -13,7 +13,7 @@ class IBANRuleDE000200 extends \IBAN\Rule\DE\IBANRuleDE000000
             preg_match('/' . '[0-9A-Z]{7}[6]{1}[0-9A-Z]{2}' . '/', $this->bankAccountNumber) === 1) {
     		return '';
         } else { 
-            return parent::generateIban($this->bankAccountNumber);
+            return parent::generateIban();
         }
     }
 }

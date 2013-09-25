@@ -12,7 +12,7 @@ class IBANRuleDE000300 extends \IBAN\Rule\DE\IBANRuleDE000000
     	if (strcmp($this->bankAccountNumber, '6161604670') == 0) {
             return '';
         } else {
-            return parent::generateIban($this->bankAccountNumber);
+            return parent::generateIban();
         }
     }
 }
