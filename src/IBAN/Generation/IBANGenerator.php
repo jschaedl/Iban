@@ -14,8 +14,8 @@ class IBANGenerator
         $ibanRule = null;
         $iban = null;
         if ($this->areArgumentsValid($localeCode, $instituteIdentification, $bankAccountNumber)) {
-            $ibanRule = $this->ibanRuleFactory->createIBANRule($localeCode, $instituteIdentification);
-            $iban = $ibanRule->generateIban($bankAccountNumber);
+            $ibanRule = $this->ibanRuleFactory->createIBANRule($localeCode, $instituteIdentification, $bankAccountNumber);
+            $iban = $ibanRule->generateIban();
         }
         return $iban;
     }

@@ -19,17 +19,17 @@ class IBANRuleFactoryTest extends PHPUnit_Framework_TestCase
 	// --
 	
 	public function testCreateIBANRule_DE000000() {
-	    $ibanRule = $this->ibanFactory->createIBANRule('DE', '50010517');
+	    $ibanRule = $this->ibanFactory->createIBANRule('DE', '50010517', '1000000000');
 	    $this->assertInstanceOf('\IBAN\Rule\DE\IBANRuleDE000000', $ibanRule);
 	}
 	
 	public function testCreateIBANRule_DE000200() {
-	    $ibanRule = $this->ibanFactory->createIBANRule('DE', '72020700');
+	    $ibanRule = $this->ibanFactory->createIBANRule('DE', '72020700', '1000000000');
 	    $this->assertInstanceOf('\IBAN\Rule\DE\IBANRuleDE000200', $ibanRule);
 	}
 	
 	public function testCreateIBANRule_DE000300() {
-	    $ibanRule = $this->ibanFactory->createIBANRule('DE', '51010400');
+	    $ibanRule = $this->ibanFactory->createIBANRule('DE', '51010400', '1000000000');
 	    $this->assertInstanceOf('\IBAN\Rule\DE\IBANRuleDE000300', $ibanRule);
 	}
 	

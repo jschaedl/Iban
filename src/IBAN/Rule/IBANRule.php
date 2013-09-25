@@ -2,7 +2,7 @@
 
 namespace IBAN\Rule;
 
-class IBANRule
+abstract class IBANRule
 {   
     const LOCALE_CODE_NORMALIZE_POSTFIX = '';
     const INSTITUTE_IDENTIFICATION_LENGHT = 0;
@@ -12,12 +12,10 @@ class IBANRule
     protected $instituteIdentification;
     protected $bankAccountNumber;
     
-    public function __construct($localeCode, $instituteIdentification) {
+    public function __construct($localeCode, $instituteIdentification, $bankAccountNumber) {
         $this->localeCode = $localeCode;
         $this->instituteIdentification = $instituteIdentification;
-    }
-    
-    public function generateIban($bankAccountNumber) {
+        $this->bankAccountNumber = $bankAccountNumber;
     }
     
     protected function getNumericRepresentation($letterRepresentation) {
@@ -40,4 +38,6 @@ class IBANRule
         }
         return $checksum;
     }
+    
+    abstract public function generateIban();
 }

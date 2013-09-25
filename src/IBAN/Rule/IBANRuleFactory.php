@@ -4,10 +4,10 @@ namespace IBAN\Rule;
 
 class IBANRuleFactory
 {
-	public function createIBANRule($localeCode, $instituteIdentification) {
+	public function createIBANRule($localeCode, $instituteIdentification, $bankAccountNumber) {
 		$ibanRuleCodeAndVersion = $this->getIbanRuleCodeAndVersion($instituteIdentification);
 		$ibanRuleClassName = '\\IBAN\\Rule\\' . $localeCode . '\\IBANRule' . $localeCode . $ibanRuleCodeAndVersion;
-	    return new $ibanRuleClassName($localeCode, $instituteIdentification);
+	    return new $ibanRuleClassName($localeCode, $instituteIdentification, $bankAccountNumber);
 	}
 	
 	// TODO: check bankleitzahlen file (Deutsche BundesBank ExtraNet) 
