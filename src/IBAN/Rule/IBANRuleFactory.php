@@ -14,10 +14,12 @@ class IBANRuleFactory
 	// and get the ibanRuleCodeAndVersion from position 14 
 	// for now code it hard
 	private function getIbanRuleCodeAndVersion($instituteIdentification) {
-	    if (trim($instituteIdentification) === '72020700') {
+	    if (trim($instituteIdentification) === '72020700') {
 			return '000200';
 		} else if (trim($instituteIdentification) === '51010400') {
 			return '000300';
+		} else if (trim($instituteIdentification) === '10050000') {
+			return '000400';
 		} else {
 			return '000000';
 		}
