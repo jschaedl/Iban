@@ -4,6 +4,22 @@ namespace IBAN\Rule;
 
 class IBANRuleFactory
 {
+    //public $ibanRules;
+    
+    public function __construct() {
+        /*
+    	if (($handle = fopen("blz_iban_rule.csv", "r")) !== FALSE) {
+            $data = array();
+    	    while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
+                for ($i=0; $i < count($data) - 1; $i++) {
+                    $ibanRules[$data[$i]] = $data[$i + 1];
+                }
+            }
+            fclose($handle);
+    	}
+    	*/
+    }
+    
 	public function createIBANRule($localeCode, $instituteIdentification, $bankAccountNumber) {
 		$ibanRuleCodeAndVersion = $this->getIbanRuleCodeAndVersion($instituteIdentification);
 		$ibanRuleClassName = '\\IBAN\\Rule\\' . $localeCode . '\\IBANRule' . $localeCode . $ibanRuleCodeAndVersion;
