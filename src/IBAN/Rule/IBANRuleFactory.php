@@ -8,6 +8,8 @@ class IBANRuleFactory
     
     public function __construct() {
         /*
+        realpath(dirname(__FILE__)) . 'blz_iban_rule.csv';
+         
     	if (($handle = fopen("blz_iban_rule.csv", "r")) !== FALSE) {
             $data = array();
     	    while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
