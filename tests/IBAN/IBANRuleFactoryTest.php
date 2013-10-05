@@ -29,7 +29,7 @@ class IBANRuleFactoryTest extends PHPUnit_Framework_TestCase
 	}
 	
 	public function testCreateIBANRule_DE000300() {
-	    $ibanRule = $this->ibanFactory->createIBANRule('DE', '51010400', '1000000000');
+	    $ibanRule = $this->ibanFactory->createIBANRule('DE', '51010800', '1000000000');
 	    $this->assertInstanceOf('\IBAN\Rule\DE\IBANRuleDE000300', $ibanRule);
 	}
 	
@@ -41,7 +41,7 @@ class IBANRuleFactoryTest extends PHPUnit_Framework_TestCase
 	// --
 	
 	public function testGetIbanRuleCodeAndVersion_000000() {
-	    $this->assertEquals('000000', $this->privateMethodGetIbanRuleCodeAndVersion->invoke($this->ibanFactory, '50010517'));
+	    $this->assertEquals('000000', $this->privateMethodGetIbanRuleCodeAndVersion->invoke($this->ibanFactory, '50010517'));
 	}
 	
 	public function testGetIbanRuleCodeAndVersion_000200() {	    
@@ -49,7 +49,7 @@ class IBANRuleFactoryTest extends PHPUnit_Framework_TestCase
 	}
 	
 	public function testGetIbanRuleCodeAndVersion_000300() {
-	    $this->assertEquals('000300', $this->privateMethodGetIbanRuleCodeAndVersion->invoke($this->ibanFactory, '51010400'));
+	    $this->assertEquals('000300', $this->privateMethodGetIbanRuleCodeAndVersion->invoke($this->ibanFactory, '51010800'));
 	}
 	
 	public function testGetIbanRuleCodeAndVersion_000400() {

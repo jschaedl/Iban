@@ -4,42 +4,29 @@ namespace IBAN\Rule;
 
 class IBANRuleFactory
 {
-    //public $ibanRules;
+    public static $rules;
     
     public function __construct() {
-        /*
-        realpath(dirname(__FILE__)) . 'blz_iban_rule.csv';
-         
-    	if (($handle = fopen("blz_iban_rule.csv", "r")) !== FALSE) {
-            $data = array();
-    	    while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
-                for ($i=0; $i < count($data) - 1; $i++) {
-                    $ibanRules[$data[$i]] = $data[$i + 1];
-                }
-            }
-            fclose($handle);
+    	if(!isset(self::$rules)) {
+    		self::$rules = require __DIR__.'/rules.php';
     	}
-    	*/
     }
     
 	public function createIBANRule($localeCode, $instituteIdentification, $bankAccountNumber) {
 		$ibanRuleCodeAndVersion = $this->getIbanRuleCodeAndVersion($instituteIdentification);
 		$ibanRuleClassName = '\\IBAN\\Rule\\' . $localeCode . '\\IBANRule' . $localeCode . $ibanRuleCodeAndVersion;
-	    return new $ibanRuleClassName($localeCode, $instituteIdentification, $bankAccountNumber);
+	    if (!file_exists(__DIR__ . DIRECTORY_SEPARATOR . $localeCode . DIRECTORY_SEPARATOR . 'IBANRule' . $localeCode . $ibanRuleCodeAndVersion . '.php')) {
+	    	throw new \IBAN\Rule\Exception\RuleNotYetImplementedException('IBANRule' . $localeCode . $ibanRuleCodeAndVersion);
+	    } else {
+	    	return new $ibanRuleClassName($localeCode, $instituteIdentification, $bankAccountNumber);
+	    }
 	}
 	
-	// TODO: check bankleitzahlen file (Deutsche BundesBank ExtraNet) 
-	// and get the ibanRuleCodeAndVersion from position 14 
-	// for now code it hard
 	private function getIbanRuleCodeAndVersion($instituteIdentification) {
-	    if (trim($instituteIdentification) === '72020700') {
-			return '000200';
-		} else if (trim($instituteIdentification) === '51010400') {
-			return '000300';
-		} else if (trim($instituteIdentification) === '10050000') {
-			return '000400';
+		if (!array_key_exists($instituteIdentification, self::$rules)) {
+			throw new \IBAN\Rule\Exception\UnknownRuleException($instituteIdentification);
 		} else {
-			return '000000';
+			return self::$rules[$instituteIdentification];
 		}
 	}
 }
