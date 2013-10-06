@@ -7,6 +7,7 @@ A small library for validating and generating International Bankaccount Numbers 
 [![Latest Unstable Version](https://poser.pugx.org/jschaedl/Iban/v/stable.png)](https://packagist.org/packages/jschaedl/Byte) 
 [![Latest Unstable Version](https://poser.pugx.org/jschaedl/Iban/v/unstable.png)](https://packagist.org/packages/jschaedl/Byte) 
 [![Total Downloads](https://poser.pugx.org/jschaedl/Iban/downloads.png)](https://packagist.org/packages/jschaedl/byte) 
+[![Dependencies Status](https://d2xishtp1ojlk0.cloudfront.net/d/12894297)](http://depending.in/jschaedl/Iban)
 
 ## Development status
 This library is currently under development and at the moment not ready for production use. The iban validation should be run fine, but the generation functionality is not yet complete. Contributions are welcome.
