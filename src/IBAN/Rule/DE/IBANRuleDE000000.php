@@ -6,10 +6,6 @@ use IBAN\Rule\IBANRule;
 
 class IBANRuleDE000000 extends IBANRule
 {   
-    public function __construct($localeCode, $instituteIdentification, $bankAccountNumber) {
-        parent::__construct($localeCode, $instituteIdentification, $bankAccountNumber);
-    }
-    
     public function generateIban() {        
         $invertedIban = $this->getInvertedIban();
         $numericRepresentationOfInvertedIban = $this->getNumericRepresentation($invertedIban);

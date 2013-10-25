@@ -3,11 +3,7 @@
 namespace IBAN\Rule\DE;
 
 class IBANRuleDE000400 extends \IBAN\Rule\DE\IBANRuleDE000000
-{    
-	public function __construct($localeCode, $instituteIdentification, $bankAccountNumber) {
-        parent::__construct($localeCode, $instituteIdentification, $bankAccountNumber);
-    }
-    
+{     
     public function generateIban() {
     	if (strcmp($this->bankAccountNumber, '135') == 0) {
             $this->bankAccountNumber = '0990021440';

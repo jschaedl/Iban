@@ -55,8 +55,9 @@ class IBANGeneratorTest extends PHPUnit_Framework_TestCase
     /**
      * @expectedException Exception
      */
-    public function testCreateIbanRuleDE000100ShouldThrowException() {
+    public function testGenerateIbanForRuleDE000100ShouldThrowException() {
         $rule = new IBANRuleDE000100('', '', '');
+        $rule->generateIban();
     }
     
     public function testGenerate_IbanForRuleDE000200() {
