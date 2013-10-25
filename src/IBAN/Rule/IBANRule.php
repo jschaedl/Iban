@@ -3,11 +3,7 @@
 namespace IBAN\Rule;
 
 abstract class IBANRule
-{   
-    const LOCALE_CODE_NORMALIZE_POSTFIX = '';
-    const INSTITUTE_IDENTIFICATION_LENGHT = 0;
-    const BANK_ACCOUNT_NUMBER_LENGHT = 0;
-    
+{       
     protected $localeCode;
     protected $instituteIdentification;
     protected $bankAccountNumber;
@@ -44,4 +40,10 @@ abstract class IBANRule
     }
     
     abstract public function generateIban();
+    
+    abstract public function getLocalCodeNormalizePrefix();
+    
+    abstract public function getInstituteIdentificationLength();
+    
+    abstract public function getbankAccountNumberLength();
 }

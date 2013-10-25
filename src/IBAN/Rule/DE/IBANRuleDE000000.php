@@ -2,12 +2,10 @@
 
 namespace IBAN\Rule\DE;
 
-class IBANRuleDE000000 extends \IBAN\Rule\IBANRule
+use IBAN\Rule\IBANRule;
+
+class IBANRuleDE000000 extends IBANRule
 {   
-    const LOCALE_CODE_NORMALIZE_POSTFIX = '00';
-    const INSTITUTE_IDENTIFICATION_LENGHT = 8;
-    const BANK_ACCOUNT_NUMBER_LENGHT = 10;
-    
     public function __construct($localeCode, $instituteIdentification, $bankAccountNumber) {
         parent::__construct($localeCode, $instituteIdentification, $bankAccountNumber);
     }
@@ -19,6 +17,18 @@ class IBANRuleDE000000 extends \IBAN\Rule\IBANRule
         return $this->localeCode . $checksum . $this->normalizedInstituteIdentification . $this->normalizedBankAccountNumber;
     }
     
+    public function getLocalCodeNormalizePrefix() {
+        return '00';
+    }
+    
+    public function getInstituteIdentificationLength() {
+        return 8;
+    }
+    
+    public function getbankAccountNumberLength() {
+        return 10;
+    }
+    
     private function getInvertedIban() {
         $this->normalizedLocalCode = $this->normalizeLocaleCode();
         $this->normalizedInstituteIdentification = $this->normalizeInstituteIdentification();
@@ -27,14 +37,14 @@ class IBANRuleDE000000 extends \IBAN\Rule\IBANRule
     }
     
     private function normalizeLocaleCode() {
-        return $this->localeCode . IBANRuleDE000000::LOCALE_CODE_NORMALIZE_POSTFIX;
+        return $this->localeCode . $this->getLocalCodeNormalizePrefix();
     }
     
     private function normalizeInstituteIdentification() {
-        return str_pad($this->instituteIdentification, IBANRuleDE000000::INSTITUTE_IDENTIFICATION_LENGHT, '0', STR_PAD_LEFT);
+        return str_pad($this->instituteIdentification, $this->getInstituteIdentificationLength(), '0', STR_PAD_LEFT);
     }
     
     private function normalizeBankAccountNumber() {
-        return str_pad($this->bankAccountNumber, IBANRuleDE000000::BANK_ACCOUNT_NUMBER_LENGHT, '0', STR_PAD_LEFT);
+        return str_pad($this->bankAccountNumber, $this->getbankAccountNumberLength(), '0', STR_PAD_LEFT);
     }
 }
