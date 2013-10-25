@@ -5,9 +5,9 @@ namespace IBAN\Rule\DE;
 class IBANRuleDE001000 extends \IBAN\Rule\DE\IBANRuleDE000000
 {    
     public function generateIban() {
-        if (strcmp($this->instituteIdentification, '50050201') == 0 && strcmp($this->bankAccountNumber, '2000') == 0) {
+        if ($this->instituteIdentificationEquals('50050201') && $this->bankAccountNumberEquals('2000')) {
             return 'DE42500502010000222000';
-        } else if (strcmp($this->instituteIdentification, '50050201') == 0 && strcmp($this->bankAccountNumber, '800000') == 0) {
+        } else if ($this->instituteIdentificationEquals('50050201') && $this->bankAccountNumberEquals('800000')) {
             return 'DE89500502010000180802';
         } else {
             return parent::generateIban();
