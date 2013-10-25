@@ -39,6 +39,10 @@ abstract class IBANRule
         return $checksum;
     }
     
+    protected function bankAccountNumberEquals($bankAccountNumber) {
+        return strcmp($this->bankAccountNumber, $bankAccountNumber) == 0;
+    }
+    
     abstract public function generateIban();
     
     abstract public function getLocalCodeNormalizePrefix();
