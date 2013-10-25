@@ -39,6 +39,10 @@ abstract class IBANRule
         return $checksum;
     }
     
+    protected function instituteIdentificationEquals($instituteIdentification) {
+        return strcmp($this->instituteIdentification, $instituteIdentification) == 0;
+    }
+    
     protected function bankAccountNumberEquals($bankAccountNumber) {
         return strcmp($this->bankAccountNumber, $bankAccountNumber) == 0;
     }
