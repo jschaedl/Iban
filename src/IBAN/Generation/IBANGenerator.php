@@ -12,16 +12,17 @@ class IBANGenerator
     private $instituteIdentification;
     private $bankAccountNumber;
     
-    public function __construct($ibanRuleFactoryClassName = '\IBAN\Rule\IBANRuleFactory') {
-        $this->ibanRuleFactory = new $ibanRuleFactoryClassName();
+    public function __construct($ibanRuleFactory) {
+        $this->ibanRuleFactory = $ibanRuleFactory;
     }
     
     public static function DE($instituteIdentification, $bankAccountNumber) {
-        $generater = new IBANGenerator('\IBAN\Rule\IBANRuleFactory');
+        $ruleFactory = new IBANRuleFactory('DE');
+        $generater = new IBANGenerator($ruleFactory);
         return $generater->generate('DE', $instituteIdentification, $bankAccountNumber);
     }
     
-    public function generate($localeCode, $instituteIdentification, $bankAccountNumber) {
+    private function generate($localeCode, $instituteIdentification, $bankAccountNumber) {
         $this->localeCode = $localeCode;
         $this->instituteIdentification = $instituteIdentification;
         $this->bankAccountNumber = $bankAccountNumber;

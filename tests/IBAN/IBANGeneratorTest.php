@@ -2,6 +2,7 @@
 
 use IBAN\Rule\DE\IBANRuleDE000100;
 use IBAN\Generation\IBANGenerator;
+use IBAN\Rule\IBANRuleFactory;
 
 class IBANGeneratorTest extends PHPUnit_Framework_TestCase
 {
@@ -9,27 +10,13 @@ class IBANGeneratorTest extends PHPUnit_Framework_TestCase
     protected $generatorTestData;
     
     protected function setUp() {
-        $this->ibanGenerator = new \IBAN\Generation\IBANGenerator();
+        $this->ibanGenerator = new \IBAN\Generation\IBANGenerator(new IBANRuleFactory('DE'));
         $this->generatorTestData = file('tests/fixtures/test_data.txt');
     }
 
     protected function tearDown() {
         $this->ibanGenerator = null;
         $this->generatorTestData = null;
-    }
-
-    /**
-     * @expectedException InvalidArgumentException
-     */
-    public function testGenerate_throwsInvalidArgumentExceptionOnMissingLocaleCode() {
-        $this->ibanGenerator->generate('', '', '');
-    }
-    
-    /**
-     * @expectedException InvalidArgumentException
-     */
-    public function testGenerate_throwsInvalidArgumentExceptionOnWrongLocaleCode() {
-        $this->ibanGenerator->generate('FF', '10000000', '1000000000');
     }
 
     /**
@@ -49,7 +36,7 @@ class IBANGeneratorTest extends PHPUnit_Framework_TestCase
     public function testGenerate_ValidIban() {
         foreach ($this->generatorTestData as $testData) {
             $testDataArray = explode(';', $testData);
-            $generatedIban = $this->ibanGenerator->generate(trim($testDataArray[0]), trim($testDataArray[1]), trim($testDataArray[2]));
+            $generatedIban = IBANGenerator::DE(trim($testDataArray[1]), trim($testDataArray[2]));
             $this->assertEquals(trim($testDataArray[3]), trim($generatedIban));
         }
     }

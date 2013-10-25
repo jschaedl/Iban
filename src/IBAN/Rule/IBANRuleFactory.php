@@ -6,19 +6,23 @@ class IBANRuleFactory
 {
     public static $rules;
     
-    public function __construct() {
+    private $localeCode;
+    
+    public function __construct($localeCode='DE') {
+        $this->localeCode = $localeCode;
+    	
     	if(!isset(self::$rules)) {
-    		self::$rules = require __DIR__.'/rules.php';
+    		self::$rules = require __DIR__ . '/' . $localeCode . '/' . '/rules.php';
     	}
     }
     
 	public function createIBANRule($localeCode, $instituteIdentification, $bankAccountNumber) {
 		$ibanRuleCodeAndVersion = $this->getIbanRuleCodeAndVersion($instituteIdentification);
-		$ibanRuleClassName = '\\IBAN\\Rule\\' . $localeCode . '\\IBANRule' . $localeCode . $ibanRuleCodeAndVersion;
-	    if (!file_exists(__DIR__ . DIRECTORY_SEPARATOR . $localeCode . DIRECTORY_SEPARATOR . 'IBANRule' . $localeCode . $ibanRuleCodeAndVersion . '.php')) {
-	    	throw new \IBAN\Rule\Exception\RuleNotYetImplementedException('IBANRule' . $localeCode . $ibanRuleCodeAndVersion);
+		$ibanRuleClassName = '\\IBAN\\Rule\\' . $this->localeCode . '\\IBANRule' . $this->localeCode . $ibanRuleCodeAndVersion;
+	    if (!file_exists(__DIR__ . DIRECTORY_SEPARATOR . $this->localeCode . DIRECTORY_SEPARATOR . 'IBANRule' . $this->localeCode . $ibanRuleCodeAndVersion . '.php')) {
+	    	throw new \IBAN\Rule\Exception\RuleNotYetImplementedException('IBANRule' . $this->localeCode . $ibanRuleCodeAndVersion);
 	    } else {
-	    	return new $ibanRuleClassName($localeCode, $instituteIdentification, $bankAccountNumber);
+	    	return new $ibanRuleClassName($this->localeCode, $instituteIdentification, $bankAccountNumber);
 	    }
 	}
 	
