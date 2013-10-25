@@ -10,18 +10,31 @@ class IBANRuleFactory
     
     public function __construct($localeCode='DE') {
         $this->localeCode = $localeCode;
-    	if(!isset(self::$rules)) {
-    		self::$rules = require __DIR__ . '/' . $localeCode . '/' . '/rules.php';
-    	}
+        if ($this->isLocaleCodeValid()) {
+    	   if(!isset(self::$rules)) {
+    		  self::$rules = require __DIR__ . '/' . $localeCode . '/' . '/rules.php';
+    	   }
+        }
     }
     
-	public function createIBANRule($localeCode, $instituteIdentification, $bankAccountNumber) {
+	public function createIBANRule($instituteIdentification, $bankAccountNumber) {
 	    $ibanRuleCodeAndVersion = $this->getIbanRuleCodeAndVersion($instituteIdentification);
 		if ($this->ibanRuleFileExists($ibanRuleCodeAndVersion)) {
 	        return $this->createRule($ibanRuleCodeAndVersion, $instituteIdentification, $bankAccountNumber);
 	    } else {
 	        throw new \IBAN\Rule\Exception\RuleNotYetImplementedException('IBANRule' . $this->localeCode . $ibanRuleCodeAndVersion);
 	    }
+	}
+	
+	private function isLocaleCodeValid() {
+	    if (empty($this->localeCode)) {
+	        throw new \InvalidArgumentException('localeCode is missing');
+	    } else if (empty(\IBAN\Core\Constants::$ibanFormatMap[$this->localeCode])) {
+	        throw new \InvalidArgumentException('localeCode not exists');
+	    } else {
+	        return true;
+	    }
+	    return false;
 	}
 	
 	private function ibanRuleFileExists($ibanRuleCodeAndVersion) {

@@ -7,8 +7,7 @@ use IBAN\Rule\IBANRuleFactory;
 class IBANGenerator
 {
     private $ibanRuleFactory;
-    
-    private $localeCode;
+
     private $instituteIdentification;
     private $bankAccountNumber;
     
@@ -19,11 +18,10 @@ class IBANGenerator
     public static function DE($instituteIdentification, $bankAccountNumber) {
         $ruleFactory = new IBANRuleFactory('DE');
         $generater = new IBANGenerator($ruleFactory);
-        return $generater->generate('DE', $instituteIdentification, $bankAccountNumber);
+        return $generater->generate($instituteIdentification, $bankAccountNumber);
     }
     
-    private function generate($localeCode, $instituteIdentification, $bankAccountNumber) {
-        $this->localeCode = $localeCode;
+    private function generate($instituteIdentification, $bankAccountNumber) {
         $this->instituteIdentification = $instituteIdentification;
         $this->bankAccountNumber = $bankAccountNumber;
         
@@ -37,7 +35,6 @@ class IBANGenerator
     
     private function createRule() {
     	return $this->ibanRuleFactory->createIBANRule(
-	        $this->localeCode, 
 	        $this->instituteIdentification, 
 	        $this->bankAccountNumber);
     }
@@ -47,14 +44,10 @@ class IBANGenerator
     }
     
     private function areArgumentsValid() {
-    	if (empty($this->localeCode)) {
-    		throw new \InvalidArgumentException('localeCode is missing');
-    	} else if (empty($this->instituteIdentification)) {
+    	if (empty($this->instituteIdentification)) {
     		throw new \InvalidArgumentException('instituteIdentification is missing');
     	} else if (empty($this->bankAccountNumber)) {
     		throw new \InvalidArgumentException('bankAccountNumber is missing');
-    	} else if (empty(\IBAN\Core\Constants::$ibanFormatMap[$this->localeCode])) {
-    		throw new \InvalidArgumentException('localeCode not exists');
     	} else {
     		return true;
     	}
