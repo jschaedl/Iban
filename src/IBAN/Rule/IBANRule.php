@@ -12,6 +12,10 @@ abstract class IBANRule
     protected $instituteIdentification;
     protected $bankAccountNumber;
     
+    protected $normalizedLocalCode;
+    protected $normalizedInstituteIdentification;
+    protected $normalizedBankAccountNumber;
+    
     public function __construct($localeCode, $instituteIdentification, $bankAccountNumber) {
         $this->localeCode = $localeCode;
         $this->instituteIdentification = $instituteIdentification;
