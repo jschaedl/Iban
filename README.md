@@ -3,10 +3,10 @@
 A small library for validating and generating International Bankaccount Numbers (IBAN). It is build for PHP 5.3+.
 
 
-[![Build Status](https://travis-ci.org/jschaedl/Iban.png)](https://travis-ci.org/jschaedl/Byte) 
-[![Latest Unstable Version](https://poser.pugx.org/jschaedl/Iban/v/stable.png)](https://packagist.org/packages/jschaedl/Byte) 
-[![Latest Unstable Version](https://poser.pugx.org/jschaedl/Iban/v/unstable.png)](https://packagist.org/packages/jschaedl/Byte) 
-[![Total Downloads](https://poser.pugx.org/jschaedl/Iban/downloads.png)](https://packagist.org/packages/jschaedl/byte) 
+[![Build Status](https://travis-ci.org/jschaedl/Iban.png)](https://travis-ci.org/jschaedl/Iban) 
+[![Latest Unstable Version](https://poser.pugx.org/jschaedl/Iban/v/stable.png)](https://packagist.org/packages/jschaedl/Iban) 
+[![Latest Unstable Version](https://poser.pugx.org/jschaedl/Iban/v/unstable.png)](https://packagist.org/packages/jschaedl/Iban) 
+[![Total Downloads](https://poser.pugx.org/jschaedl/Iban/downloads.png)](https://packagist.org/packages/jschaedl/Iban) 
 [![Dependencies Status](https://d2xishtp1ojlk0.cloudfront.net/d/12894297)](http://depending.in/jschaedl/Iban)
 
 ## Development status
