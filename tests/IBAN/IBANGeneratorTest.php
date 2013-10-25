@@ -113,4 +113,10 @@ class IBANGeneratorTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('DE36320500000000047803', trim($generatedIban));
         $this->assertFalse(strcmp('DE20320500000000047800', trim($generatedIban)) == 0);       
     }
+    
+    public function testGenerate_IbanForRuleDE001200() {
+        $generatedIban = $this->ibanGenerator->generate('DE', '50850049', '5000002096');
+        $this->assertEquals('DE95500500005000002096', trim($generatedIban));
+        $this->assertFalse(strcmp('DE44508500495000002096', trim($generatedIban)) == 0);
+    }
 }
