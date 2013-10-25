@@ -133,4 +133,30 @@ class IBANGeneratorTest extends PHPUnit_Framework_TestCase
         $generatedIban = $this->ibanGenerator->generate('DE', '33060616', '100100100');
         $this->assertEquals('DE53300606010100100100', trim($generatedIban));
     }
+    
+    public function testGenerate_IbanForRuleDE001500() {
+        $generatedIban = $this->ibanGenerator->generate('DE', '37060193', '556');
+        $this->assertEquals('DE75370601930000101010', trim($generatedIban));
+        $generatedIban = $this->ibanGenerator->generate('DE', '37060193', '888');
+        $this->assertEquals('DE94370601930031870011', trim($generatedIban));
+        $generatedIban = $this->ibanGenerator->generate('DE', '37060193', '4040');
+        $this->assertEquals('DE13370601934003600101', trim($generatedIban));
+        $generatedIban = $this->ibanGenerator->generate('DE', '37060193', '5826');
+        $this->assertEquals('DE49370601931015826017', trim($generatedIban));
+        $generatedIban = $this->ibanGenerator->generate('DE', '37060193', '25000');
+        $this->assertEquals('DE44370601930025000110', trim($generatedIban));
+        $generatedIban = $this->ibanGenerator->generate('DE', '37060193', '393393');
+        $this->assertEquals('DE10370601930033013019', trim($generatedIban));
+        $generatedIban = $this->ibanGenerator->generate('DE', '37060193', '444555');
+        $this->assertEquals('DE38370601930032230016', trim($generatedIban));
+        $generatedIban = $this->ibanGenerator->generate('DE', '37060193', '603060');
+        $this->assertEquals('DE98370601936002919018', trim($generatedIban));
+        $generatedIban = $this->ibanGenerator->generate('DE', '37060193', '2120041');
+        $this->assertEquals('DE92370601930002130041', trim($generatedIban));
+        $generatedIban = $this->ibanGenerator->generate('DE', '37060193', '80868086');
+        $this->assertEquals('DE42370601934007375013', trim($generatedIban));
+        $generatedIban = $this->ibanGenerator->generate('DE', '37060193', '400569017');
+        $this->assertEquals('DE90370601934000569017', trim($generatedIban));
+    }
+    
 }
