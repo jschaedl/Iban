@@ -21,7 +21,7 @@ class Rule000000 extends IBANRule
         return 8;
     }
     
-    public function getbankAccountNumberLength() {
+    public function getBankAccountNumberLength() {
         return 10;
     }
     
@@ -41,6 +41,6 @@ class Rule000000 extends IBANRule
     }
     
     private function normalizeBankAccountNumber() {
-        return str_pad($this->bankAccountNumber, $this->getbankAccountNumberLength(), '0', STR_PAD_LEFT);
+        return str_pad($this->bankAccountNumber, $this->getBankAccountNumberLength(), '0', STR_PAD_LEFT);
     }
 }
