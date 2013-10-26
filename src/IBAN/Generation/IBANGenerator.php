@@ -22,8 +22,8 @@ class IBANGenerator
     }
     
     private function generate($instituteIdentification, $bankAccountNumber) {
-        $this->instituteIdentification = $instituteIdentification;
-        $this->bankAccountNumber = $bankAccountNumber;
+        $this->instituteIdentification = ltrim($instituteIdentification, '0');
+        $this->bankAccountNumber = ltrim($bankAccountNumber, '0');
         
         if ($this->areArgumentsValid()) {
             $ibanRule = $this->createRule();
