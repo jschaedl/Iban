@@ -2,10 +2,10 @@
 
 namespace IBAN\Rule\DE;
 
-class IBANRuleDE001400 extends \IBAN\Rule\DE\IBANRuleDE000000
+class Rule001300 extends \IBAN\Rule\DE\Rule000000
 {    
 	public function generateIban() {
-        $this->instituteIdentification = '30060601';
+        $this->instituteIdentification = '30050000';
         return parent::generateIban();
     }
 }

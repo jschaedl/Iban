@@ -2,7 +2,7 @@
 
 namespace IBAN\Rule\DE;
 
-class IBANRuleDE001900 extends \IBAN\Rule\DE\IBANRuleDE000000
+class Rule001900 extends \IBAN\Rule\DE\Rule000000
 {    
 	public function generateIban() {
         if ($this->instituteIdentificationEquals('50130100') || 

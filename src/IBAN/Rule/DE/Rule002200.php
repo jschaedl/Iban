@@ -2,7 +2,7 @@
 
 namespace IBAN\Rule\DE;
 
-class IBANRuleDE002200 extends \IBAN\Rule\DE\IBANRuleDE000000
+class Rule002200 extends \IBAN\Rule\DE\Rule000000
 {    
 	public function generateIban() {
 		if ($this->bankAccountNumberEquals('1111111')) {

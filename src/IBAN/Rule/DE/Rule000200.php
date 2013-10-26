@@ -2,7 +2,7 @@
 
 namespace IBAN\Rule\DE;
 
-class IBANRuleDE000200 extends \IBAN\Rule\DE\IBANRuleDE000000
+class Rule000200 extends \IBAN\Rule\DE\Rule000000
 {
     public function generateIban() {
     	if (preg_match('/' . '[0-9A-Z]{7}[8]{1}[6]{1}[0-9A-Z]{1}' . '/', $this->bankAccountNumber) === 1 || 

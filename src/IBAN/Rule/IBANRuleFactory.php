@@ -39,7 +39,7 @@ class IBANRuleFactory
 	
 	private function ibanRuleFileExists($ibanRuleCodeAndVersion) {
 	   $ibanRuleFilename = $this->getIbanRuleFilename($ibanRuleCodeAndVersion);
-	   return file_exists(__DIR__ . DIRECTORY_SEPARATOR . $ibanRuleFilename);
+	   return file_exists(__DIR__ . DIRECTORY_SEPARATOR . $this->localeCode . DIRECTORY_SEPARATOR . $ibanRuleFilename);
 	}
 	
 	private function createRule($ibanRuleCodeAndVersion, $instituteIdentification, $bankAccountNumber) {
@@ -48,11 +48,11 @@ class IBANRuleFactory
 	}
 	
 	private function getIbanRuleQualifiedClassName($ibanRuleCodeAndVersion) {
-	    return '\\IBAN\\Rule\\' . $this->localeCode . '\\IBANRule' . $this->localeCode . $ibanRuleCodeAndVersion;
+	    return '\\IBAN\\Rule\\' . $this->localeCode . '\\Rule' . $ibanRuleCodeAndVersion;
 	}
 	
 	private function getIbanRuleFilename($ibanRuleCodeAndVersion) {
-	    return $this->localeCode . DIRECTORY_SEPARATOR . 'IBANRule' . $this->localeCode . $ibanRuleCodeAndVersion . '.php';
+	    return 'Rule' . $ibanRuleCodeAndVersion . '.php';
 	}
 	
 	private function getIbanRuleCodeAndVersion($instituteIdentification) {

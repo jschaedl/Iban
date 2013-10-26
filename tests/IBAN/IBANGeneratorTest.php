@@ -1,8 +1,8 @@
 <?php
 
-use IBAN\Rule\DE\IBANRuleDE000100;
 use IBAN\Generation\IBANGenerator;
 use IBAN\Rule\IBANRuleFactory;
+use IBAN\Rule\DE\Rule000100;
 
 class IBANGeneratorTest extends PHPUnit_Framework_TestCase
 {
@@ -44,8 +44,8 @@ class IBANGeneratorTest extends PHPUnit_Framework_TestCase
     /**
      * @expectedException Exception
      */
-    public function testGenerateIbanForRuleDE000100ShouldThrowException() {
-        $rule = new IBANRuleDE000100('', '', '');
+    public function testGenerateIbanForRule000100ShouldThrowException() {
+        $rule = new Rule000100('', '', '');
         $rule->generateIban();
     }
     

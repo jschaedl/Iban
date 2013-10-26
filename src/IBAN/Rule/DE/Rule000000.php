@@ -4,7 +4,7 @@ namespace IBAN\Rule\DE;
 
 use IBAN\Rule\IBANRule;
 
-class IBANRuleDE000000 extends IBANRule
+class Rule000000 extends IBANRule
 {   
     public function generateIban() {        
         $invertedIban = $this->getInvertedIban();
