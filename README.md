@@ -32,14 +32,21 @@ All pull requests must be accompanied by passing unit tests. This repository use
 
 ```
 <?php
+
+use IBAN\Validator\IBANValidator;
+use IBAN\Generation\IBANGeneration;
     
-/* IBANValidator */
+// validation example
 $ibanValidator = new \IBAN\Validation\IBANValidator();
-$isValid = $ibanValidator->validate('DE89370400440532013000');
-   	
-/* IBANGenerator */
-$ibanGenerator = new \IBAN\Generation\IBANGenerator();
-$generatedIban = $ibanGenerator->generate('DE', '10010010', '1001001000');
+if ($ibanValidator->validate('DE89370400440532013000')) {
+	echo "DE89370400440532013000 is valid!";
+}
+ 
+// generation example
+$instituteIdentifier = '60050101';
+$bankAccountNumber = '502502502';
+$generatedIban = IBANGenerator::DE($instituteIdentifier, $bankAccountNumber); 
+// $generatedIban => DE15600501010001108884
  ```	
     
 ## How to Install
