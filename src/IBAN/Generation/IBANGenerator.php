@@ -6,38 +6,33 @@ use IBAN\Rule\IBANRuleFactory;
 
 class IBANGenerator
 {
-    public static function DE($instituteIdentification, $bankAccountNumber) {
+	private $ibanRuleFactory;
+	private $instituteIdentification;
+	private $bankAccountNumber;
+	
+	public static function DE($instituteIdentification, $bankAccountNumber) {
         $ruleFactory = new IBANRuleFactory('DE');
-        $generater = new IBANGenerator($ruleFactory);
-        return $generater->generate($instituteIdentification, $bankAccountNumber);
+        $generater = new IBANGenerator($ruleFactory, $instituteIdentification, $bankAccountNumber);
+        return $generater->generate();
     }
-
-    private $ibanRuleFactory;
-    private $instituteIdentification;
-    private $bankAccountNumber;
-    
-    private function __construct($ibanRuleFactory) {
+ 
+    private function __construct($ibanRuleFactory, $instituteIdentification, $bankAccountNumber) {
     	$this->ibanRuleFactory = $ibanRuleFactory;
+    	$this->instituteIdentification = ltrim($instituteIdentification, '0');
+    	$this->bankAccountNumber = ltrim($bankAccountNumber, '0');
     }
     
-    private function generate($instituteIdentification, $bankAccountNumber) {
-        $this->instituteIdentification = ltrim($instituteIdentification, '0');
-        $this->bankAccountNumber = ltrim($bankAccountNumber, '0');    
+    private function generate() {
         if ($this->areArgumentsValid()) {
             $ibanRule = $this->createRule();
-            $iban = $this->createIban($ibanRule);
+            return $ibanRule->generateIban();
         }
-        return $iban;
     }
     
     private function createRule() {
     	return $this->ibanRuleFactory->createIBANRule(
 	        $this->instituteIdentification, 
 	        $this->bankAccountNumber);
-    }
-    
-    private function createIban($ibanRule) {
-        return $ibanRule->generateIban();
     }
     
     private function areArgumentsValid() {
