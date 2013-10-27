@@ -2,7 +2,7 @@
 
 namespace IBAN\Rule;
 
-class IBANRuleFactory
+class RuleFactory
 {
     public static $rules;
     

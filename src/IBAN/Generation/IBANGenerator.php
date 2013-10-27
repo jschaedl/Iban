@@ -2,16 +2,16 @@
 
 namespace IBAN\Generation;
 
-use IBAN\Rule\IBANRuleFactory;
+use IBAN\Rule\RuleFactory;
 
 class IBANGenerator
 {
-	private $ibanRuleFactory;
+	private $ruleFactory;
 	private $instituteIdentification;
 	private $bankAccountNumber;
 	
 	public static function DE($instituteIdentification, $bankAccountNumber) {
-        $ruleFactory = new IBANRuleFactory('DE');
+        $ruleFactory = new RuleFactory('DE');
         $generater = new IBANGenerator($ruleFactory, $instituteIdentification, $bankAccountNumber);
         return $generater->generate();
     }
