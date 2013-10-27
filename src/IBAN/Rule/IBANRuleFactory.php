@@ -22,7 +22,7 @@ class IBANRuleFactory
 		if ($this->ibanRuleFileExists($ibanRuleCodeAndVersion)) {
 	        return $this->createRule($ibanRuleCodeAndVersion, $instituteIdentification, $bankAccountNumber);
 	    } else {
-	        throw new \IBAN\Rule\Exception\RuleNotYetImplementedException('IBANRule' . $this->localeCode . $ibanRuleCodeAndVersion);
+	        throw new \IBAN\Rule\Exception\RuleNotYetImplementedException('Rule' . $ibanRuleCodeAndVersion);
 	    }
 	}
 	
