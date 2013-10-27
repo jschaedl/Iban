@@ -2,9 +2,7 @@
 
 namespace IBAN\Rule\DE;
 
-use IBAN\Rule\IBANRule;
-
-class Rule000000 extends IBANRule
+class Rule000000 extends \IBAN\Rule\AbstractRule
 {   
 	public function __construct($localeCode, $instituteIdentification, $bankAccountNumber) {
 		$this->localeCode = $localeCode;

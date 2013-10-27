@@ -2,7 +2,7 @@
 
 namespace IBAN\Rule;
 
-abstract class IBANRule
+abstract class AbstractRule
 {   
     abstract public function generateIban();
 }
