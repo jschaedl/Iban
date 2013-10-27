@@ -4,13 +4,25 @@ namespace IBAN\Rule\DE;
 
 class Rule000000 extends \IBAN\Rule\AbstractRule
 {   
+	protected $localeCode;
+	protected $instituteIdentification;
+	protected $bankAccountNumber;
+	
+	protected $bankAccountSubstitutions = array();
+	
 	public function __construct($localeCode, $instituteIdentification, $bankAccountNumber) {
 		$this->localeCode = $localeCode;
 		$this->instituteIdentification = $instituteIdentification;
 		$this->bankAccountNumber = $bankAccountNumber;
 	}
 	
-    public function generateIban() {        
+    public function generateIban() {     
+    	if(array_key_exists($this->bankAccountNumber, $this->bankAccountSubstitutions)) {
+    		$this->bankAccountNumber = $this->bankAccountSubstitutions[$this->bankAccountNumber];
+    	}
+    	
+    	
+    	
         $invertedIban = $this->getInvertedIban();
         $numericRepresentationOfInvertedIban = $this->getNumericRepresentation($invertedIban);
         $checksum = $this->generateChecksum($numericRepresentationOfInvertedIban);
