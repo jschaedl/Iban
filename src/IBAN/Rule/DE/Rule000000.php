@@ -17,12 +17,7 @@ class Rule000000 extends \IBAN\Rule\AbstractRule
 	}
 	
     public function generateIban() {     
-    	if(array_key_exists($this->bankAccountNumber, $this->bankAccountSubstitutions)) {
-    		$this->bankAccountNumber = $this->bankAccountSubstitutions[$this->bankAccountNumber];
-    	}
-    	
-    	
-    	
+    	$this->substituteBankAccountNumbers();    	
         $invertedIban = $this->getInvertedIban();
         $numericRepresentationOfInvertedIban = $this->getNumericRepresentation($invertedIban);
         $checksum = $this->generateChecksum($numericRepresentationOfInvertedIban);
@@ -90,5 +85,11 @@ class Rule000000 extends \IBAN\Rule\AbstractRule
     private function normalizeBankAccountNumber() {
         return str_pad($this->bankAccountNumber, 
         	$this->getBankAccountNumberLength(), '0', STR_PAD_LEFT);
+    }
+    
+    private function substituteBankAccountNumbers() {
+    	if(array_key_exists($this->bankAccountNumber, $this->bankAccountSubstitutions)) {
+    		$this->bankAccountNumber = $this->bankAccountSubstitutions[$this->bankAccountNumber];
+    	}
     }
 }
