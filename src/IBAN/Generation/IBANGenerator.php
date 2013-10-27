@@ -6,30 +6,27 @@ use IBAN\Rule\IBANRuleFactory;
 
 class IBANGenerator
 {
-    private $ibanRuleFactory;
-
-    private $instituteIdentification;
-    private $bankAccountNumber;
-    
-    public function __construct($ibanRuleFactory) {
-        $this->ibanRuleFactory = $ibanRuleFactory;
-    }
-    
     public static function DE($instituteIdentification, $bankAccountNumber) {
         $ruleFactory = new IBANRuleFactory('DE');
         $generater = new IBANGenerator($ruleFactory);
         return $generater->generate($instituteIdentification, $bankAccountNumber);
     }
+
+    private $ibanRuleFactory;
+    private $instituteIdentification;
+    private $bankAccountNumber;
+    
+    private function __construct($ibanRuleFactory) {
+    	$this->ibanRuleFactory = $ibanRuleFactory;
+    }
     
     private function generate($instituteIdentification, $bankAccountNumber) {
         $this->instituteIdentification = ltrim($instituteIdentification, '0');
-        $this->bankAccountNumber = ltrim($bankAccountNumber, '0');
-        
+        $this->bankAccountNumber = ltrim($bankAccountNumber, '0');    
         if ($this->areArgumentsValid()) {
             $ibanRule = $this->createRule();
             $iban = $this->createIban($ibanRule);
         }
-        
         return $iban;
     }
     

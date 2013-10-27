@@ -6,19 +6,16 @@ use IBAN\Rule\DE\Rule000100;
 
 class IBANGeneratorTest extends PHPUnit_Framework_TestCase
 {
-    protected $ibanGenerator;
     protected $generatorTestData;
     
     protected function setUp() {
-        $this->ibanGenerator = new \IBAN\Generation\IBANGenerator(new IBANRuleFactory('DE'));
         $this->generatorTestData = file('tests/fixtures/test_data.txt');
     }
 
     protected function tearDown() {
-        $this->ibanGenerator = null;
         $this->generatorTestData = null;
     }
-
+    
     /**
      * @expectedException InvalidArgumentException
      */
