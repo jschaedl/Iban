@@ -21,21 +21,41 @@ class IBAN
         }
     }
 
+    public function getLocaleCode() {
+        return substr($this->iban, 0, 2);
+    }
+
+    public function getChecksum() {
+        return substr($this->iban, 2, 2);
+    }
+
+    public function getAccountIdentification() {
+        return substr($this->iban, 4);
+    }
+    
+    public function getInstituteIdentification() {
+        return substr($this->iban, 4, 8);
+    }
+    
+    public function getBankAccountNumber() {
+        return substr($this->iban, 12, 10);
+    }
+    
     private function isLengthValid() {
         return strlen($this->iban) < 15 ? false : true;
     }
-
+    
     private function isLocalCodeValid() {
         $localeCode = $this->getLocaleCode();
         return ! (isset(\IBAN\Core\Constants::$ibanFormatMap[$localeCode]) === false);
     }
-
+    
     private function isFormatValid() {
         $localeCode = $this->getLocaleCode();
         $accountIdentification = $this->getAccountIdentification();
         return ! (preg_match('/' . \IBAN\Core\Constants::$ibanFormatMap[$localeCode] . '/', $accountIdentification) !== 1);
     }
-
+    
     private function isChecksumValid() {
         $localeCode = $this->getLocaleCode();
         $checksum = $this->getChecksum();
@@ -44,18 +64,6 @@ class IBAN
         $numericAccountIdentification = $this->getNumericAccountIdentification($accountIdentification);
         $invertedIban = $numericAccountIdentification . $numericLocalCode . $checksum;
         return bcmod($invertedIban, 97) === '1';
-    }
-
-    private function getLocaleCode() {
-        return substr($this->iban, 0, 2);
-    }
-
-    private function getChecksum() {
-        return substr($this->iban, 2, 2);
-    }
-
-    private function getAccountIdentification() {
-        return substr($this->iban, 4);
     }
 
     private function getNumericLocaleCode($localeCode) {
