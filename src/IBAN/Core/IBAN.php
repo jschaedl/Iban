@@ -5,12 +5,9 @@ namespace IBAN\Core;
 class IBAN
 {
     private $iban;
-
-    public function __construct($iban) {
-        $this->iban = $iban;
-    }
     
-    public function isValid() {
+    public function validate($iban) {
+        $this->iban = $iban;
         if (! $this->isLengthValid()) {
             return false;
         } else if (! $this->isLocalCodeValid()) {
