@@ -4,16 +4,10 @@ namespace IBAN\Rule\DE;
 
 class Rule002400 extends \IBAN\Rule\DE\Rule000000
 {    
-	public function generateIban() {
-		if ($this->bankAccountNumberEquals('94')) {
-			$this->bankAccountNumber = '1694';
-		} else if ($this->bankAccountNumberEquals('248')) {
-			$this->bankAccountNumber = '17248';
-		} else if ($this->bankAccountNumberEquals('345')) {
-			$this->bankAccountNumber = '17345';
-		} else if ($this->bankAccountNumberEquals('400')) {
-			$this->bankAccountNumber = '14400';
-		}
-        return parent::generateIban();
-    }
+    protected $bankAccountSubstitutions = array(
+        "94" => "1694"
+        , "248" => "17248"
+        , "345" => "17345"
+        , "400" => "14400"
+    );
 }
