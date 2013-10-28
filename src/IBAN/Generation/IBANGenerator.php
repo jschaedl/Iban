@@ -1,8 +1,14 @@
 <?php
-
+/**
+ * Iban
+ *
+ * @author      Jan Schaedlich <schaedlich.jan@gmail.com>
+ * @copyright   2013 Jan Schaedlich
+ * @link        https://github.com/jschaedl/Iban
+ *
+ * MIT LICENSE
+ */
 namespace IBAN\Generation;
-
-use IBAN\Rule\RuleFactory;
 
 class IBANGenerator
 {
@@ -11,7 +17,7 @@ class IBANGenerator
 	private $bankAccountNumber;
 	
 	public static function DE($instituteIdentification, $bankAccountNumber) {
-        $ruleFactory = new RuleFactory('DE');
+        $ruleFactory = new \IBAN\Rule\RuleFactory('DE');
         $generater = new IBANGenerator($ruleFactory, $instituteIdentification, $bankAccountNumber);
         return $generater->generate();
     }
