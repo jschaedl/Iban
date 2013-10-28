@@ -8,6 +8,7 @@ class Rule000000 extends \IBAN\Rule\AbstractRule
 	protected $instituteIdentification;
 	protected $bankAccountNumber;
 	
+	protected $instituteIdentificationSubstitutions = array();
 	protected $bankAccountSubstitutions = array();
 	
 	public function __construct($localeCode, $instituteIdentification, $bankAccountNumber) {
@@ -17,6 +18,7 @@ class Rule000000 extends \IBAN\Rule\AbstractRule
 	}
 	
     public function generateIban() {     
+        $this->substituteInstituteIdentifications();
     	$this->substituteBankAccountNumbers();    	
         $invertedIban = $this->getInvertedIban();
         $numericRepresentationOfInvertedIban = $this->getNumericRepresentation($invertedIban);
@@ -85,6 +87,12 @@ class Rule000000 extends \IBAN\Rule\AbstractRule
     private function normalizeBankAccountNumber() {
         return str_pad($this->bankAccountNumber, 
         	$this->getBankAccountNumberLength(), '0', STR_PAD_LEFT);
+    }
+    
+    private function substituteInstituteIdentifications() {
+        if(array_key_exists($this->instituteIdentification, $this->instituteIdentificationSubstitutions)) {
+            $this->instituteIdentification = $this->instituteIdentificationSubstitutions[$this->instituteIdentification];
+        }
     }
     
     private function substituteBankAccountNumbers() {
