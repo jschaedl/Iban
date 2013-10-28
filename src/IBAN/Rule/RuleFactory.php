@@ -67,7 +67,7 @@ class RuleFactory
 		if (!array_key_exists($instituteIdentification, self::$rules)) {
 			throw new \IBAN\Rule\Exception\UnknownRuleException($instituteIdentification);
 		} else {
-			return self::$rules[$instituteIdentification];
+			return self::$rules[$instituteIdentification]['rule'];
 		}
 	}
 }

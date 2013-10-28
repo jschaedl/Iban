@@ -5,6 +5,37 @@
 
 import sys
 
+instituteIdentification = ''
+bankName = ''
+bankPoCode = ''
+bankCity = ''
+bankShortname = ''
+bankName = ''
+pan = ''
+bic = ''
+checksumMethod = ''
+rule = ''
+
+def printProperties(string_splitted):
+	bankName = string_splitted[2]
+	bankPoCode = string_splitted[3]
+	bankCity = string_splitted[4]
+	bankShortname = string_splitted[5]
+	pan = string_splitted[6]
+	bic = string_splitted[7]
+	checksumMethod = string_splitted[8]
+	rule = string_splitted[13]
+	array_string = 'array('
+	array_string += '"bankName" => "' + bankName.strip() + '", ' 
+	array_string += '"bankPoCode" => "' + bankPoCode.strip() + '", ' 
+	array_string += '"bankCity" => "' + bankCity.strip() + '", ' 
+	array_string += '"bankShortname" => "' + bankShortname.strip() + '", ' 
+	array_string += '"pan" => "' + pan.strip() + '", ' 
+	array_string += '"bic" => "' + bic.strip() + '", ' 
+	array_string += '"checksumMethod" => "' + checksumMethod.strip() + '", ' 
+	array_string += '"rule" => "' + rule.strip() + '", ' 
+	array_string += ')'
+	return array_string
 
 def main():
 	print "<?php"
@@ -19,16 +50,7 @@ def main():
 			string += str(i)
 		string_splitted = string.split(';')
 		instituteIdentification = string_splitted[0]
-		bankname = string_splitted[2]
-		bic = string_splitted[7]
-		rule = string_splitted[13]
-
-		array_string = 'array('
-		array_string += '"bankname" => "' + bankname.strip() + '", ' 
-		array_string += '"bic" => "' + bic.strip() + '", ' 
-		array_string += '"rule" => "' + rule.strip() + '", ' 
-		array_string += ')'
-
+		array_string = printProperties(string_splitted)
 		print '"' + instituteIdentification.strip() + '" => ' + array_string + ', ', 
 	print ");"
 
