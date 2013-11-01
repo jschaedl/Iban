@@ -33,11 +33,11 @@ All pull requests must be accompanied by passing unit tests. This repository use
 ```
 <?php
 
-use IBAN\Validator\IBANValidator;
-use IBAN\Generation\IBANGeneration;
+use IBAN\Validation\IBANValidator;
+use IBAN\Generation\IBANGenerator;
     
 // validation example
-$ibanValidator = new \IBAN\Validation\IBANValidator();
+$ibanValidator = new IBANValidator();
 if ($ibanValidator->validate('DE89370400440532013000')) {
 	echo "DE89370400440532013000 is valid!";
 }
