@@ -113,6 +113,20 @@ class IBANGeneratorTest extends PHPUnit_Framework_TestCase
     	$this->assertIban('DE85370501980002222222', IBANGenerator::DE('37050198', '222220022'));
     }
     
+    public function testGenerateIbanForRuleDE000800() {
+    	$this->assertIban('DE80500202000000038000', IBANGenerator::DE('50020200', '38000'));
+		$this->assertIban('DE46500202000030009963', IBANGenerator::DE('51020000', '30009963'));
+    	$this->assertFalse(strcmp('DE05510200000030009963', IBANGenerator::DE('51020000', '30009963')) == 0);
+		$this->assertIban('DE02500202000040033086', IBANGenerator::DE('30020500', '40033086'));
+    	$this->assertFalse(strcmp('DE41300205000040033086', IBANGenerator::DE('30020500', '40033086')) == 0);
+    	$this->assertIban('DE55500202000050017409', IBANGenerator::DE('20120200', '50017409'));
+    	$this->assertFalse(strcmp('DE75201202000050017409', IBANGenerator::DE('20120200', '50017409')) == 0);
+    	$this->assertIban('DE38500202000055036107', IBANGenerator::DE('70220200', '55036107'));
+    	$this->assertFalse(strcmp('DE18702202000055036107', IBANGenerator::DE('70220200', '55036107')) == 0);
+    	$this->assertIban('DE98500202000070049754', IBANGenerator::DE('10020200', '70049754'));
+    	$this->assertFalse(strcmp('DE31100202000070049754', IBANGenerator::DE('10020200', '70049754')) == 0);
+    }
+    
     public function testGenerateIbanForRuleDE001000() {
         $this->assertIban('DE42500502010000222000', IBANGenerator::DE('50050201', '2000'));
         $this->assertIban('DE89500502010000180802', IBANGenerator::DE('50050201', '800000'));
