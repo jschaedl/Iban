@@ -10,10 +10,7 @@ class IBANValidatorTest extends PHPUnit_Framework_TestCase
     protected function setUp() {
         $this->ibanValidator = new IBANValidator();
         $this->ibans = array();        
-        $data = file('tests/fixtures/validation.data');
-        foreach ($data as $line) {
-        	array_push($this->ibans, explode(';', trim($line)));
-        }
+        $this->ibans = file('tests/fixtures/validation.data');
     }
 
     protected function tearDown() {
@@ -22,9 +19,10 @@ class IBANValidatorTest extends PHPUnit_Framework_TestCase
     }
 
     public function testValidate_IfIbanIsValid() {
-        foreach ($this->ibans as $iban) {
-        	$this->assertEquals((boolean)($iban[0]), 
-        		$this->ibanValidator->validate($iban[1]));
+        foreach ($this->ibans as $ibanData) {
+        	$ibanDataArray = explode(';', trim($ibanData));
+        	$this->assertEquals((boolean)($ibanDataArray[0]), 
+        		$this->ibanValidator->validate($ibanDataArray[1]));
         }
     }
 }

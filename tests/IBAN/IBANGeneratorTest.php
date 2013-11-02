@@ -9,7 +9,7 @@ class IBANGeneratorTest extends PHPUnit_Framework_TestCase
     protected $generatorTestData;
     
     protected function setUp() {
-        $this->generatorTestData = file('tests/fixtures/test_data.txt');
+        $this->generatorTestData = file('tests/fixtures/generation.data');
     }
 
     protected function tearDown() {
@@ -32,7 +32,7 @@ class IBANGeneratorTest extends PHPUnit_Framework_TestCase
     
     public function testGenerate_ValidIban() {
         foreach ($this->generatorTestData as $testData) {
-            $testDataArray = explode(';', $testData);
+            $testDataArray = explode(';', trim($testData));
             $generatedIban = IBANGenerator::DE(trim($testDataArray[1]), trim($testDataArray[2]));
             $this->assertEquals(trim($testDataArray[3]), trim($generatedIban));
         }
