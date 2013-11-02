@@ -1,39 +1,30 @@
 <?php
+
+use IBAN\Validation\IBANValidator;
+
 class IBANValidatorTest extends PHPUnit_Framework_TestCase
 {
     protected $ibanValidator;
-    protected $validIbans;
-    protected $invalidIbans;
+    protected $ibans;
 
     protected function setUp() {
-        $this->ibanValidator = new \IBAN\Validation\IBANValidator();
-        $this->validIbans = file('tests/fixtures/valid_ibans.txt');
-        $this->invalidIbans = file('tests/fixtures/invalid_ibans.txt');
+        $this->ibanValidator = new IBANValidator();
+        $this->ibans = array();        
+        $data = file('tests/fixtures/validation.data');
+        foreach ($data as $line) {
+        	array_push($this->ibans, explode(';', trim($line)));
+        }
     }
 
     protected function tearDown() {
         $this->ibanValidator = null;
-        $this->validIbans = null;
-        $this->invalidIbans = null;
+        $this->ibans = null;
     }
 
     public function testValidate_IfIbanIsValid() {
-        foreach ($this->validIbans as $validIban) {
-            $this->assertEqualsIsValid(trim($validIban));
+        foreach ($this->ibans as $iban) {
+        	$this->assertEquals((boolean)($iban[0]), 
+        		$this->ibanValidator->validate($iban[1]));
         }
-    }
-
-    public function testValidate_IfIbanIsInvalid() {
-        foreach ($this->invalidIbans as $invalidIban) {
-            $this->assertEqualsIsInvalid(trim($invalidIban));
-        }
-    }
-
-    private function assertEqualsIsValid($iban) {
-        $this->assertEquals($this->ibanValidator->validate($iban), true);
-    }
-
-    private function assertEqualsIsInvalid($iban) {
-        $this->assertEquals($this->ibanValidator->validate($iban), false);
     }
 }
