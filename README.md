@@ -70,6 +70,10 @@ sudo composer.phar install
 
 [Jan Schädlich](https://github.com/jschaedl)
 
+## Contributions
+
+[Stefan Warnat](https://github.com/swarnat)
+
 ## License
 
 MIT Public License
