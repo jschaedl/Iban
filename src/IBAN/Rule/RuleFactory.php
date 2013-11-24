@@ -26,7 +26,9 @@ class RuleFactory
     }
     
 	public function createIBANRule($instituteIdentification, $bankAccountNumber) {
-	    $ibanRuleCodeAndVersion = $this->getIbanRuleCodeAndVersion($instituteIdentification);
+		// TODO replace $instituteIdentification if successor exists
+	    //$instituteIdentification = $this->getInstituteIdentificationSuccessor($instituteIdentification);
+		$ibanRuleCodeAndVersion = $this->getIbanRuleCodeAndVersion($instituteIdentification);
 		if ($this->ibanRuleFileExists($ibanRuleCodeAndVersion)) {
 	        return $this->createRule($ibanRuleCodeAndVersion, $instituteIdentification, $bankAccountNumber);
 	    } else {
@@ -61,6 +63,15 @@ class RuleFactory
 	
 	private function getIbanRuleFilename($ibanRuleCodeAndVersion) {
 	    return 'Rule' . $ibanRuleCodeAndVersion . '.php';
+	}
+	
+	private function getInstituteIdentificationSuccessor($instituteIdentification) {
+		if (!array_key_exists($instituteIdentification, self::$rules)) {
+			throw new \IBAN\Rule\Exception\UnknownRuleException($instituteIdentification);
+		} else {
+			return self::$rules[$instituteIdentification]['succession'] == '00000000' ? 
+				$instituteIdentification : self::$rules[$instituteIdentification]['succession'];
+		}
 	}
 	
 	private function getIbanRuleCodeAndVersion($instituteIdentification) {
