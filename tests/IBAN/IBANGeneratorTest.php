@@ -398,6 +398,10 @@ class IBANGeneratorTest extends PHPUnit_Framework_TestCase
     	$this->assertIban('DE15600501010001108884', IBANGenerator::DE('60050101', '0502502502'));
     }
     
+    public function testGenerateIbanForRuleDE005200() {
+    	$this->assertIban('DE38600501010002662604', IBANGenerator::DE('67220020', '5308810004'));
+    }
+    
     private function assertIban($ibanExpected, $ibanActual) {
         $this->assertEquals($ibanExpected, trim($ibanActual));
     }
