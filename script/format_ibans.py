@@ -17,6 +17,7 @@ checksumMethod = ''
 rule = ''
 
 def printProperties(string_splitted):
+	
 	bankName = string_splitted[2].strip().replace('"', '')
 	bankPoCode = string_splitted[3].strip().replace('"', '')
 	bankCity = string_splitted[4].strip().replace('"', '')
@@ -24,7 +25,7 @@ def printProperties(string_splitted):
 	pan = string_splitted[6].strip().replace('"', '')
 	bic = string_splitted[7].strip().replace('"', '')
 	checksumMethod = string_splitted[8].strip().replace('"', '')
-	succession = string_splitted[12].strip().replace('"', '')
+	successorBlz = string_splitted[12].strip().replace('"', '')
 	rule = string_splitted[13].strip().replace('"', '')
 
 	array_string = 'array('
@@ -35,7 +36,7 @@ def printProperties(string_splitted):
 	array_string += '"pan" => "' + pan + '", ' 
 	array_string += '"bic" => "' + bic + '", ' 
 	array_string += '"checksumMethod" => "' + checksumMethod + '", ' 
-	array_string += '"succession" => "' + succession + '", ' 
+	array_string += '"successorBlz" => "' + successorBlz + '", ' 
 	array_string += '"rule" => "' + rule + '"' 
 	array_string += ')'
 
@@ -54,8 +55,10 @@ def main():
 			string += str(i)
 		string_splitted = string.split(';')
 		instituteIdentification = string_splitted[0].strip().replace('"', '')
-		array_string = printProperties(string_splitted)
-		print '"' + instituteIdentification + '" => ' + array_string + ', ', 
+		isOwnBlz = string_splitted[1].strip().replace('"', '')
+		if isOwnBlz == '1':
+			array_string = printProperties(string_splitted)
+			print '"' + instituteIdentification + '" => ' + array_string + ', ', 
 	print ");"
 
 
