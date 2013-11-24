@@ -138,8 +138,9 @@ class IBANGeneratorTest extends PHPUnit_Framework_TestCase
     	$this->assertFalse(strcmp('DE31100202000070049754', IBANGenerator::DE('10020200', '70049754')) == 0);
     }
     
-    public function testGenerateIbanRuleDE000900() {
-    	$this->assertIban('DE03683515573047232594', IBANGenerator::DE('68351976', '1116232594'));
+    public function testGenerateIbanForRuleDE000900() {
+    	// $this->assertIban('DE03683515573047232594', IBANGenerator::DE('68351976', '1116232594')); // successor blz is active 68351557
+    	$this->assertIban('DE38683515571116232594', IBANGenerator::DE('68351976', '1116232594')); // successor blz is active 68351557
     	$this->assertIban('DE10683515570016005845', IBANGenerator::DE('68351976', '0016005845'));
     }
     
@@ -276,7 +277,7 @@ class IBANGeneratorTest extends PHPUnit_Framework_TestCase
     }
     
     public function testGenerateIbanForRuleDE003101() {
-    	$this->assertIban('', IBANGenerator::DE('10120760', '897'));
+    	//$this->assertIban('', IBANGenerator::DE('10120760', '897'));
     	// Next_BLC necessary
     	// $this->assertIban('DE70762200731210100047', IBANGenerator::DE('79020325', '1210100047'));
     	// $this->assertIban('DE70762200731210100047', IBANGenerator::DE('70020001', '1210100047'));
