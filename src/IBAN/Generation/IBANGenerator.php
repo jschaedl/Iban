@@ -46,9 +46,7 @@ class IBANGenerator
     		throw new \InvalidArgumentException('instituteIdentification is missing');
     	} else if (empty($this->bankAccountNumber)) {
     		throw new \InvalidArgumentException('bankAccountNumber is missing');
-    	} else {
-    		return true;
     	}
-    	return false;
+    	return true;
     }
 }
