@@ -70,12 +70,6 @@ class IBANGeneratorTest extends PHPUnit_Framework_TestCase
         $this->assertIban('DE43100500000920018963', IBANGenerator::DE('10050000', '484848'));
     }
     
-    public function testGenerateIbanForRuleDE000600() {
-    	$this->assertIban('DE62701500000020228888', IBANGenerator::DE('70150000', '1111111'));
-    	$this->assertIban('DE48701500000903286003', IBANGenerator::DE('70150000', '7777777'));
-    	$this->assertIban('DE30701500001000506517', IBANGenerator::DE('70150000', '34343434'));
-    	$this->assertIban('DE64701500000018180018', IBANGenerator::DE('70150000', '70000'));
-    }
     public function testGenerateIbanForRuleDE000501() {
     	$this->assertIban('DE32265800700732502200', IBANGenerator::DE('26580070', '732502200'));
     	$this->assertIban('DE60265800708732502200', IBANGenerator::DE('26580070', '8732502200'));
@@ -86,94 +80,13 @@ class IBANGeneratorTest extends PHPUnit_Framework_TestCase
     	$this->assertIban('', IBANGenerator::DE('70045050', '930125007'));
     	$this->assertIban('DE81200411110130023500', IBANGenerator::DE('20041111', '130023500'));
     }
-    public function testGenerateIbanForRuleDE002001() {
-    	$this->assertIban('DE04500700100350002200', IBANGenerator::DE('50070010', '3500022'));
-    }
-    public function testGenerateIbanForRuleDE003000() {
-    	# no example
-    }
-    public function testGenerateIbanForRuleDE003101() {
-		$this->assertIban('', IBANGenerator::DE('10120760', '897'));
-		
-		# Next_BLC necessary
-		#$this->assertIban('DE70762200731210100047', IBANGenerator::DE('79020325', '1210100047'));
-		#$this->assertIban('DE70762200731210100047', IBANGenerator::DE('70020001', '1210100047'));
-		#$this->assertIban('DE70762200731210100047', IBANGenerator::DE('70020001', '1210100047'));
-    }
-    public function testGenerateIbanForRuleDE003200() {
-		$this->assertIban('DE70762200731210100047', IBANGenerator::DE('76220073', '1210100047'));
-		$this->assertIban('DE92660202861457032621', IBANGenerator::DE('66020286', '1457032621'));
-		# $this->assertIban('DE06710221823200000012', IBANGenerator::DE('76220073', '3200000012')); # Next_BLC necessary
-    }
-    public function testGenerateIbanForRuleDE003300() {
-		$this->assertIban('DE11700202705803435253', IBANGenerator::DE('70020270', '22222'));
-		$this->assertIban('DE88700202700039908140', IBANGenerator::DE('70020270', '1111111'));
-		$this->assertIban('DE83700202700002711931', IBANGenerator::DE('70020270', '94'));
-		$this->assertIban('DE40700202705800522694', IBANGenerator::DE('70020270', '7777777'));
-		$this->assertIban('DE36700202700847321750', IBANGenerator::DE('70020270', '847321750'));
-		$this->assertIban('DE36700202700847321750', IBANGenerator::DE('70020270', '847321750'));
-    }
-    public function testGenerateIbanForRuleDE003400() {
-		$this->assertIban('DE82600202904340111112', IBANGenerator::DE('60020290', '500500500'));
-		$this->assertIban('', IBANGenerator::DE('60020290', '847321750'));
-    }
-    public function testGenerateIbanForRuleDE003600() {
-		$this->assertIban('DE32210500000101105000', IBANGenerator::DE('21050000', '101105'));
-		$this->assertIban('DE32210500000101105000', IBANGenerator::DE('20050000', '101105'));
-		$this->assertIban('DE91210500000840132000', IBANGenerator::DE('21050000', '840132'));
-		$this->assertIban('DE81210500000631879000', IBANGenerator::DE('21050000', '631879'));
-		
-		$this->assertIban('DE75210500000030000025', IBANGenerator::DE('21050000', '30000025'));
-		$this->assertIban('DE76210500000051300528', IBANGenerator::DE('21050000', '51300528'));
-		
-		$this->assertIban('DE76210500000051300528', IBANGenerator::DE('21050000', '51300528'));
-		$this->assertIban('', IBANGenerator::DE('21050000', '69999999'));
-		
-		$this->assertIban('DE85210500000100271010', IBANGenerator::DE('21050000', '100271010'));
-		$this->assertIban('DE55210500000319574000', IBANGenerator::DE('21050000', '319574000'));
-		
-		$this->assertIban('', IBANGenerator::DE('21050000', '8600002000'));
-
-    }
-    public function testGenerateIbanForRuleDE003500() {
-		$this->assertIban('DE29790200761490196966', IBANGenerator::DE('79020076', '9696'));
-		$this->assertIban('', IBANGenerator::DE('79020076', '847321750'));
-    }
-    public function testGenerateIbanForRuleDE003900() {
-		# NO examples available
-    }
-    public function testGenerateIbanForRuleDE004001() {
-		$this->assertIban('DE17680523280006015002', IBANGenerator::DE('68051310', '6015002'));
-    }
-    public function testGenerateIbanForRuleDE004100() {
-		$this->assertIban('DE96500604000000011404', IBANGenerator::DE('62220000', '0062220000'));
-		$this->assertIban('DE96500604000000011404', IBANGenerator::DE('62220000', '1234567890'));
-    }
-    public function testGenerateIbanForRuleDE004200() {
-		$this->assertIban('', IBANGenerator::DE('66000000', '12345'));
-		$this->assertIban('', IBANGenerator::DE('66000000', '12300123'));
-		
-		$this->assertIban('DE79660000000050462100', IBANGenerator::DE('66000000', '50462100'));
-		$this->assertIban('DE82660000000050402100', IBANGenerator::DE('66000000', '50402100'));
-    }
-    public function testGenerateIbanForRuleDE004300() {
-		$this->assertIban('DE49666500850000000868', IBANGenerator::DE('60651070', '868'));
-		$this->assertIban('DE33666500850000012602', IBANGenerator::DE('60651070', '12602'));
-	}
-
-    public function testGenerateIbanForRuleDE004400() {
-		$this->assertIban('DE51680501010002282022', IBANGenerator::DE('68050101', '202'));
-	}
-    public function testGenerateIbanForRuleDE004500() {
-		# no example
-	}
-    public function testGenerateIbanForRuleDE004600() {
-		$this->assertIban('DE62310108331234567890', IBANGenerator::DE('10120600', '1234567890'));
-	}
-    public function testGenerateIbanForRuleDE004700() {
-		$this->assertIban('DE74701333001234567800', IBANGenerator::DE('70133300', '12345678'));
-		$this->assertIban('DE62701333000123456781', IBANGenerator::DE('70133300', '123456781'));
-	}
+    
+    public function testGenerateIbanForRuleDE000600() {
+    	$this->assertIban('DE62701500000020228888', IBANGenerator::DE('70150000', '1111111'));
+    	$this->assertIban('DE48701500000903286003', IBANGenerator::DE('70150000', '7777777'));
+    	$this->assertIban('DE30701500001000506517', IBANGenerator::DE('70150000', '34343434'));
+    	$this->assertIban('DE64701500000018180018', IBANGenerator::DE('70150000', '70000'));
+    }    
     
     public function testGenerateIbanForRuleDE000700() {
     	$this->assertIban('DE15370501980000001115', IBANGenerator::DE('37050198', '111'));
@@ -305,6 +218,10 @@ class IBANGeneratorTest extends PHPUnit_Framework_TestCase
         $this->assertIban('DE82501203830020475000', IBANGenerator::DE('70030800', '20475000'));
     }
     
+    public function testGenerateIbanForRuleDE002001() {
+    	$this->assertIban('DE04500700100350002200', IBANGenerator::DE('50070010', '3500022'));
+    }
+    
     public function testGenerateIbanForRuleDE002101() {
     	$this->assertIban('DE81360200300000305200', IBANGenerator::DE('35020030', '305200'));
     	$this->assertFalse(strcmp('DE09350200300000305200', IBANGenerator::DE('35020030', '305200')) == 0);
@@ -354,6 +271,57 @@ class IBANGeneratorTest extends PHPUnit_Framework_TestCase
     	$this->assertIban('DE35512108000141123456', IBANGenerator::DE('51210800', '1410123456'));
     }
     
+    public function testGenerateIbanForRuleDE003000() {
+    	# no example
+    }
+    
+    public function testGenerateIbanForRuleDE003101() {
+    	$this->assertIban('', IBANGenerator::DE('10120760', '897'));
+    	// Next_BLC necessary
+    	// $this->assertIban('DE70762200731210100047', IBANGenerator::DE('79020325', '1210100047'));
+    	// $this->assertIban('DE70762200731210100047', IBANGenerator::DE('70020001', '1210100047'));
+    	// $this->assertIban('DE70762200731210100047', IBANGenerator::DE('70020001', '1210100047'));
+    }
+    
+    public function testGenerateIbanForRuleDE003200() {
+    	$this->assertIban('DE70762200731210100047', IBANGenerator::DE('76220073', '1210100047'));
+    	$this->assertIban('DE92660202861457032621', IBANGenerator::DE('66020286', '1457032621'));
+    	// $this->assertIban('DE06710221823200000012', IBANGenerator::DE('76220073', '3200000012')); # Next_BLC necessary
+    }
+    
+    public function testGenerateIbanForRuleDE003300() {
+    	$this->assertIban('DE11700202705803435253', IBANGenerator::DE('70020270', '22222'));
+    	$this->assertIban('DE88700202700039908140', IBANGenerator::DE('70020270', '1111111'));
+    	$this->assertIban('DE83700202700002711931', IBANGenerator::DE('70020270', '94'));
+    	$this->assertIban('DE40700202705800522694', IBANGenerator::DE('70020270', '7777777'));
+    	$this->assertIban('DE36700202700847321750', IBANGenerator::DE('70020270', '847321750'));
+   		$this->assertIban('DE36700202700847321750', IBANGenerator::DE('70020270', '847321750'));
+    }
+    
+    public function testGenerateIbanForRuleDE003400() {
+		$this->assertIban('DE82600202904340111112', IBANGenerator::DE('60020290', '500500500'));
+    	$this->assertIban('', IBANGenerator::DE('60020290', '847321750'));
+    }
+    
+    public function testGenerateIbanForRuleDE003500() {
+    	$this->assertIban('DE29790200761490196966', IBANGenerator::DE('79020076', '9696'));
+    	$this->assertIban('', IBANGenerator::DE('79020076', '847321750'));
+    }
+    
+    public function testGenerateIbanForRuleDE003600() {
+    	$this->assertIban('DE32210500000101105000', IBANGenerator::DE('21050000', '101105'));
+    	$this->assertIban('DE32210500000101105000', IBANGenerator::DE('20050000', '101105'));
+    	$this->assertIban('DE91210500000840132000', IBANGenerator::DE('21050000', '840132'));
+    	$this->assertIban('DE81210500000631879000', IBANGenerator::DE('21050000', '631879'));
+    	$this->assertIban('DE75210500000030000025', IBANGenerator::DE('21050000', '30000025'));
+    	$this->assertIban('DE76210500000051300528', IBANGenerator::DE('21050000', '51300528'));
+    	$this->assertIban('DE76210500000051300528', IBANGenerator::DE('21050000', '51300528'));
+    	$this->assertIban('', IBANGenerator::DE('21050000', '69999999'));
+    	$this->assertIban('DE85210500000100271010', IBANGenerator::DE('21050000', '100271010'));
+    	$this->assertIban('DE55210500000319574000', IBANGenerator::DE('21050000', '319574000'));
+    	$this->assertIban('', IBANGenerator::DE('21050000', '8600002000'));
+    }
+    
     public function testGenerateIbanForRuleDE003700() {
     	$this->assertIban('DE41300107000000123456', IBANGenerator::DE('20110700', '0000123456'));
     	$this->assertIban('DE85300107000000654321', IBANGenerator::DE('30010700', '0000654321'));
@@ -363,6 +331,48 @@ class IBANGeneratorTest extends PHPUnit_Framework_TestCase
     	$this->assertIban('DE22285900750000654321', IBANGenerator::DE('26691213', '0000654321'));
     	$this->assertIban('DE22285900750000654321', IBANGenerator::DE('28591579', '0000654321'));
     	$this->assertIban('DE22285900750000654321', IBANGenerator::DE('25090300', '0000654321'));
+    }
+    
+    public function testGenerateIbanForRuleDE003900() {
+    	// no examples
+    }
+    
+    public function testGenerateIbanForRuleDE004001() {
+    	$this->assertIban('DE17680523280006015002', IBANGenerator::DE('68051310', '6015002'));
+    }
+    
+    public function testGenerateIbanForRuleDE004100() {
+    	$this->assertIban('DE96500604000000011404', IBANGenerator::DE('62220000', '0062220000'));
+    	$this->assertIban('DE96500604000000011404', IBANGenerator::DE('62220000', '1234567890'));
+    }
+    
+    public function testGenerateIbanForRuleDE004200() {
+    	$this->assertIban('', IBANGenerator::DE('66000000', '12345'));
+    	$this->assertIban('', IBANGenerator::DE('66000000', '12300123'));
+    	$this->assertIban('DE79660000000050462100', IBANGenerator::DE('66000000', '50462100'));
+    	$this->assertIban('DE82660000000050402100', IBANGenerator::DE('66000000', '50402100'));
+    }
+    
+    public function testGenerateIbanForRuleDE004300() {
+    	$this->assertIban('DE49666500850000000868', IBANGenerator::DE('60651070', '868'));
+    	$this->assertIban('DE33666500850000012602', IBANGenerator::DE('60651070', '12602'));
+    }
+    
+    public function testGenerateIbanForRuleDE004400() {
+    	$this->assertIban('DE51680501010002282022', IBANGenerator::DE('68050101', '202'));
+    }
+    
+    public function testGenerateIbanForRuleDE004500() {
+    	// no examples
+    }
+    
+    public function testGenerateIbanForRuleDE004600() {
+    	$this->assertIban('DE62310108331234567890', IBANGenerator::DE('10120600', '1234567890'));
+    }
+    
+    public function testGenerateIbanForRuleDE004700() {
+    	$this->assertIban('DE74701333001234567800', IBANGenerator::DE('70133300', '12345678'));
+    	$this->assertIban('DE62701333000123456781', IBANGenerator::DE('70133300', '123456781'));
     }
     
     public function testGenerateIbanForRuleDE005100() {
