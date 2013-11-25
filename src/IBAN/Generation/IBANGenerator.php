@@ -24,8 +24,8 @@ class IBANGenerator
  
     private function __construct($ibanRuleFactory, $instituteIdentification, $bankAccountNumber) {
     	$this->ibanRuleFactory = $ibanRuleFactory;
-    	$this->instituteIdentification = ltrim($instituteIdentification, '0');
-    	$this->bankAccountNumber = ltrim($bankAccountNumber, '0');
+    	$this->instituteIdentification = $this->normalize($instituteIdentification);
+    	$this->bankAccountNumber = $this->normalize($bankAccountNumber);
     }
     
     private function generate() {
@@ -39,6 +39,13 @@ class IBANGenerator
     	return $this->ibanRuleFactory->createIBANRule(
 	        $this->instituteIdentification, 
 	        $this->bankAccountNumber);
+    }
+    
+    private function normalize($value) {
+    	$value = trim($value);
+    	$value = ltrim($value, '0');
+    	$value = preg_replace('/\s+/', '', $value);
+    	return $value;
     }
     
     private function areArgumentsValid() {

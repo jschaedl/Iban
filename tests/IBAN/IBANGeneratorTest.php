@@ -34,8 +34,11 @@ class IBANGeneratorTest extends PHPUnit_Framework_TestCase
         foreach ($this->generatorTestData as $testData) {
             $testDataArray = explode(';', trim($testData));
             $generatedIban = IBANGenerator::DE(trim($testDataArray[1]), trim($testDataArray[2]));
-            $this->assertEquals(trim($testDataArray[3]), trim($generatedIban));
-        }
+            $this->assertEquals(trim($testDataArray[3] ), trim ( $generatedIban ) );
+		}
+	}
+	public function testNormalizeInput() {
+		$this->assertIban('DE89370400440532013000', IBANGenerator::DE('370  400 44', '53 20 13 000'));
     }
     
     /**
