@@ -18,8 +18,8 @@ class IBANGenerator
 	
 	public static function DE($instituteIdentification, $bankAccountNumber) {
         $ruleFactory = new \IBAN\Rule\RuleFactory('DE');
-        $generater = new IBANGenerator($ruleFactory, $instituteIdentification, $bankAccountNumber);
-        return $generater->generate();
+        $generator = new IBANGenerator($ruleFactory, $instituteIdentification, $bankAccountNumber);
+        return $generator->generate();
     }
  
     private function __construct($ibanRuleFactory, $instituteIdentification, $bankAccountNumber) {
