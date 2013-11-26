@@ -17,7 +17,7 @@ class RuleFactory implements RuleFactoryInterface
     private $localeCode;
     
     public static function DE() {
-        return new \IBAN\Rule\RuleFactory('DE');
+        return new RuleFactory('DE');
     }
     
 	public function createIbanRule($instituteIdentification, $bankAccountNumber) {
