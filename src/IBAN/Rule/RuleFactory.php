@@ -10,7 +10,7 @@
  */
 namespace IBAN\Rule;
 
-class RuleFactory
+class RuleFactory implements RuleFactoryInterface
 {
     public static $rules;
     

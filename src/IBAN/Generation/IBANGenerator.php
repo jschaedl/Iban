@@ -10,6 +10,8 @@
  */
 namespace IBAN\Generation;
 
+use IBAN\Rule\RuleFactoryInterface;
+
 class IBANGenerator
 {
 	private $ruleFactory;
@@ -22,7 +24,7 @@ class IBANGenerator
         return $generator->generate();
     }
  
-    public function __construct($ibanRuleFactory, $instituteIdentification, $bankAccountNumber) {
+    public function __construct(RuleFactoryInterface $ibanRuleFactory, $instituteIdentification, $bankAccountNumber) {
     	$this->ibanRuleFactory = $ibanRuleFactory;
     	$this->instituteIdentification = $this->normalize($instituteIdentification);
     	$this->bankAccountNumber = $this->normalize($bankAccountNumber);
