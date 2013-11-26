@@ -14,11 +14,9 @@
     ],
     "require-dev": {
         "phpunit/phpunit": "3.7.*", 
+        "phpunit/php-code-coverage": ">=1.2.10,<1.3.0",
         "phploc/phploc": "*",
         "sebastian/phpcpd": "*"
-    },
-    "require": {
-        "phpunit/php-code-coverage": ">=1.2.10,<1.3.0"
     },
     "autoload": {
         "psr-0": { "IBAN": "src" }
