@@ -17,28 +17,22 @@ class IBANGenerator
 	private $bankAccountNumber;
 	
 	public static function DE($instituteIdentification, $bankAccountNumber) {
-        $ruleFactory = new \IBAN\Rule\RuleFactory('DE');
+        $ruleFactory = \IBAN\Rule\RuleFactory::DE();
         $generator = new IBANGenerator($ruleFactory, $instituteIdentification, $bankAccountNumber);
         return $generator->generate();
     }
  
-    private function __construct($ibanRuleFactory, $instituteIdentification, $bankAccountNumber) {
+    public function __construct($ibanRuleFactory, $instituteIdentification, $bankAccountNumber) {
     	$this->ibanRuleFactory = $ibanRuleFactory;
     	$this->instituteIdentification = $this->normalize($instituteIdentification);
     	$this->bankAccountNumber = $this->normalize($bankAccountNumber);
     }
     
-    private function generate() {
+    public function generate() {
         if ($this->areArgumentsValid()) {
-            $ibanRule = $this->createRule();
+            $ibanRule = $this->ibanRuleFactory->createIbanRule($this->instituteIdentification, $this->bankAccountNumber);
             return $ibanRule->generateIban();
         }
-    }
-    
-    private function createRule() {
-    	return $this->ibanRuleFactory->createIBANRule(
-	        $this->instituteIdentification, 
-	        $this->bankAccountNumber);
     }
     
     private function normalize($value) {

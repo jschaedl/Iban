@@ -16,16 +16,11 @@ class RuleFactory
     
     private $localeCode;
     
-    public function __construct($localeCode='DE') {
-        $this->localeCode = $localeCode;
-        if ($this->isLocaleCodeValid()) {
-    	   if(!isset(self::$rules)) {
-    		  self::$rules = require __DIR__ . '/' . $localeCode . '/' . '/rules.php';
-    	   }
-        }
+    public static function DE() {
+        return new \IBAN\Rule\RuleFactory('DE');
     }
     
-	public function createIBANRule($instituteIdentification, $bankAccountNumber) {
+	public function createIbanRule($instituteIdentification, $bankAccountNumber) {
 		$instituteIdentification = $this->getInstituteIdentificationSuccessor($instituteIdentification);
 		$ibanRuleCodeAndVersion = $this->getIbanRuleCodeAndVersion($instituteIdentification);
 		if ($this->ibanRuleFileExists($ibanRuleCodeAndVersion)) {
@@ -33,6 +28,15 @@ class RuleFactory
 	    } else {
 	        throw new \IBAN\Rule\Exception\RuleNotYetImplementedException('Rule' . $ibanRuleCodeAndVersion);
 	    }
+	}
+	
+	private function __construct($localeCode='DE') {
+        $this->localeCode = $localeCode;
+        if ($this->isLocaleCodeValid()) {
+            if(!isset(self::$rules)) {
+                self::$rules = require __DIR__ . '/' . $localeCode . '/' . '/rules.php';
+            }
+           }
 	}
 	
 	private function isLocaleCodeValid() {
