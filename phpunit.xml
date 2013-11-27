@@ -16,15 +16,16 @@
     </testsuites>
     <filter>
     	<whitelist>
-            <directory suffix=".php">../library/Bav</directory>
+            <directory suffix=".php">test/IBAN</directory>
         </whitelist>
     </filter>
-    <!-- 
+    <!--
     <logging>
     	<log type="coverage-clover" target="./report/logs/clover.xml"/>
         <log type="coverage-html" target="report" charset="UTF-8" highlight="false" lowUpperBound="35" highLowerBound="70"/>
     	<log type="junit" target="./report/logs/junit.xml"/>
     </logging>
+    
     <filter>
 	    <blacklist>
 	        <directory>./vendor/*</directory>
@@ -34,5 +35,5 @@
 	        <file>./src/IBAN/DE/rules.php</file>
 	    </blacklist>
 	</filter>
-	 -->
+	-->
 </phpunit>
