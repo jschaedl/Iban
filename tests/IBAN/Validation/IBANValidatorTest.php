@@ -1,8 +1,10 @@
 <?php
 
+namespace IBAN\Validation;
+
 use IBAN\Validation\IBANValidator;
 
-class IBANValidatorTest extends PHPUnit_Framework_TestCase
+class IBANValidatorTest extends \PHPUnit_Framework_TestCase
 {
     protected $ibanValidator;
     protected $ibans;

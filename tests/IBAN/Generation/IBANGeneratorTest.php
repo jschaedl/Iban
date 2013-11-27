@@ -1,10 +1,12 @@
 <?php
 
+namespace IBAN\Generation;
+
 use IBAN\Generation\IBANGenerator;
 use IBAN\Rule\IBANRuleFactory;
 use IBAN\Rule\DE\Rule000100;
 
-class IBANGeneratorTest extends PHPUnit_Framework_TestCase
+class IBANGeneratorTest extends \PHPUnit_Framework_TestCase
 {
     protected $generatorTestData;
     
