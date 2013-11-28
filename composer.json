@@ -19,6 +19,6 @@
         "sebastian/phpcpd": "*"
     },
     "autoload": {
-        "psr-0": { "IBAN": "src" }
+        "psr-0": { "IBAN": "library" }
     }
 }

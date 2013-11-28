@@ -20,7 +20,7 @@
     
     <filter>
     	<whitelist>
-            <directory suffix=".php">../src/IBAN</directory>
+            <directory suffix=".php">../library/IBAN</directory>
         </whitelist>
     </filter>
     <!--
