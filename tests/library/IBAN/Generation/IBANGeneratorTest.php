@@ -11,7 +11,7 @@ class IBANGeneratorTest extends \PHPUnit_Framework_TestCase
     protected $generatorTestData;
     
     protected function setUp() {
-        $this->generatorTestData = file('tests/fixtures/generation.data');
+        $this->generatorTestData = file('tests/data/generation.data');
     }
 
     protected function tearDown() {
