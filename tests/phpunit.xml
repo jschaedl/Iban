@@ -14,7 +14,7 @@
     
     <testsuites>
         <testsuite name="IBAN Test Suite">
-            <directory>./IBAN/</directory>
+            <directory>./library/IBAN/</directory>
         </testsuite>
     </testsuites>
     
