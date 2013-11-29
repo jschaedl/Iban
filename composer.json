@@ -18,6 +18,9 @@
         "phploc/phploc": "*",
         "sebastian/phpcpd": "*"
     },
+    "require": {
+        "jschaedl/bav": "dev-master"
+    },
     "autoload": {
         "psr-0": { "IBAN": "library" }
     }
