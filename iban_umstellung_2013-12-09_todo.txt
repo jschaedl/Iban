@@ -1,0 +1,64 @@
+There were 6 errors:
+
+1) IBAN\Generation\IBANGeneratorTest::testNormalizeInput
+IBAN\Rule\Exception\RuleNotYetImplementedException: Rule000502
+/Users/janschaedlich/htdocs/github-projects/Iban/library/IBAN/Rule/RuleFactory.php:29
+/Users/janschaedlich/htdocs/github-projects/Iban/library/IBAN/Generation/IBANGenerator.php:35
+/Users/janschaedlich/htdocs/github-projects/Iban/library/IBAN/Generation/IBANGenerator.php:24
+/Users/janschaedlich/htdocs/github-projects/Iban/tests/library/IBAN/Generation/IBANGeneratorTest.php:43
+
+2) IBAN\Generation\IBANGeneratorTest::testGenerateIbanForRuleDE000501
+IBAN\Rule\Exception\RuleNotYetImplementedException: Rule000502
+/Users/janschaedlich/htdocs/github-projects/Iban/library/IBAN/Rule/RuleFactory.php:29
+/Users/janschaedlich/htdocs/github-projects/Iban/library/IBAN/Generation/IBANGenerator.php:35
+/Users/janschaedlich/htdocs/github-projects/Iban/library/IBAN/Generation/IBANGenerator.php:24
+/Users/janschaedlich/htdocs/github-projects/Iban/tests/library/IBAN/Generation/IBANGeneratorTest.php:79
+
+3) IBAN\Generation\IBANGeneratorTest::testGenerateIbanForRuleDE001000
+IBAN\Rule\Exception\RuleNotYetImplementedException: Rule001001
+/Users/janschaedlich/htdocs/github-projects/Iban/library/IBAN/Rule/RuleFactory.php:29
+/Users/janschaedlich/htdocs/github-projects/Iban/library/IBAN/Generation/IBANGenerator.php:35
+/Users/janschaedlich/htdocs/github-projects/Iban/library/IBAN/Generation/IBANGenerator.php:24
+/Users/janschaedlich/htdocs/github-projects/Iban/tests/library/IBAN/Generation/IBANGeneratorTest.php:153
+
+4) IBAN\Generation\IBANGeneratorTest::testGenerateIbanForRuleDE001500
+IBAN\Rule\Exception\RuleNotYetImplementedException: Rule001501
+/Users/janschaedlich/htdocs/github-projects/Iban/library/IBAN/Rule/RuleFactory.php:29
+/Users/janschaedlich/htdocs/github-projects/Iban/library/IBAN/Generation/IBANGenerator.php:35
+/Users/janschaedlich/htdocs/github-projects/Iban/library/IBAN/Generation/IBANGenerator.php:24
+/Users/janschaedlich/htdocs/github-projects/Iban/tests/library/IBAN/Generation/IBANGeneratorTest.php:182
+
+5) IBAN\Generation\IBANGeneratorTest::testGenerateIbanForRuleDE002001
+IBAN\Rule\Exception\RuleNotYetImplementedException: Rule002002
+/Users/janschaedlich/htdocs/github-projects/Iban/library/IBAN/Rule/RuleFactory.php:29
+/Users/janschaedlich/htdocs/github-projects/Iban/library/IBAN/Generation/IBANGenerator.php:35
+/Users/janschaedlich/htdocs/github-projects/Iban/library/IBAN/Generation/IBANGenerator.php:24
+/Users/janschaedlich/htdocs/github-projects/Iban/tests/library/IBAN/Generation/IBANGeneratorTest.php:228
+
+6) IBAN\Generation\IBANGeneratorTest::testGenerateIbanForRuleDE004300
+IBAN\Rule\Exception\RuleNotYetImplementedException: Rule004301
+/Users/janschaedlich/htdocs/github-projects/Iban/library/IBAN/Rule/RuleFactory.php:29
+/Users/janschaedlich/htdocs/github-projects/Iban/library/IBAN/Generation/IBANGenerator.php:35
+/Users/janschaedlich/htdocs/github-projects/Iban/library/IBAN/Generation/IBANGenerator.php:24
+/Users/janschaedlich/htdocs/github-projects/Iban/tests/library/IBAN/Generation/IBANGeneratorTest.php:363
+
+--
+
+There were 2 failures:
+
+1) IBAN\Generation\IBANGeneratorTest::testGenerateIbanForRuleDE004600
+Failed asserting that two strings are equal.
+--- Expected
++++ Actual
+@@ @@
+-'DE62310108331234567890'
++'DE68101206001234567890'
+/Users/janschaedlich/htdocs/github-projects/Iban/tests/library/IBAN/Generation/IBANGeneratorTest.php:425
+/Users/janschaedlich/htdocs/github-projects/Iban/tests/library/IBAN/Generation/IBANGeneratorTest.php:376
+
+2) IBAN\Generation\IBANGeneratorTest::testGenerateIbanForRuleDE005500
+Failed asserting that true is false.
+/Users/janschaedlich/htdocs/github-projects/Iban/tests/library/IBAN/Generation/IBANGeneratorTest.php:421
+
+FAILURES!
+Tests: 60, Assertions: 224, Failures: 2, Errors: 6.
