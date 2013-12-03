@@ -39,6 +39,7 @@ class IBANGeneratorTest extends \PHPUnit_Framework_TestCase
             $this->assertEquals(trim($testDataArray[3] ), trim ( $generatedIban ) );
 		}
 	}
+	
 	public function testNormalizeInput() {
 		$this->assertIban('DE89370400440532013000', IBANGenerator::DE('370  400 44', '53 20 13 000'));
     }
@@ -415,6 +416,13 @@ class IBANGeneratorTest extends \PHPUnit_Framework_TestCase
     public function testGenerateIbanForRuleDE005400() {
     	// no examples
     }
+    
+    /*
+    public function testGenerateIbanForRuleDE005500() {
+    	$this->assertIban('DE47254102007456123400', IBANGenerator::DE('25410300', '7456123400'));
+    	$this->assertFalse(strcmp('DE47254102007456123400', IBANGenerator::DE('25410300', '7456123400')) == 0);
+    }
+    */
     
     private function assertIban($ibanExpected, $ibanActual) {
         $this->assertEquals($ibanExpected, trim($ibanActual));
