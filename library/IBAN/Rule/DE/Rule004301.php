@@ -9,7 +9,7 @@
  */
 namespace IBAN\Rule\DE;
 
-class Rule004301 extends \IBAN\Rule\DE\Rule004301
+class Rule004301 extends \IBAN\Rule\DE\Rule004300
 {
 	/*
 		Sobald die BLZ 606 510 70 durch die BLZ 666 500 85 ersetzt wurde, 
