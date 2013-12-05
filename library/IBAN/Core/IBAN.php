@@ -14,8 +14,11 @@ class IBAN
 {
     private $iban;
     
-    public function validate($iban) {
-        $this->iban = $iban;
+    public function __construct($iban) {
+    	$this->iban = $iban;
+    }
+    
+    public function validate() {
         if (! $this->isLengthValid()) {
             return false;
         } else if (! $this->isLocalCodeValid()) {
@@ -28,7 +31,18 @@ class IBAN
             return true;
         }
     }
-
+    
+    public function format() {
+    	return sprintf('%s %s %s %s %s %s'
+    		, $this->getLocaleCode() . $this->getChecksum()
+			, substr($this->getInstituteIdentification(), 0, 4)
+    		, substr($this->getInstituteIdentification(), 4, 4)
+			, substr($this->getBankAccountNumber(), 0, 4)
+			, substr($this->getBankAccountNumber(), 4, 4)
+			, substr($this->getBankAccountNumber(), 8, 2)
+		);
+    }
+    
     public function getLocaleCode() {
         return substr($this->iban, 0, 2);
     }
