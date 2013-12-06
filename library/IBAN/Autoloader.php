@@ -11,7 +11,7 @@ class Autoloader
 {
     /**
      * The project's base directory
-     * 
+     *
      * @var string
      */
     protected static $base;
@@ -19,21 +19,23 @@ class Autoloader
     /**
      * Register autoloader
      */
-    static public function register() {
+    public static function register()
+    {
         self::$base = dirname(__FILE__) . '/../';
-        spl_autoload_register(array( 
-                new self(), 
-                'autoload' 
+        spl_autoload_register(array(
+                new self(),
+                'autoload'
         ));
     }
 
     /**
      * Autoload classname
-     * 
+     *
      * @param string $className
      *            The class to load
      */
-    static public function autoload($className) {
+    public static function autoload($className)
+    {
         $className = ltrim($className, '\\');
         $fileName = '';
         $namespace = '';
@@ -43,7 +45,7 @@ class Autoloader
             $fileName = str_replace('\\', DIRECTORY_SEPARATOR, $namespace) . DIRECTORY_SEPARATOR;
         }
         $fileName .= str_replace('_', DIRECTORY_SEPARATOR, $className) . '.php';
-        
+
         require self::$base . $fileName;
     }
 }

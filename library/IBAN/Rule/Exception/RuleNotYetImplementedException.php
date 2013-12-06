@@ -10,6 +10,6 @@
  */
 namespace IBAN\Rule\Exception;
 
-class RuleNotYetImplementedException extends \Exception {
-	
+class RuleNotYetImplementedException extends \Exception
+{
 }

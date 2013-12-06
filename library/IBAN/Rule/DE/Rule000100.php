@@ -10,9 +10,10 @@
  */
 namespace IBAN\Rule\DE;
 
-class Rule000100 extends \IBAN\Rule\DE\Rule000000
+class Rule000100 extends Rule000000
 {
-    public function generateIban() {
+    public function generateIban()
+    {
         throw new \Exception('no iban generation');
     }
 }

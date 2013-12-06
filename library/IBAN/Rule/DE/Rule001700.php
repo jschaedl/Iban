@@ -11,7 +11,7 @@
 namespace IBAN\Rule\DE;
 
 class Rule001700 extends \IBAN\Rule\DE\Rule000000
-{    
+{
     protected $bankAccountSubstitutions = array(
         "100" => "2009090013"
         , "111" => "2111111017"
