@@ -16,31 +16,26 @@ use IBAN\Rule\RuleFactoryInterface;
 class IBANGenerator
 {
     private $ruleFactory;
-    private $instituteIdentification;
-    private $bankAccountNumber;
 
-    public static function DE($instituteIdentification, $bankAccountNumber)
+    public function __construct(RuleFactoryInterface $ruleFactory)
     {
-        $ruleFactory = RuleFactory::DE();
-        $generator = new IBANGenerator($ruleFactory, $instituteIdentification, $bankAccountNumber);
-
-        return $generator->generate();
+        $this->ruleFactory = $ruleFactory;
     }
 
-    public function __construct(RuleFactoryInterface $ibanRuleFactory, $instituteIdentification, $bankAccountNumber)
+    public function generate($instituteIdentification, $bankAccountNumber)
     {
-        $this->ibanRuleFactory = $ibanRuleFactory;
-        $this->instituteIdentification = $this->normalize($instituteIdentification);
-        $this->bankAccountNumber = $this->normalize($bankAccountNumber);
-    }
+        $instituteIdentification = $this->normalize($instituteIdentification);
+        $bankAccountNumber = $this->normalize($bankAccountNumber);
 
-    public function generate()
-    {
-        if ($this->areArgumentsValid()) {
-            $ibanRule = $this->ibanRuleFactory->createIbanRule($this->instituteIdentification, $this->bankAccountNumber);
-
-            return $ibanRule->generateIban();
+        if (empty($instituteIdentification)) {
+            throw new \InvalidArgumentException('instituteIdentification is missing');
+        } elseif (empty($bankAccountNumber)) {
+            throw new \InvalidArgumentException('bankAccountNumber is missing');
         }
+
+        $ibanRule = $this->ruleFactory->createIbanRule($instituteIdentification, $bankAccountNumber);
+
+        return $ibanRule->generateIban();
     }
 
     private function normalize($value)
@@ -50,16 +45,5 @@ class IBANGenerator
         $value = preg_replace('/\s+/', '', $value);
 
         return $value;
-    }
-
-    private function areArgumentsValid()
-    {
-        if (empty($this->instituteIdentification)) {
-            throw new \InvalidArgumentException('instituteIdentification is missing');
-        } elseif (empty($this->bankAccountNumber)) {
-            throw new \InvalidArgumentException('bankAccountNumber is missing');
-        }
-
-        return true;
     }
 }

@@ -12,7 +12,7 @@ namespace IBAN\Core;
 
 class Constants
 {
-    public static $letterMapping = array(
+      public static $letterMapping = array(
             1 => 'A',
             2 => 'B',
             3 => 'C',
@@ -39,8 +39,9 @@ class Constants
             24 => 'X',
             25 => 'Y',
             26 => 'Z'
-    );
-    public static $ibanFormatMap = array(
+      );
+
+      public static $ibanFormatMap = array(
             'AL' => '[0-9]{8}[0-9A-Z]{16}',
             'AD' => '[0-9]{8}[0-9A-Z]{12}',
             'AT' => '[0-9]{16}',
@@ -95,5 +96,5 @@ class Constants
             'TR' => '[0-9]{5}[0-9A-Z]{17}',
             'AE' => '[0-9]{19}',
             'GB' => '[A-Z]{4}[0-9]{14}'
-    );
+      );
 }

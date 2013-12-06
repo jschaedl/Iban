@@ -81,7 +81,7 @@ class IBAN
     {
         $localeCode = $this->getLocaleCode();
 
-        return !(isset(\IBAN\Core\Constants::$ibanFormatMap[$localeCode]) === false);
+        return !(isset(Constants::$ibanFormatMap[$localeCode]) === false);
     }
 
     private function isFormatValid()
@@ -89,10 +89,7 @@ class IBAN
         $localeCode = $this->getLocaleCode();
         $accountIdentification = $this->getAccountIdentification();
 
-        return !(preg_match(
-                '/' . \IBAN\Core\Constants::$ibanFormatMap[$localeCode] . '/',
-                $accountIdentification
-            ) !== 1);
+        return !(preg_match('/' . Constants::$ibanFormatMap[$localeCode] . '/', $accountIdentification) !== 1);
     }
 
     private function isChecksumValid()
@@ -121,8 +118,8 @@ class IBAN
     {
         $numericRepresentation = '';
         foreach (str_split($letterRepresentation) as $char) {
-            if (array_search($char, \IBAN\Core\Constants::$letterMapping)) {
-                $numericRepresentation .= array_search($char, \IBAN\Core\Constants::$letterMapping) + 9;
+            if (array_search($char, Constants::$letterMapping)) {
+                $numericRepresentation .= array_search($char, Constants::$letterMapping) + 9;
             } else {
                 $numericRepresentation .= $char;
             }
