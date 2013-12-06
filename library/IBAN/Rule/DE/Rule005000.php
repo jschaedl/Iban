@@ -10,9 +10,9 @@
  */
 namespace IBAN\Rule\DE;
 
-class Rule005000 extends \IBAN\Rule\DE\Rule000000 
+class Rule005000 extends \IBAN\Rule\DE\Rule000000
 {
-	protected $instituteIdentificationSubstitutions = array(
-		"28252760" => "28550000"
-	);
+    protected $instituteIdentificationSubstitutions = array(
+        "28252760" => "28550000"
+    );
 }

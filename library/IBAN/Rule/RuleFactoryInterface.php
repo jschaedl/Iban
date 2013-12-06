@@ -12,5 +12,5 @@ namespace IBAN\Rule;
 
 interface RuleFactoryInterface
 {
-	function createIbanRule($instituteIdentification, $bankAccountNumber);
+    public function createIbanRule($instituteIdentification, $bankAccountNumber);
 }

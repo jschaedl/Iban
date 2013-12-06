@@ -9,7 +9,7 @@
  */
 namespace IBAN\Rule\DE;
 
-class Rule003501 extends \IBAN\Rule\DE\Rule003500 
+class Rule003501 extends \IBAN\Rule\DE\Rule003500
 {
-	
+
 }

@@ -9,22 +9,25 @@ class IBANValidatorTest extends \PHPUnit_Framework_TestCase
     protected $ibanValidator;
     protected $ibans;
 
-    protected function setUp() {
+    protected function setUp()
+    {
         $this->ibanValidator = new IBANValidator();
-        $this->ibans = array();        
+        $this->ibans = array();
         $this->ibans = file('tests/data/validation.data');
     }
 
-    protected function tearDown() {
+    protected function tearDown()
+    {
         $this->ibanValidator = null;
         $this->ibans = null;
     }
 
-    public function testValidate_IfIbanIsValid() {
+    public function testValidate_IfIbanIsValid()
+    {
         foreach ($this->ibans as $ibanData) {
-        	$ibanDataArray = explode(';', trim($ibanData));
-        	$this->assertEquals((boolean)($ibanDataArray[0]), 
-        		$this->ibanValidator->validate($ibanDataArray[1]));
+            $ibanDataArray = explode(';', trim($ibanData));
+            $this->assertEquals((boolean) ($ibanDataArray[0]),
+                $this->ibanValidator->validate($ibanDataArray[1]));
         }
     }
 }

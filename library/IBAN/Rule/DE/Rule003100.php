@@ -10,13 +10,14 @@
  */
 namespace IBAN\Rule\DE;
 
-class Rule003100 extends \IBAN\Rule\DE\Rule000000 
+class Rule003100 extends \IBAN\Rule\DE\Rule000000
 {
-	public function generateIban() {
-		if (strlen($this->bankAccountNumber) != $this->getBankAccountNumberLength()) {
-			return "";
-		}
-		
-		return parent::generateIban ();
-	}
+    public function generateIban()
+    {
+        if (strlen($this->bankAccountNumber) != $this->getBankAccountNumberLength()) {
+            return "";
+        }
+
+        return parent::generateIban ();
+    }
 }
