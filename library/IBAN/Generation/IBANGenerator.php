@@ -10,46 +10,40 @@
  */
 namespace IBAN\Generation;
 
+use IBAN\Rule\RuleFactory;
 use IBAN\Rule\RuleFactoryInterface;
 
 class IBANGenerator
 {
-	private $ruleFactory;
-	private $instituteIdentification;
-	private $bankAccountNumber;
-	
-	public static function DE($instituteIdentification, $bankAccountNumber) {
-        $ruleFactory = \IBAN\Rule\RuleFactory::DE();
-        $generator = new IBANGenerator($ruleFactory, $instituteIdentification, $bankAccountNumber);
-        return $generator->generate();
+    private $ruleFactory;
+
+    public function __construct(RuleFactoryInterface $ruleFactory)
+    {
+        $this->ruleFactory = $ruleFactory;
     }
- 
-    public function __construct(RuleFactoryInterface $ibanRuleFactory, $instituteIdentification, $bankAccountNumber) {
-    	$this->ibanRuleFactory = $ibanRuleFactory;
-    	$this->instituteIdentification = $this->normalize($instituteIdentification);
-    	$this->bankAccountNumber = $this->normalize($bankAccountNumber);
-    }
-    
-    public function generate() {
-        if ($this->areArgumentsValid()) {
-            $ibanRule = $this->ibanRuleFactory->createIbanRule($this->instituteIdentification, $this->bankAccountNumber);
-            return $ibanRule->generateIban();
+
+    public function generate($instituteIdentification, $bankAccountNumber)
+    {
+        $instituteIdentification = $this->normalize($instituteIdentification);
+        $bankAccountNumber = $this->normalize($bankAccountNumber);
+
+        if (empty($instituteIdentification)) {
+            throw new \InvalidArgumentException('instituteIdentification is missing');
+        } elseif (empty($bankAccountNumber)) {
+            throw new \InvalidArgumentException('bankAccountNumber is missing');
         }
+
+        $ibanRule = $this->ruleFactory->createIbanRule($instituteIdentification, $bankAccountNumber);
+
+        return $ibanRule->generateIban();
     }
-    
-    private function normalize($value) {
-    	$value = trim($value);
-    	$value = ltrim($value, '0');
-    	$value = preg_replace('/\s+/', '', $value);
-    	return $value;
-    }
-    
-    private function areArgumentsValid() {
-    	if (empty($this->instituteIdentification)) {
-    		throw new \InvalidArgumentException('instituteIdentification is missing');
-    	} else if (empty($this->bankAccountNumber)) {
-    		throw new \InvalidArgumentException('bankAccountNumber is missing');
-    	}
-    	return true;
+
+    private function normalize($value)
+    {
+        $value = trim($value);
+        $value = ltrim($value, '0');
+        $value = preg_replace('/\s+/', '', $value);
+
+        return $value;
     }
 }

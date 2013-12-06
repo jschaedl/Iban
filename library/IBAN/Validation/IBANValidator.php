@@ -12,8 +12,10 @@ namespace IBAN\Validation;
 
 class IBANValidator
 {
-    public function validate($ibanString) {
+    public function validate($ibanString)
+    {
         $iban = new \IBAN\Core\IBAN($ibanString);
+
         return $iban->validate();
     }
 }

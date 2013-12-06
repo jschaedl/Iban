@@ -11,14 +11,15 @@
 namespace IBAN\Rule\DE;
 
 class Rule001501 extends \IBAN\Rule\DE\Rule000000
-{    
-    public function __construct($localeCode, $instituteIdentification, $bankAccountNumber) {
-		parent::__construct($localeCode, '37060193', $bankAccountNumber);
-	}
-    
+{
+    public function __construct($localeCode, $instituteIdentification, $bankAccountNumber)
+    {
+        parent::__construct($localeCode, '37060193', $bankAccountNumber);
+    }
+
     protected $bankAccountSubstitutions = array(
         "94" => "3008888018"
-    	, "556" => "101010"
+        , "556" => "101010"
         , "888" => "31870011"
         , "4040" => "4003600101"
         , "5826" => "1015826017"
