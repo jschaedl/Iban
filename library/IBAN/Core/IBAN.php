@@ -27,12 +27,10 @@ class IBAN
             return false;
         } elseif (!$this->isFormatValid()) {
             return false;
+        } elseif (!$this->isChecksumValid()) {
+            return false;
         } else {
-            if (!$this->isChecksumValid()) {
-                return false;
-            } else {
-                return true;
-            }
+            return true;
         }
     }
 
