@@ -35,6 +35,7 @@ All pull requests must be accompanied by passing unit tests. This repository use
 
 use IBAN\Validation\IBANValidator;
 use IBAN\Generation\IBANGenerator;
+use IBAN\Rule\RuleFactory;
     
 // validation example
 $ibanValidator = new IBANValidator();
@@ -43,9 +44,8 @@ if ($ibanValidator->validate('DE89370400440532013000')) {
 }
  
 // generation example
-$instituteIdentifier = '60050101';
-$bankAccountNumber = '502502502';
-$generatedIban = IBANGenerator::DE($instituteIdentifier, $bankAccountNumber); 
+$ibanGenerator = new IBANGenerator(new RuleFactory('DE'));
+$generatedIban = $ibanGenerator->generate('60050101', '502502502'); 
 // $generatedIban => DE15600501010001108884
  ```	
     

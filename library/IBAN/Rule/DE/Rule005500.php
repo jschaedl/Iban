@@ -10,9 +10,10 @@
  */
 namespace IBAN\Rule\DE;
 
-class Rule005500 extends \IBAN\Rule\DE\Rule000000 
+class Rule005500 extends \IBAN\Rule\DE\Rule000000
 {
-	public function __construct($localeCode, $instituteIdentification, $bankAccountNumber) {
-		parent::__construct($localeCode, '25410200', $bankAccountNumber);
-	}	
+    public function __construct($localeCode, $instituteIdentification, $bankAccountNumber)
+    {
+        parent::__construct($localeCode, '25410200', $bankAccountNumber);
+    }
 }
