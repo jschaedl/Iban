@@ -73,11 +73,12 @@ sudo composer.phar install
 
 ## Author
 
-[Jan Sch√§dlich](https://github.com/jschaedl)
+[Jan Schädlich](https://github.com/jschaedl)
 
 ## Contributions
 
 [Stefan Warnat](https://github.com/swarnat)
+[Simon Mönch](https://github.com/smoench)
 
 ## License
 
