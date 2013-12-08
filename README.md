@@ -43,10 +43,15 @@ if ($ibanValidator->validate('DE89370400440532013000')) {
 	echo "DE89370400440532013000 is valid!";
 }
  
-// generation example
+// generation example #1
 $ibanGenerator = new IBANGenerator(new RuleFactory('DE'));
 $generatedIban = $ibanGenerator->generate('60050101', '502502502'); 
 // $generatedIban => DE15600501010001108884
+
+// generation example #2
+$generatedIban = IBANGenerator:DE('60050101', '502502502');
+// $generatedIban => DE15600501010001108884
+
  ```	
     
 ## How to Install
