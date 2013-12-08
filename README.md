@@ -51,7 +51,6 @@ $generatedIban = $ibanGenerator->generate('60050101', '502502502');
 // generation example #2
 $generatedIban = IBANGenerator:DE('60050101', '502502502');
 // $generatedIban => DE15600501010001108884
-
  ```	
     
 ## How to Install
