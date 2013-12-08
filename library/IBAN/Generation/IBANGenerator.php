@@ -17,6 +17,12 @@ class IBANGenerator
 {
     private $ruleFactory;
 
+    public static function DE($instituteIdentification, $bankAccountNumber) 
+    {
+        $generator = new IBANGenerator(RuleFactory::DE());
+        return $generator->generate($instituteIdentification, $bankAccountNumber);
+    }
+    
     public function __construct(RuleFactoryInterface $ruleFactory)
     {
         $this->ruleFactory = $ruleFactory;
@@ -26,11 +32,11 @@ class IBANGenerator
     {
         $instituteIdentification = $this->normalize($instituteIdentification);
         $bankAccountNumber = $this->normalize($bankAccountNumber);
-
+        
         if (empty($instituteIdentification)) {
-            throw new \InvalidArgumentException('instituteIdentification is missing');
+        	throw new \InvalidArgumentException('instituteIdentification is missing');
         } elseif (empty($bankAccountNumber)) {
-            throw new \InvalidArgumentException('bankAccountNumber is missing');
+        	throw new \InvalidArgumentException('bankAccountNumber is missing');
         }
 
         $ibanRule = $this->ruleFactory->createIbanRule($instituteIdentification, $bankAccountNumber);

@@ -16,17 +16,22 @@ use IBAN\Rule\Exception\UnknownRuleException;
 
 class RuleFactory implements RuleFactoryInterface
 {
-    public $rules;
+    public static $rules;
 
     private $localeCode;
 
+    public static function DE() 
+    {
+    	return new RuleFactory('DE');
+    }
+    
     public function __construct($localeCode = 'DE')
     {
         if ($this->isLocaleCodeValid($localeCode)) {
             $this->localeCode = $localeCode;
 
-            if (!$this->rules) {
-                $this->rules = require __DIR__ . '/' . $localeCode . '/' . '/rules.php';
+            if (!self::$rules) {
+                self::$rules = require __DIR__ . '/' . $localeCode . '/' . '/rules.php';
             }
         }
     }
@@ -82,20 +87,20 @@ class RuleFactory implements RuleFactoryInterface
 
     private function getInstituteIdentificationSuccessor($instituteIdentification)
     {
-        if (!array_key_exists($instituteIdentification, $this->rules)) {
+        if (!array_key_exists($instituteIdentification, self::$rules)) {
             throw new UnknownRuleException($instituteIdentification);
         } else {
-            return $this->rules[$instituteIdentification]['successorBlz'] == '00000000' ?
-                $instituteIdentification : $this->rules[$instituteIdentification]['successorBlz'];
+            return self::$rules[$instituteIdentification]['successorBlz'] == '00000000' ?
+                $instituteIdentification : self::$rules[$instituteIdentification]['successorBlz'];
         }
     }
 
     private function getIbanRuleCodeAndVersion($instituteIdentification)
     {
-        if (!array_key_exists($instituteIdentification, $this->rules)) {
+        if (!array_key_exists($instituteIdentification, self::$rules)) {
             throw new UnknownRuleException($instituteIdentification);
         } else {
-            return $this->rules[$instituteIdentification]['rule'];
+            return self::$rules[$instituteIdentification]['rule'];
         }
     }
 }
