@@ -12,6 +12,7 @@ namespace IBAN\Generation;
 
 use IBAN\Rule\RuleFactory;
 use IBAN\Rule\RuleFactoryInterface;
+use Bav\Bav;
 
 class IBANGenerator
 {
@@ -39,6 +40,11 @@ class IBANGenerator
         	throw new \InvalidArgumentException('bankAccountNumber is missing');
         }
 
+//         $bank = Bav::DE()->getBank($instituteIdentification);
+//         if (!$bank->isValid($bankAccountNumber)) {
+//         	throw new \Exception('bankAccountNumber is not valid');
+//         }
+        
         $ibanRule = $this->ruleFactory->createIbanRule($instituteIdentification, $bankAccountNumber);
 
         return $ibanRule->generateIban();
