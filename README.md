@@ -10,11 +10,11 @@ A small library for validating and generating International Bankaccount Numbers 
 [![Dependencies Status](https://d2xishtp1ojlk0.cloudfront.net/d/12894297)](http://depending.in/jschaedl/Iban)
 
 ## Development status
-This library is currently under development and at the moment not ready for production use. The iban validation should be run fine, but the generation functionality is not yet complete. Contributions are welcome.
+This library is ready to use. The iban validation should be run fine, but there is no warranty for the generation functionality. Please use it at your own risk.
 
 ## How to contribute
-
-Please fork the master branch and create your own development branch. Then for example add a new iban rule and make a pull request. 
+If you want to fix some bugs or want to enhance some functionality, please fork the master branch and create your own development branch. 
+Then fix the bug you found or add your enhancements and make a pull request. Please commit your changes in tiny steps and add a detailed description on every commit. 
 
 ### Unit Testing
 
@@ -22,7 +22,6 @@ All pull requests must be accompanied by passing unit tests. This repository use
 
 
 ## ToDos
-* add more iban rules to [Rule package](https://github.com/jschaedl/Iban/tree/master/src/IBAN/Rule) (see: [IBAN-Regeln](http://www.kigst.de/media/Deutsche_Bundesbank_Uebersicht_der_IBAN_Regeln_Stand_Juni_2013.pdf))
 * add support for more countries
 
 ---
@@ -55,12 +54,17 @@ $generatedIban = IBANGenerator:DE('60050101', '502502502');
     
 ## How to Install
 
-Add the following to your composer.json:
+First install composer, if you haven't already:
 
+```
+curl -sS https://getcomposer.org/installer | php
+``
+
+Add the following to your composer.json:
 
 ```
 "require": {
-        "jschaedl/iban": "dev-master"
+    "jschaedl/iban": "v1.1"
 }
 ```
 
