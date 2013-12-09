@@ -18,8 +18,11 @@ Then fix the bug you found or add your enhancements and make a pull request. Ple
 
 ### Unit Testing
 
-All pull requests must be accompanied by passing unit tests. This repository uses phpunit and Composer. You must run `composer install` to install this package's dependencies before the unit tests will run.
+All pull requests must be accompanied by passing unit tests. This repository uses phpunit and Composer. You must run `composer install` to install this package's dependencies before the unit tests will run. You can run the test via:
 
+```
+phpunit -c tests/phpunit.xml tests/
+```
 
 ## ToDos
 * add support for more countries
