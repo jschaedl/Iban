@@ -58,7 +58,7 @@ First install composer, if you haven't already:
 
 ```
 curl -sS https://getcomposer.org/installer | php
-``
+```
 
 Add the following to your composer.json:
 
