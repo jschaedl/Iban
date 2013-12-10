@@ -22,7 +22,7 @@ class RuleFactory implements RuleFactoryInterface
 
     public static function DE() 
     {
-    	return new RuleFactory('DE');
+    	return new static('DE');
     }
     
     public function __construct($localeCode = 'DE')
