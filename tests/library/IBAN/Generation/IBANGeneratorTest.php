@@ -150,8 +150,7 @@ class IBANGeneratorTest extends \PHPUnit_Framework_TestCase
 
     public function testGenerateIbanForRuleDE000900()
     {
-        // $this->assertIban('DE03683515573047232594', IBANGenerator::DE('68351976', '1116232594')); // successor blz is active 68351557
-        $this->assertIban('DE38683515571116232594', IBANGenerator::DE('68351976', '1116232594')); // successor blz is active 68351557
+        $this->assertIban('DE03683515573047232594', IBANGenerator::DE('68351976', '1116232594'));
         $this->assertIban('DE10683515570016005845', IBANGenerator::DE('68351976', '0016005845'));
     }
 
