@@ -16,8 +16,6 @@ use IBAN\Rule\Exception\UnknownRuleException;
 
 class RuleFactory implements RuleFactoryInterface
 {
-    public static $rules;
-
     private $localeCode;
 
     public static function DE() 
@@ -29,25 +27,22 @@ class RuleFactory implements RuleFactoryInterface
     {
         if ($this->isLocaleCodeValid($localeCode)) {
             $this->localeCode = $localeCode;
-
-            if (!self::$rules) {
-                self::$rules = require __DIR__ . '/' . $localeCode . '/' . '/rules.php';
-            }
         }
     }
 
     public function createIbanRule($ibanRuleCodeAndVersion, $instituteIdentification, $bankAccountNumber)
     {
-        //$instituteIdentification = $this->getInstituteIdentificationSuccessor($instituteIdentification);
-        //$ibanRuleCodeAndVersion = $this->getIbanRuleCodeAndVersion($instituteIdentification);
-
-        if ($this->ibanRuleFileExists($ibanRuleCodeAndVersion)) {
-            return $this->createRule($ibanRuleCodeAndVersion, $instituteIdentification, $bankAccountNumber);
+    	$ibanRuleFilename = 'Rule' . $ibanRuleCodeAndVersion . '.php';
+    	$ibanRuleFilePath = __DIR__ . DIRECTORY_SEPARATOR . $this->localeCode . DIRECTORY_SEPARATOR . $ibanRuleFilename;
+        
+        if (file_exists($ibanRuleFilePath)) {
+        	$ibanRuleQualifiedClassName = '\\IBAN\\Rule\\' . $this->localeCode . '\\Rule' . $ibanRuleCodeAndVersion;
+        	return new $ibanRuleQualifiedClassName($this->localeCode, $instituteIdentification, $bankAccountNumber);
         } else {
             throw new RuleNotYetImplementedException('Rule' . $ibanRuleCodeAndVersion);
         }
     }
-
+    
     private function isLocaleCodeValid($localeCode)
     {
         if (empty($localeCode)) {
@@ -58,49 +53,6 @@ class RuleFactory implements RuleFactoryInterface
             } else {
                 return true;
             }
-        }
-    }
-
-    private function ibanRuleFileExists($ibanRuleCodeAndVersion)
-    {
-        $ibanRuleFilename = $this->getIbanRuleFilename($ibanRuleCodeAndVersion);
-
-        return file_exists(__DIR__ . DIRECTORY_SEPARATOR . $this->localeCode . DIRECTORY_SEPARATOR . $ibanRuleFilename);
-    }
-
-    private function createRule($ibanRuleCodeAndVersion, $instituteIdentification, $bankAccountNumber)
-    {
-        $ibanRuleQualifiedClassName = $this->getIbanRuleQualifiedClassName($ibanRuleCodeAndVersion);
-
-        return new $ibanRuleQualifiedClassName($this->localeCode, $instituteIdentification, $bankAccountNumber);
-    }
-
-    private function getIbanRuleQualifiedClassName($ibanRuleCodeAndVersion)
-    {
-        return '\\IBAN\\Rule\\' . $this->localeCode . '\\Rule' . $ibanRuleCodeAndVersion;
-    }
-
-    private function getIbanRuleFilename($ibanRuleCodeAndVersion)
-    {
-        return 'Rule' . $ibanRuleCodeAndVersion . '.php';
-    }
-
-    private function getInstituteIdentificationSuccessor($instituteIdentification)
-    {
-        if (!array_key_exists($instituteIdentification, self::$rules)) {
-            throw new UnknownRuleException($instituteIdentification);
-        } else {
-            return self::$rules[$instituteIdentification]['successorBlz'] == '00000000' ?
-                $instituteIdentification : self::$rules[$instituteIdentification]['successorBlz'];
-        }
-    }
-
-    private function getIbanRuleCodeAndVersion($instituteIdentification)
-    {
-        if (!array_key_exists($instituteIdentification, self::$rules)) {
-            throw new UnknownRuleException($instituteIdentification);
-        } else {
-            return self::$rules[$instituteIdentification]['rule'];
         }
     }
 }
