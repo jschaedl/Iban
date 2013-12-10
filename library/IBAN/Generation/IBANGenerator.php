@@ -17,16 +17,18 @@ use Bav\Bav;
 class IBANGenerator
 {
     private $ruleFactory;
+    private $bav;
 
     public static function DE($instituteIdentification, $bankAccountNumber) 
     {
-        $generator = new IBANGenerator(RuleFactory::DE());
+        $generator = new IBANGenerator(Bav::DE(), RuleFactory::DE());
         return $generator->generate($instituteIdentification, $bankAccountNumber);
     }
     
-    public function __construct(RuleFactoryInterface $ruleFactory)
+    public function __construct(Bav $bav, RuleFactoryInterface $ruleFactory)
     {
         $this->ruleFactory = $ruleFactory;
+        $this->bav = $bav;
     }
 
     public function generate($instituteIdentification, $bankAccountNumber)
@@ -40,7 +42,7 @@ class IBANGenerator
         	throw new \InvalidArgumentException('bankAccountNumber is missing');
         }
 
-         $bank = Bav::DE()->getBank($instituteIdentification);
+         $bank = $this->bav->getBank($instituteIdentification);
          $mainAgency = $bank->getMainAgency();
          $ibanRuleCodeAndVersion = $mainAgency->getIbanRule();
 
