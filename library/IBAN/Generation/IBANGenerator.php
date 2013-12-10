@@ -40,12 +40,15 @@ class IBANGenerator
         	throw new \InvalidArgumentException('bankAccountNumber is missing');
         }
 
-//         $bank = Bav::DE()->getBank($instituteIdentification);
-//         if (!$bank->isValid($bankAccountNumber)) {
-//         	throw new \Exception('bankAccountNumber is not valid');
-//         }
+         $bank = Bav::DE()->getBank($instituteIdentification);
+         $mainAgency = $bank->getMainAgency();
+         $ibanRuleCodeAndVersion = $mainAgency->getIbanRule();
+
+         //if (!$bank->isValid($bankAccountNumber)) {
+         	//throw new \Exception('bankAccountNumber is not valid');
+         //}
         
-        $ibanRule = $this->ruleFactory->createIbanRule($instituteIdentification, $bankAccountNumber);
+        $ibanRule = $this->ruleFactory->createIbanRule($ibanRuleCodeAndVersion, $bank->getBankId(), $bankAccountNumber);
 
         return $ibanRule->generateIban();
     }

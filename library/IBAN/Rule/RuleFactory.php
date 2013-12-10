@@ -22,7 +22,7 @@ class RuleFactory implements RuleFactoryInterface
 
     public static function DE() 
     {
-    	return new static('DE');
+    	return new RuleFactory('DE');
     }
     
     public function __construct($localeCode = 'DE')
@@ -36,10 +36,10 @@ class RuleFactory implements RuleFactoryInterface
         }
     }
 
-    public function createIbanRule($instituteIdentification, $bankAccountNumber)
+    public function createIbanRule($ibanRuleCodeAndVersion, $instituteIdentification, $bankAccountNumber)
     {
-        $instituteIdentification = $this->getInstituteIdentificationSuccessor($instituteIdentification);
-        $ibanRuleCodeAndVersion = $this->getIbanRuleCodeAndVersion($instituteIdentification);
+        //$instituteIdentification = $this->getInstituteIdentificationSuccessor($instituteIdentification);
+        //$ibanRuleCodeAndVersion = $this->getIbanRuleCodeAndVersion($instituteIdentification);
 
         if ($this->ibanRuleFileExists($ibanRuleCodeAndVersion)) {
             return $this->createRule($ibanRuleCodeAndVersion, $instituteIdentification, $bankAccountNumber);
