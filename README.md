@@ -32,7 +32,7 @@ phpunit -c tests/phpunit.xml tests/
 
 ## Usage example
 
-```
+```php
 <?php
 
 use IBAN\Validation\IBANValidator;
@@ -51,7 +51,7 @@ $generatedIban = $ibanGenerator->generate('60050101', '502502502');
 // $generatedIban => DE15600501010001108884
 
 // generation example #2
-$generatedIban = IBANGenerator:DE('60050101', '502502502');
+$generatedIban = IBANGenerator::DE('60050101', '502502502');
 // $generatedIban => DE15600501010001108884
  ```	
     
