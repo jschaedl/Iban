@@ -1,5 +1,5 @@
 <?php
-namespace IBAN\Formatter;
+namespace IBAN\Core;
 
 use IBAN\Core\IBAN;
 
