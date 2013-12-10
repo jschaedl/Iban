@@ -21,14 +21,14 @@ class IBANGenerator
 
     public static function DE($instituteIdentification, $bankAccountNumber) 
     {
-        $generator = new IBANGenerator(Bav::DE(), RuleFactory::DE());
+        $generator = new IBANGenerator(RuleFactory::DE());
         return $generator->generate($instituteIdentification, $bankAccountNumber);
     }
     
-    public function __construct(Bav $bav, RuleFactoryInterface $ruleFactory)
+    public function __construct(RuleFactoryInterface $ruleFactory)
     {
         $this->ruleFactory = $ruleFactory;
-        $this->bav = $bav;
+        $this->bav = Bav::DE();
     }
 
     public function generate($instituteIdentification, $bankAccountNumber)
