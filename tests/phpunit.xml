@@ -17,7 +17,7 @@
             <directory>./library/IBAN/</directory>
         </testsuite>
     </testsuites>
-    <!--
+
     <logging>
         <log type="coverage-clover" target="./report/logs/clover.xml"/>
         <log type="coverage-html" target="report/coverage" charset="UTF-8" highlight="false" lowUpperBound="35" highLowerBound="70"/>
@@ -35,11 +35,7 @@
             <directory>../tests/*</directory>
             <file>../library/IBAN/Autoloader.php</file>
             <file>../library/IBAN/Core/Constants.php</file>
-            <file>../library/IBAN/DE/rules.php</file>
-            <file>../library/IBAN/DE/rules_20130609.php</file>
-            <file>../library/IBAN/DE/rules_20130909.php</file>
-            <file>../library/IBAN/DE/rules_20131209.php</file>
         </blacklist>
     </filter>
-    -->
+
 </phpunit>
