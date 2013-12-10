@@ -90,3 +90,7 @@ sudo composer.phar install
 ## License
 
 MIT Public License
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/jschaedl/iban/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
