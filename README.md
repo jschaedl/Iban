@@ -67,7 +67,7 @@ Add the following to your composer.json:
 
 ```
 "require": {
-    "jschaedl/iban": "v1.1"
+    "jschaedl/iban": "v1.1.2"
 }
 ```
 
