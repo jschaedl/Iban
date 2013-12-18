@@ -19,7 +19,7 @@
         "sebastian/phpcpd": "*"
     },
     "require": {
-        "jschaedl/bav": "@dev"
+        "jschaedl/bav": "v1.0"
     },
     "autoload": {
         "psr-0": { "IBAN": "library" }
