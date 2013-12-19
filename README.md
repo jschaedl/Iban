@@ -12,22 +12,55 @@ A small library for validating and generating International Bankaccount Numbers 
 ## Development status
 This library is ready to use. The iban validation should be run fine, but there is no warranty for the generation functionality. Please use it at your own risk.
 
-## How to contribute
-If you want to fix some bugs or want to enhance some functionality, please fork the master branch and create your own development branch. 
-Then fix the bug you found or add your enhancements and make a pull request. Please commit your changes in tiny steps and add a detailed description on every commit. 
-
-### Unit Testing
-
-All pull requests must be accompanied by passing unit tests. This repository uses phpunit and Composer. You must run `composer install` to install this package's dependencies before the unit tests will run. You can run the test via:
-
-```
-phpunit -c tests/phpunit.xml tests/
-```
-
-## ToDos
-* add support for more countries
-
 ---
+
+# Installation
+To install jschaedl/iban with Composer install it, if you haven't already 
+
+```
+curl -sS https://getcomposer.org/installer | php
+```
+
+Then just add the following to your composer.json file:
+
+```js
+// composer.json
+{
+   "require": {
+    "jschaedl/iban": "v1.1.2"
+}
+```
+
+Then, you can install the new dependencies by running Composer’s update command from the directory where your `composer.json` file is located:
+
+```sh
+# install
+$ php composer.phar install
+# update
+$ php composer.phar update jschaedl/iban
+
+# or you can simply execute composer command if you set it to
+# your PATH environment variable
+$ composer install
+$ composer update jschaedl/iban
+```
+
+You can see this library on [Packagist](https://packagist.org/packages/jschaedl/iban).
+
+Composer installs autoloader at `./vendor/autoload.php`. If you use jschaedl/iban in your php script, add:
+
+```php
+require_once 'vendor/autoload.php';
+```
+
+Or you can use git clone command:
+
+```sh
+# HTTP
+$ git clone https://github.com/jschaedl/iban.git
+# SSH
+$ git clone git@github.com:jschaedl/iban.git
+```
 
 
 ## Usage example
@@ -54,38 +87,36 @@ $generatedIban = $ibanGenerator->generate('60050101', '502502502');
 $generatedIban = IBANGenerator::DE('60050101', '502502502');
 // $generatedIban => DE15600501010001108884
  ```	
-    
-## How to Install
 
-First install composer, if you haven't already:
+---
+ 
+## How to contribute
+If you want to fix some bugs or want to enhance some functionality, please fork the master branch and create your own development branch. 
+Then fix the bug you found or add your enhancements and make a pull request. Please commit your changes in tiny steps and add a detailed description on every commit. 
 
-```
-curl -sS https://getcomposer.org/installer | php
-```
+### Unit Testing
 
-Add the following to your composer.json:
-
-```
-"require": {
-    "jschaedl/iban": "v1.1.2"
-}
-```
-
-And run the composer install command.
+All pull requests must be accompanied by passing unit tests. This repository uses phpunit and Composer. You must run `composer install` to install this package's dependencies before the unit tests will run. You can run the test via:
 
 ```
-sudo composer.phar install
+phpunit -c tests/phpunit.xml tests/
 ```
 
+### ToDos
+* add support for more countries
+
+---
+   
 ## Author
 
 [Jan Schädlich](https://github.com/jschaedl)
 
 ## Contributions
 
-[Stefan Warnat](https://github.com/swarnat)
+* [Stefan Warnat](https://github.com/swarnat)
+* [Simon Mönch](https://github.com/smoench)
+* [Martin Abraham](https://github.com/mabrahamde)
 
-[Simon Mönch](https://github.com/smoench)
 
 ## License
 
