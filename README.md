@@ -14,7 +14,7 @@ This library is ready to use. The iban validation should be run fine, but there 
 
 ---
 
-# Installation
+## Installation
 To install jschaedl/iban with Composer install it, if you haven't already 
 
 ```
