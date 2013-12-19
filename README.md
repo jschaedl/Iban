@@ -15,7 +15,7 @@ This library is ready to use. The iban validation should be run fine, but there 
 ---
 
 ## Installation
-To install jschaedl/iban with Composer install it, if you haven't already 
+To install jschaedl/iban install Composer first, if you haven't already 
 
 ```
 curl -sS https://getcomposer.org/installer | php
