@@ -58,9 +58,9 @@ Or you can use git clone command:
 
 ```sh
 # HTTP
-$ git clone https://github.com/jschaedl/iban.git
+$ git clone https://github.com/jschaedl/Iban.git
 # SSH
-$ git clone git@github.com:jschaedl/iban.git
+$ git clone git@github.com:jschaedl/Iban.git
 ```
 
 
