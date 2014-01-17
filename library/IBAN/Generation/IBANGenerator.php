@@ -16,19 +16,23 @@ use Bav\Bav;
 
 class IBANGenerator
 {
-    private $ruleFactory;
-    private $bav;
+    protected $ruleFactory;
 
     public static function DE($instituteIdentification, $bankAccountNumber) 
     {
-        $generator = new IBANGenerator(RuleFactory::DE());
+        $generator = new IBANGeneratorDE();
         return $generator->generate($instituteIdentification, $bankAccountNumber);
+    }
+    
+    public static function NL($instituteIdentification, $bankAccountNumber)
+    {
+    	$generator = new IBANGeneratorNL();
+    	return $generator->generate($instituteIdentification, $bankAccountNumber);
     }
     
     public function __construct(RuleFactoryInterface $ruleFactory)
     {
         $this->ruleFactory = $ruleFactory;
-        $this->bav = Bav::DE();
     }
 
     public function generate($instituteIdentification, $bankAccountNumber)
@@ -41,21 +45,13 @@ class IBANGenerator
         } elseif (empty($bankAccountNumber)) {
         	throw new \InvalidArgumentException('bankAccountNumber is missing');
         }
-
-         $bank = $this->bav->getBank($instituteIdentification);
-         $mainAgency = $bank->getMainAgency();
-         $ibanRuleCodeAndVersion = $mainAgency->getIbanRule();
-
-         //if (!$bank->isValid($bankAccountNumber)) {
-         	//throw new \Exception('bankAccountNumber is not valid');
-         //}
         
-        $ibanRule = $this->ruleFactory->createIbanRule($ibanRuleCodeAndVersion, $bank->getBankId(), $bankAccountNumber);
+        $ibanRule = $this->ruleFactory->createIbanRule('000000', $instituteIdentification, $bankAccountNumber);
 
         return $ibanRule->generateIban();
     }
 
-    private function normalize($value)
+    protected function normalize($value)
     {
         $value = trim($value);
         $value = ltrim($value, '0');

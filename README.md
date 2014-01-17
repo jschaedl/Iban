@@ -79,14 +79,24 @@ if ($ibanValidator->validate('DE89370400440532013000')) {
 	echo "DE89370400440532013000 is valid!";
 }
  
-// generation example #1
-$ibanGenerator = new IBANGenerator(new RuleFactory('DE'));
+// generate german iban example #1
+$ibanGenerator = new IBANGeneratorDE();
 $generatedIban = $ibanGenerator->generate('60050101', '502502502'); 
 // $generatedIban => DE15600501010001108884
 
-// generation example #2
+// generate german iban example #2
 $generatedIban = IBANGenerator::DE('60050101', '502502502');
 // $generatedIban => DE15600501010001108884
+
+// generate dutch iban example #1
+$ibanGenerator = new IBANGeneratorNL();
+$generatedIban = $ibanGenerator->generate('ABNA', '123456789'); 
+// $generatedIban => NL02ABNA0123456789
+
+// generate dutch iban example #2
+$ibanGenerator = new IBANGenerator::NL('ABNA', '123456789');
+// $generatedIban => NL02ABNA0123456789
+ 
  ```	
 
 ---

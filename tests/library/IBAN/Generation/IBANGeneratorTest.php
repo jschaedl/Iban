@@ -46,6 +46,11 @@ class IBANGeneratorTest extends \PHPUnit_Framework_TestCase
         $this->assertIban('DE05720207000012345678', IBANGenerator::DE('720 207 00', '12 34 56 78'));
     }
 
+    public function testGenerateIbanNL()
+    {
+    	$this->assertIban('NL02ABNA0123456789', IBANGenerator::NL('ABNA', '123 4567 89'));
+    }
+    
     /**
      * @expectedException Exception
      */
