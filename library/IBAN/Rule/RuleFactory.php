@@ -28,6 +28,11 @@ class RuleFactory implements RuleFactoryInterface
     	return new RuleFactory('NL');
     }
     
+    public static function MT()
+    {
+    	return new RuleFactory('MT');
+    }
+    
     public function __construct($localeCode = 'DE')
     {
         if ($this->isLocaleCodeValid($localeCode)) {

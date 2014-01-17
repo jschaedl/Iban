@@ -30,6 +30,12 @@ class IBANGenerator
     	return $generator->generate($instituteIdentification, $bankAccountNumber);
     }
     
+    public static function MT($instituteIdentification, $bankAccountNumber)
+    {
+    	$generator = new IBANGeneratorMT();
+    	return $generator->generate($instituteIdentification, $bankAccountNumber);
+    }
+    
     public function __construct(RuleFactoryInterface $ruleFactory)
     {
         $this->ruleFactory = $ruleFactory;
