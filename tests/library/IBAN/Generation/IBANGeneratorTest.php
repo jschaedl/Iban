@@ -13,7 +13,7 @@ class IBANGeneratorTest extends \PHPUnit_Framework_TestCase
 		$ibanGenerator = new IBANGenerator(new RuleFactory('DE'));
 		$this->assertInstanceOf('IBAN\Generation\IBANGenerator', $ibanGenerator);
 	}
-	
+
     /**
      * @expectedException InvalidArgumentException
      */
@@ -31,9 +31,9 @@ class IBANGeneratorTest extends \PHPUnit_Framework_TestCase
     }
 
     public function testGenerate_ValidIban()
-    {	
+    {
     	$generatorTestData = file('tests/data/generation.data');
-    	
+
         foreach ($generatorTestData as $testData) {
             $testDataArray = explode(';', trim($testData));
             $generatedIban = IBANGenerator::DE(trim($testDataArray[1]), trim($testDataArray[2]));
@@ -50,12 +50,12 @@ class IBANGeneratorTest extends \PHPUnit_Framework_TestCase
     {
     	$this->assertIban('NL02ABNA0123456789', IBANGenerator::NL('ABNA', '123 4567 89'));
     }
-    
+
     public function testGenerateIbanMT()
     {
     	$this->assertIban('MT84MALT011000012345MTLCAST001S', IBANGenerator::MT('MALT' . '01100', '0012345MTLCAST001S'));
     }
-    
+
     /**
      * @expectedException Exception
      */
@@ -259,6 +259,13 @@ class IBANGeneratorTest extends \PHPUnit_Framework_TestCase
     public function testGenerateIbanForRuleDE002001()
     {
         $this->assertIban('DE04500700100350002200', IBANGenerator::DE('50070010', '3500022'));
+    }
+
+    public function testGenerateIbanForRuleDE002002()
+    {
+        $this->assertIban('DE77230707000030038500', IBANGenerator::DE('23070700', '0300385'));
+        $this->assertIban('DE77230707000030038500', IBANGenerator::DE('23070700', '300385'));
+        $this->assertIban('DE24230707000130038500', IBANGenerator::DE('23070700', '1300385'));
     }
 
     public function testGenerateIbanForRuleDE002101()
