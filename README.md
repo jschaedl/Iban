@@ -127,6 +127,7 @@ phpunit -c tests/phpunit.xml tests/
 * [Stefan Warnat](https://github.com/swarnat)
 * [Simon Mönch](https://github.com/smoench)
 * [Martin Abraham](https://github.com/mabrahamde)
+* [Benjamin Paap](https://github.com/benjaminpaap)
 
 
 ## License
