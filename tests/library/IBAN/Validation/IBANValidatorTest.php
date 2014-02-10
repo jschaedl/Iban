@@ -13,7 +13,7 @@ class IBANValidatorTest extends \PHPUnit_Framework_TestCase
     {
         $this->ibanValidator = new IBANValidator();
         $this->ibans = array();
-        $this->ibans = file('tests/data/validation.data');
+        $this->ibans = file(__DIR__ . '/../../../data/validation.data');
     }
 
     protected function tearDown()
