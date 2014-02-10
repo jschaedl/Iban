@@ -1,7 +1,0 @@
-Version 1.00 - July 9, 2012
--------------------------------
-    used Markus Malkuschs "BAV" Projects, version 0.27 as basis
-    - refactored everything (Namespaced, PHP 5.3)
-    - made the project compatible to other countries systems
-    - wrote a bunch of unit tests
-    - replaced the autoloader
