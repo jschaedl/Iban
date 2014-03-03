@@ -9,7 +9,7 @@
  */
 namespace IBAN\Rule\DE;
 
-class Rule000502 extends \IBAN\Rule\DE\Rule000000
+class Rule000503 extends \IBAN\Rule\DE\Rule000000
 {
     public function __construct($localeCode, $instituteIdentification, $bankAccountNumber)
     {

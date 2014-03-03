@@ -32,7 +32,7 @@ class IBANGeneratorTest extends \PHPUnit_Framework_TestCase
 
     public function testGenerate_ValidIban()
     {
-    	$generatorTestData = file('tests/data/generation.data');
+    	$generatorTestData = file(__DIR__ . '/../../../data/generation.data');
 
         foreach ($generatorTestData as $testData) {
             $testDataArray = explode(';', trim($testData));
