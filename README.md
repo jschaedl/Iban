@@ -128,6 +128,7 @@ phpunit -c tests/phpunit.xml tests/
 * [Simon Mönch](https://github.com/smoench)
 * [Martin Abraham](https://github.com/mabrahamde)
 * [Benjamin Paap](https://github.com/benjaminpaap)
+* [Dennis Lassiter](https://github.com/pulseit-dennis)
 
 
 ## License
