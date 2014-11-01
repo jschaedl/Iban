@@ -94,7 +94,7 @@ $generatedIban = $ibanGenerator->generate('ABNA', '123456789');
 // $generatedIban => NL02ABNA0123456789
 
 // generate dutch iban example #2
-$ibanGenerator = new IBANGenerator::NL('ABNA', '123456789');
+$generatedIban = IBANGenerator::NL('ABNA', '123456789');
 // $generatedIban => NL02ABNA0123456789
  
  ```	
