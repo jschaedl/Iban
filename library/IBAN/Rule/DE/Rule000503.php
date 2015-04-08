@@ -258,6 +258,11 @@ class Rule000503 extends \IBAN\Rule\DE\Rule000000
             return "";
         }
 
+        // Fehlende Unterkontoinformationen ergänzen
+        if (strlen($this->bankAccountNumber) == 6 || strlen($this->bankAccountNumber) == 7) {
+            $this->bankAccountNumber .= '00';
+        }
+
         return parent::generateIban();
     }
 }
