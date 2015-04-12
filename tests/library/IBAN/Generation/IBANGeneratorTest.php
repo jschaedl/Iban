@@ -95,6 +95,8 @@ class IBANGeneratorTest extends \PHPUnit_Framework_TestCase
     public function testGenerateIbanForRuleDE000502()
     {
         $this->assertIban('DE32265800700732502200', IBANGenerator::DE('26580070', '732502200'));
+        $this->assertIban('DE32265800700732502200', IBANGenerator::DE('26580070', '7325022'));
+        $this->assertIban('DE60265800708732502200', IBANGenerator::DE('26580070', '8732502200'));
         $this->assertIban('DE60265800708732502200', IBANGenerator::DE('26580070', '8732502200'));
         $this->assertIban('DE37265800704820379900', IBANGenerator::DE('26580070', '4820379900'));
         $this->assertIban('DE77500800006814706100', IBANGenerator::DE('50080000', '6814706100'));
@@ -102,6 +104,7 @@ class IBANGeneratorTest extends \PHPUnit_Framework_TestCase
         $this->assertIban('', IBANGenerator::DE('12080000', '998761700'));
         $this->assertIban('', IBANGenerator::DE('70045050', '930125007'));
         $this->assertIban('DE81200411110130023500', IBANGenerator::DE('20041111', '130023500'));
+        $this->assertIban('DE81200411110130023500', IBANGenerator::DE('20041111', '1300235'));
     }
 
     public function testGenerateIbanForRuleDE000600()
