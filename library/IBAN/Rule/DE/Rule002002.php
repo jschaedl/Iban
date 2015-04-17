@@ -17,8 +17,8 @@ class Rule002002 extends \IBAN\Rule\DE\Rule000000
             "50070010#9999" => "92777202"
         );
 
-        if (isset($instituteIdentificationReplacement[$instituteIdentification . "#" . $bankAccountNumber])) {
-            $bankAccountNumber = $instituteIdentificationReplacement[$instituteIdentification . "#" . $bankAccountNumber];
+        if (isset($bankAccountReplacement[$instituteIdentification . "#" . $bankAccountNumber])) {
+            $bankAccountNumber = $bankAccountReplacement[$instituteIdentification . "#" . $bankAccountNumber];
         }
 
         // Accounts from "Deutsche Bank" have to be at least 7 digits in length.
