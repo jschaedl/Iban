@@ -12,22 +12,37 @@ class IBANValidatorTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $this->ibanValidator = new IBANValidator();
-        $this->ibans = array();
-        $this->ibans = file(__DIR__ . '/../../../data/validation.data');
-    }
+        }
 
     protected function tearDown()
     {
         $this->ibanValidator = null;
-        $this->ibans = null;
     }
 
-    public function testValidate_IfIbanIsValid()
+    /**
+	 * @dataProvider validIbanDataProvider
+	 */
+	public function testValidIbans($iban)
     {
-        foreach ($this->ibans as $ibanData) {
-            $ibanDataArray = explode(';', trim($ibanData));
-            $this->assertEquals((boolean) ($ibanDataArray[0]),
-                $this->ibanValidator->validate($ibanDataArray[1]));
-        }
+        $this->assertTrue($this->ibanValidator->validate($iban));
     }
+    
+    /**
+     * @dataProvider invalidIbanDataProvider
+     */
+    public function testInvalidIbans($iban)
+    {
+        $this->assertFalse($this->ibanValidator->validate($iban));
+    }
+    
+    public function validIbanDataProvider() 
+    {
+        return new CsvFileIterator('./tests/data/validibans.csv');
+    }
+    
+    public function invalidIbanDataProvider() 
+    {
+        return new CsvFileIterator('./tests/data/invalidibans.csv');
+    }
+    
 }
