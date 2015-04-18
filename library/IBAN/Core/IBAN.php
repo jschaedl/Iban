@@ -12,11 +12,22 @@ namespace IBAN\Core;
 
 class IBAN
 {
+    const LOCALECODE_OFFSET = 0;
+    const LOCALECODE_LENGTH = 2;
+    const CHECKSUM_OFFSET = 2;
+    const CHECKSUM_LENGTH = 2;
+    const ACCOUNTIDENTIFICATION_OFFSET = 4;
+    const INSTITUTEIDENTIFICATION_OFFSET = 4;
+    const INSTITUTEIDENTIFICATION_LENGTH = 8;
+    const BANKACCOUNTNUMBER_OFFSET = 12;
+    const BANKACCOUNTNUMBER_LENGTH = 10;
+    const IBAN_MIN_LENGTH = 15;
+    
     private $iban;
 
     public function __construct($iban)
     {
-        $this->iban = $iban;
+        $this->iban = $this->normalize($iban);
     }
 
     public function validate()
@@ -49,32 +60,32 @@ class IBAN
 
     public function getLocaleCode()
     {
-        return substr($this->iban, 0, 2);
+        return substr($this->iban, IBAN::LOCALECODE_OFFSET, IBAN::LOCALECODE_LENGTH);
     }
 
     public function getChecksum()
     {
-        return substr($this->iban, 2, 2);
+        return substr($this->iban, IBAN::CHECKSUM_OFFSET, IBAN::CHECKSUM_LENGTH);
     }
 
     public function getAccountIdentification()
     {
-        return substr($this->iban, 4);
+        return substr($this->iban, IBAN::ACCOUNTIDENTIFICATION_OFFSET);
     }
 
     public function getInstituteIdentification()
     {
-        return substr($this->iban, 4, 8);
+        return substr($this->iban, IBAN::INSTITUTEIDENTIFICATION_OFFSET, IBAN::INSTITUTEIDENTIFICATION_LENGTH);
     }
 
     public function getBankAccountNumber()
     {
-        return substr($this->iban, 12, 10);
+        return substr($this->iban, IBAN::BANKACCOUNTNUMBER_OFFSET, IBAN::BANKACCOUNTNUMBER_LENGTH);
     }
 
     private function isLengthValid()
     {
-        return strlen($this->iban) < 15 ? false : true;
+        return strlen($this->iban) < IBAN::IBAN_MIN_LENGTH ? false : true;
     }
 
     private function isLocalCodeValid()
@@ -126,5 +137,13 @@ class IBAN
         }
 
         return $numericRepresentation;
+    }
+    
+    private function normalize($iban)
+    {
+        $value = trim($iban);
+        $value = preg_replace('/\s+/', '', $value);
+    
+        return $value;
     }
 }
