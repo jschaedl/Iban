@@ -4,10 +4,8 @@ A small library for validating and generating International Bankaccount Numbers 
 
 
 [![Build Status](https://travis-ci.org/jschaedl/Iban.png)](https://travis-ci.org/jschaedl/Iban) 
-[![Latest Unstable Version](https://poser.pugx.org/jschaedl/Iban/v/stable.png)](https://packagist.org/packages/jschaedl/Iban) 
-[![Latest Unstable Version](https://poser.pugx.org/jschaedl/Iban/v/unstable.png)](https://packagist.org/packages/jschaedl/Iban) 
-[![Total Downloads](https://poser.pugx.org/jschaedl/Iban/downloads.png)](https://packagist.org/packages/jschaedl/Iban) 
-[![Dependencies Status](https://d2xishtp1ojlk0.cloudfront.net/d/12894297)](http://depending.in/jschaedl/Iban)
+[![Latest Stable Version](https://poser.pugx.org/jschaedl/iban/v/stable)](https://packagist.org/packages/jschaedl/iban) [![Total Downloads](https://poser.pugx.org/jschaedl/iban/downloads)](https://packagist.org/packages/jschaedl/iban) 
+[![Latest Unstable Version](https://poser.pugx.org/jschaedl/iban/v/unstable)](https://packagist.org/packages/jschaedl/iban) [![License](https://poser.pugx.org/jschaedl/iban/license)](https://packagist.org/packages/jschaedl/iban) 
 
 ## Development status
 This library is ready to use. The iban validation should be run fine, but there is no warranty for the generation functionality. Please use it at your own risk.
