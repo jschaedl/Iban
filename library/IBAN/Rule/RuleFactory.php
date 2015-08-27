@@ -18,21 +18,26 @@ class RuleFactory implements RuleFactoryInterface
 {
     private $localeCode;
 
-    public static function DE() 
+    public static function DE()
     {
-    	return new RuleFactory('DE');
+        return new RuleFactory('DE');
     }
     
     public static function NL()
     {
-    	return new RuleFactory('NL');
+        return new RuleFactory('NL');
     }
     
     public static function MT()
     {
-    	return new RuleFactory('MT');
+        return new RuleFactory('MT');
     }
     
+    public static function AT()
+    {
+        return new RuleFactory('AT');
+    }
+
     public function __construct($localeCode = 'DE')
     {
         if ($this->isLocaleCodeValid($localeCode)) {
@@ -42,12 +47,12 @@ class RuleFactory implements RuleFactoryInterface
 
     public function createIbanRule($ibanRuleCodeAndVersion, $instituteIdentification, $bankAccountNumber)
     {
-    	$ibanRuleFilename = 'Rule' . $ibanRuleCodeAndVersion . '.php';
-    	$ibanRuleFilePath = __DIR__ . DIRECTORY_SEPARATOR . $this->localeCode . DIRECTORY_SEPARATOR . $ibanRuleFilename;
+        $ibanRuleFilename = 'Rule' . $ibanRuleCodeAndVersion . '.php';
+        $ibanRuleFilePath = __DIR__ . DIRECTORY_SEPARATOR . $this->localeCode . DIRECTORY_SEPARATOR . $ibanRuleFilename;
         
         if (file_exists($ibanRuleFilePath)) {
-        	$ibanRuleQualifiedClassName = '\\IBAN\\Rule\\' . $this->localeCode . '\\Rule' . $ibanRuleCodeAndVersion;
-        	return new $ibanRuleQualifiedClassName($this->localeCode, $instituteIdentification, $bankAccountNumber);
+            $ibanRuleQualifiedClassName = '\\IBAN\\Rule\\' . $this->localeCode . '\\Rule' . $ibanRuleCodeAndVersion;
+            return new $ibanRuleQualifiedClassName($this->localeCode, $instituteIdentification, $bankAccountNumber);
         } else {
             throw new RuleNotYetImplementedException('Rule' . $ibanRuleCodeAndVersion);
         }

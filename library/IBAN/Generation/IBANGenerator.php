@@ -18,7 +18,7 @@ class IBANGenerator
 {
     protected $ruleFactory;
     
-    public static function DE($instituteIdentification, $bankAccountNumber) 
+    public static function DE($instituteIdentification, $bankAccountNumber)
     {
         $generator = new IBANGeneratorDE();
         return $generator->generate($instituteIdentification, $bankAccountNumber);
@@ -26,16 +26,22 @@ class IBANGenerator
     
     public static function NL($instituteIdentification, $bankAccountNumber)
     {
-    	$generator = new IBANGeneratorNL();
-    	return $generator->generate($instituteIdentification, $bankAccountNumber);
+        $generator = new IBANGeneratorNL();
+        return $generator->generate($instituteIdentification, $bankAccountNumber);
     }
     
     public static function MT($instituteIdentification, $bankAccountNumber)
     {
-    	$generator = new IBANGeneratorMT();
-    	return $generator->generate($instituteIdentification, $bankAccountNumber);
+        $generator = new IBANGeneratorMT();
+        return $generator->generate($instituteIdentification, $bankAccountNumber);
     }
     
+    public static function AT($instituteIdentification, $bankAccountNumber)
+    {
+        $generator = new IBANGeneratorAT();
+        return $generator->generate($instituteIdentification, $bankAccountNumber);
+    }
+
     public function __construct(RuleFactoryInterface $ruleFactory)
     {
         $this->ruleFactory = $ruleFactory;
