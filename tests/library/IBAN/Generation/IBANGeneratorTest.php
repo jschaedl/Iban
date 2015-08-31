@@ -56,6 +56,11 @@ class IBANGeneratorTest extends \PHPUnit_Framework_TestCase
     	$this->assertIban('MT84MALT011000012345MTLCAST001S', IBANGenerator::MT('MALT' . '01100', '0012345MTLCAST001S'));
     }
 
+    public function testGenerateIbanAT()
+    {
+        $this->asserIban('AT131490022010010999', IBANGenerator::AT('14900', '22010010999'));
+    }
+
     /**
      * @expectedException Exception
      */
