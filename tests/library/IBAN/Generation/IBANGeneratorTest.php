@@ -58,7 +58,7 @@ class IBANGeneratorTest extends \PHPUnit_Framework_TestCase
 
     public function testGenerateIbanAT()
     {
-        $this->asserIban('AT131490022010010999', IBANGenerator::AT('14900', '22010010999'));
+        $this->assertIban('AT131490022010010999', IBANGenerator::AT('14900', '22010010999'));
     }
 
     /**
