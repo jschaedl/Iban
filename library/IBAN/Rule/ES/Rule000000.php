@@ -8,7 +8,7 @@
  *
  * MIT LICENSE
  */
-namespace IBAN\Rule\ES;
+namespace IBAN\Rule\DE;
 
 use IBAN\Core\Constants;
 use IBAN\Rule\AbstractRule;
