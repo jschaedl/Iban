@@ -6,8 +6,6 @@ use IBAN\Rule\RuleFactoryInterface;
 
 class IBANGeneratorES extends IBANGenerator
 {
-    protected $bav;
-
     public function __construct()
     {
         parent::__construct(RuleFactory::ES());
@@ -16,7 +14,7 @@ class IBANGeneratorES extends IBANGenerator
     public function generate($instituteIdentification, $bankAccountNumber)
     {
         $bankAccountNumber = $this->prepareAndCheckBankAccountNumber($bankAccountNumber);
-        $ibanRule = $this->ruleFactory->createIbanRule(000000, 1465, $bankAccountNumber);
+        $ibanRule = $this->ruleFactory->createIbanRule('000000', 1465, $bankAccountNumber);
 
         return $ibanRule->generateIban();
     }

@@ -1,14 +1,6 @@
 <?php
-/**
- * Iban
- *
- * @author      Jan Schaedlich <schaedlich.jan@gmail.com>
- * @copyright   2013 Jan Schaedlich
- * @link        https://github.com/jschaedl/Iban
- *
- * MIT LICENSE
- */
-namespace IBAN\Rule\DE;
+
+namespace IBAN\Rule\ES;
 
 use IBAN\Core\Constants;
 use IBAN\Rule\AbstractRule;
@@ -85,12 +77,12 @@ class Rule000000 extends AbstractRule
 
     protected function getInstituteIdentificationLength()
     {
-        return 8;
+        return 4;
     }
 
     protected function getBankAccountNumberLength()
     {
-        return 10;
+        return 16;
     }
 
     private function getInvertedIban()
