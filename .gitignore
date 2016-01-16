@@ -1,1 +1,9 @@
 .idea
+.buildpath
+.project
+.settings/
+composer.lock
+composer.phar
+vendor/
+tests/report/*
+docs/*
