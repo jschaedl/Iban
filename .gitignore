@@ -6,4 +6,4 @@ composer.lock
 composer.phar
 vendor/
 tests/report/*
-docs/*
+
