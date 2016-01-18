@@ -22,7 +22,8 @@
 		"sebastian/phpcpd" : "*"
 	},
 	"require" : {
-		"jschaedl/bav" : "*"
+		"jschaedl/bav" : "*",
+		"ext-bcmath" : "*"
 	},
 	"autoload" : {
 		"psr-0" : {
