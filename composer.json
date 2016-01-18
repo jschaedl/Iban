@@ -22,9 +22,11 @@
 		"sebastian/phpcpd" : "*"
 	},
 	"require" : {
-		"jschaedl/bav" : "*",
-		"ext-bcmath" : "*"
+		"jschaedl/bav" : "*"
 	},
+	"suggest": {
+        	"ext-bcmath" : "Because this library make use of bcmod function, an installed bcmath extension is required."
+    	},	
 	"autoload" : {
 		"psr-0" : {
 			"IBAN" : [
