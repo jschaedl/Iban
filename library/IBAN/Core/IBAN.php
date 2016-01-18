@@ -112,7 +112,7 @@ class IBAN
         $numericAccountIdentification = $this->getNumericAccountIdentification($accountIdentification);
         $invertedIban = $numericAccountIdentification . $numericLocalCode . $checksum;
 
-        return bcmod($invertedIban, 97) === '1';
+        return $this->local_bcmod($invertedIban, 97) === '1';
     }
 
     private function getNumericLocaleCode($localeCode)
@@ -145,5 +145,23 @@ class IBAN
         $value = preg_replace('/\s+/', '', $value);
     
         return $value;
+    }
+
+    private function local_bcmod($x, $y)
+    {
+        if (!function_exists('bcmod')) {
+            $take = 5;
+            $mod = '';
+
+            do {
+                $a = (int)$mod . substr($x, 0, $take);
+                $x = substr($x, $take);
+                $mod = $a % $y;
+            } while (strlen($x));
+
+            return (int)$mod;
+        } else {
+            return bcmod($x, $y);
+        }
     }
 }
