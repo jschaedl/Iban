@@ -159,7 +159,7 @@ class IBAN
                 $mod = $a % $y;
             } while (strlen($x));
 
-            return (int)$mod;
+            return (string)$mod;
         } else {
             return bcmod($x, $y);
         }
