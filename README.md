@@ -26,7 +26,7 @@ Then just add the following to your composer.json file:
 {
 	"require": {
 		"jschaedl/iban": "1.1.6"
-    }
+	}
 }
 ```
 
