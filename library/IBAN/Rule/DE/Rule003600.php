@@ -11,10 +11,13 @@ namespace IBAN\Rule\DE;
 
 class Rule003600 extends \IBAN\Rule\DE\Rule000000
 {
-    protected $instituteIdentificationSubstitutions = array (
-        "20050000" => "21050000",
-        "23050000" => "21050000"
-    );
+    protected function getInstituteIdentificationSubstitutions()
+    {
+        return array(
+            "20050000" => "21050000",
+            "23050000" => "21050000"
+        );
+    }
 
     public function __construct($localeCode, $instituteIdentification, $bankAccountNumber)
     {
@@ -38,6 +41,6 @@ class Rule003600 extends \IBAN\Rule\DE\Rule000000
             return "";
         }
 
-        return parent::generateIban ();
+        return parent::generateIban();
     }
 }

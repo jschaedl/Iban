@@ -18,9 +18,6 @@ abstract class AbstractRule
     protected $instituteIdentification;
     protected $bankAccountNumber;
 
-    protected $instituteIdentificationSubstitutions = array();
-    protected $bankAccountSubstitutions = array();
-
     public function __construct($localeCode, $instituteIdentification, $bankAccountNumber)
     {
         $this->localeCode = $localeCode;
@@ -41,6 +38,16 @@ abstract class AbstractRule
 
         return $this->localeCode . $checksum . $this->normalizeInstituteIdentification() .
         $this->normalizeBankAccountNumber();
+    }
+
+    protected function getInstituteIdentificationSubstitutions()
+    {
+        return array();
+    }
+
+    protected function getBankAccountSubstitutions()
+    {
+        return array();
     }
 
     protected function getNumericRepresentation($letterRepresentation)
@@ -110,15 +117,17 @@ abstract class AbstractRule
 
     private function substituteInstituteIdentifications()
     {
-        if (array_key_exists($this->instituteIdentification, $this->instituteIdentificationSubstitutions)) {
-            $this->instituteIdentification = $this->instituteIdentificationSubstitutions[$this->instituteIdentification];
+        $instituteIdentificationSubstitutions = $this->getInstituteIdentificationSubstitutions();
+        if (array_key_exists($this->instituteIdentification, $instituteIdentificationSubstitutions)) {
+            $this->instituteIdentification = $instituteIdentificationSubstitutions[$this->instituteIdentification];
         }
     }
 
     private function substituteBankAccountNumbers()
     {
-        if (array_key_exists($this->bankAccountNumber, $this->bankAccountSubstitutions)) {
-            $this->bankAccountNumber = $this->bankAccountSubstitutions[$this->bankAccountNumber];
+        $bankAccountSubstitutions = $this->getBankAccountSubstitutions();
+        if (array_key_exists($this->bankAccountNumber, $bankAccountSubstitutions)) {
+            $this->bankAccountNumber = $bankAccountSubstitutions[$this->bankAccountNumber];
         }
     }
 }

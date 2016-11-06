@@ -12,10 +12,13 @@ namespace IBAN\Rule\DE;
 
 class Rule005100 extends \IBAN\Rule\DE\Rule000000
 {
-    protected $bankAccountSubstitutions = array(
+    protected function getBankAccountSubstitutions()
+    {
+        return array(
             "333" => "7832500881"
             , "502" => "1108884"
             , "500500500" => "5005000"
             , "502502502" => "1108884"
-    );
+        );
+    }
 }
