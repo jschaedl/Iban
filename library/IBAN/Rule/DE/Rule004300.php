@@ -11,7 +11,10 @@ namespace IBAN\Rule\DE;
 
 class Rule004300 extends \IBAN\Rule\DE\Rule000000
 {
-    protected $instituteIdentificationSubstitutions = array (
-        "60651070" => "66650085"
-    );
+    protected function getInstituteIdentificationSubstitutions()
+    {
+        return array(
+            "60651070" => "66650085"
+        );
+    }
 }

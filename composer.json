@@ -23,7 +23,7 @@
 		}
 	},
 	"require" : {
-		"php" : ">=5.3.9",
+		"php" : ">=5.3",
 		"jschaedl/bav" : "*"
 	},
 	"require-dev" : {
