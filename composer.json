@@ -1,32 +1,19 @@
 {
 	"name" : "jschaedl/iban",
+	"license" : "MIT",
 	"type" : "library",
-	"description" : "validate and generate IBANs",
+	"description" : "A small library for validating and generating International BankAccount Numbers (IBAN).",
 	"keywords" : [
 		"iban",
 		"validation",
-		"generate"
+		"generation"
 	],
 	"homepage" : "http://github.com/jschaedl/Iban",
-	"license" : "MIT",
 	"authors" : [{
-			"name" : "Jan Schädlich",
-			"email" : "mail@janschaedlich.com",
-			"homepage" : "https://github.com/jschaedl/"
-		}
-	],
-	"require-dev" : {
-		"phpunit/phpunit" : "3.7.*",
-		"phpunit/php-code-coverage" : ">=1.2.10,<1.3.0",
-		"phploc/phploc" : "*",
-		"sebastian/phpcpd" : "*"
-	},
-	"require" : {
-		"jschaedl/bav" : "*"
-	},
-	"suggest": {
-        	"ext-bcmath" : "Because this library make use of bcmod function, an installed bcmath extension is required."
-    	},	
+		"name" : "Jan Schaedlich",
+		"email" : "mail@janschaedlich.com",
+		"homepage" : "https://www.linkedin.com/in/janschaedlich"
+	}],
 	"autoload" : {
 		"psr-0" : {
 			"IBAN" : [
@@ -34,5 +21,18 @@
 				"tests/library"
 			]
 		}
+	},
+	"require" : {
+		"php" : ">=5.3.9",
+		"jschaedl/bav" : "*"
+	},
+	"require-dev" : {
+		"phpunit/phpunit" : "3.7.*",
+		"phpunit/php-code-coverage" : ">=1.2.10,<1.3.0",
+		"phploc/phploc" : "*",
+		"sebastian/phpcpd" : "*"
+	},
+	"suggest": {
+       	"ext-bcmath" : "This library makes use of bcmod function, so an installed bcmath extension is recommended."
 	}
 }
