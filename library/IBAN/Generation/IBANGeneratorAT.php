@@ -11,8 +11,6 @@
 namespace IBAN\Generation;
 
 use IBAN\Rule\RuleFactory;
-use IBAN\Rule\RuleFactoryInterface;
-use Bav\Bav;
 
 class IBANGeneratorAT extends IBANGenerator
 {    	
