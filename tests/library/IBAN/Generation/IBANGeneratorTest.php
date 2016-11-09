@@ -12,7 +12,7 @@ class IBANGeneratorTest extends \PHPUnit_Framework_TestCase
 	public function testCreation()
 	{
 		$ibanGenerator = new IBANGenerator(new RuleFactory('DE'));
-		$this->assertInstanceOf(IBANGenerator::class, $ibanGenerator);
+		$this->assertInstanceOf('IBAN\Generation\IBANGenerator', $ibanGenerator);
 	}
 
     /**
