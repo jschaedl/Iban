@@ -16,7 +16,7 @@ use IBAN\Rule\RuleFactory;
 class IBANGeneratorDE extends IBANGenerator
 {
 
-    const CURRENT_RULES = '20161205';
+    const CURRENT_RULES = 20140303;
 
     public function __construct()
     {
