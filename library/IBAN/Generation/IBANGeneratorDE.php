@@ -1,9 +1,8 @@
 <?php
 namespace IBAN\Generation;
 
+use IBAN\Rule\Exception\RulesFileNotFoundException;
 use IBAN\Rule\RuleFactory;
-use IBAN\Rule\RuleFactoryInterface;
-use Bav\Bav;
 
 /**
  * IBANGeneratorDE
@@ -15,29 +14,38 @@ use Bav\Bav;
  * MIT LICENSE
  */
 class IBANGeneratorDE extends IBANGenerator
-{    
-	protected $bav;
-	
+{
+
+    const CURRENT_RULES = 20140303;
+
     public function __construct()
     {
         parent::__construct(RuleFactory::DE());
-        $this->bav = Bav::DE();
     }
 
     public function generate($instituteIdentification, $bankAccountNumber)
     {
         $instituteIdentification = $this->prepareAndCheckInstituteIdentification($instituteIdentification);
         $bankAccountNumber = $this->prepareAndCheckBankAccountNumber($bankAccountNumber);
-        
-         $bank = $this->bav->getBank($instituteIdentification);
-         $mainAgency = $bank->getMainAgency();
-         $ibanRuleCodeAndVersion = $mainAgency->getIbanRule();
 
-         //if (!$bank->isValid($bankAccountNumber)) {
-         	//throw new \Exception('bankAccountNumber is not valid');
-         //}
-        
-        $ibanRule = $this->ruleFactory->createIbanRule($ibanRuleCodeAndVersion, $bank->getBankId(), $bankAccountNumber);
+        $rules_filename = 'rules_' . self::CURRENT_RULES . '.php';
+        $rules_path = realpath(__DIR__ . '/../../../script/' . self::CURRENT_RULES . '/');
+        $rules_file = $rules_path . '/' . $rules_filename;
+        if (!file_exists($rules_file)) {
+            throw new RulesFileNotFoundException('file ' . $rules_file);
+        }
+
+        $rules = include $rules_file;
+
+        // bank not found
+        if (!isset($rules[$instituteIdentification])) {
+            return '';
+        }
+
+        $bank = $rules[$instituteIdentification];
+        $ibanRuleCodeAndVersion = $bank['rule'];
+
+        $ibanRule = $this->ruleFactory->createIbanRule($ibanRuleCodeAndVersion, $instituteIdentification, $bankAccountNumber);
 
         return $ibanRule->generateIban();
     }

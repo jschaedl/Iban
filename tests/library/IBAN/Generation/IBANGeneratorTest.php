@@ -2,9 +2,10 @@
 
 namespace IBAN\Generation;
 
-use IBAN\Generation\IBANGenerator;
+use Exception;
 use IBAN\Rule\DE\Rule000100;
 use IBAN\Rule\RuleFactory;
+use InvalidArgumentException;
 
 class IBANGeneratorTest extends \PHPUnit_Framework_TestCase
 {
@@ -311,6 +312,9 @@ class IBANGeneratorTest extends \PHPUnit_Framework_TestCase
 
     public function testGenerateIbanForRuleDE002500()
     {
+        if (IBANGeneratorDE::CURRENT_RULES >= 20161205) {
+            $this->markTestSkipped('No bank included in newest rules');
+        }
         $this->assertIban('DE81600501010002777939', IBANGenerator::DE('64150182', '2777939'));
         $this->assertIban('DE80600501017893500686', IBANGenerator::DE('64450288', '7893500686'));
     }
@@ -366,7 +370,7 @@ class IBANGeneratorTest extends \PHPUnit_Framework_TestCase
         $this->assertIban('DE83700202700002711931', IBANGenerator::DE('70020270', '94'));
         $this->assertIban('DE40700202705800522694', IBANGenerator::DE('70020270', '7777777'));
         $this->assertIban('DE36700202700847321750', IBANGenerator::DE('70020270', '847321750'));
-           $this->assertIban('DE36700202700847321750', IBANGenerator::DE('70020270', '847321750'));
+        $this->assertIban('DE36700202700847321750', IBANGenerator::DE('70020270', '847321750'));
     }
 
     public function testGenerateIbanForRuleDE003400()
@@ -433,6 +437,21 @@ class IBANGeneratorTest extends \PHPUnit_Framework_TestCase
         $this->assertIban('DE82660000000050402100', IBANGenerator::DE('66000000', '50402100'));
     }
 
+    public function testGenerateIbanForRuleDE004201()
+    {
+
+        if (IBANGeneratorDE::CURRENT_RULES < 20161205) {
+            $this->markTestSkipped('Rule is not active yet');
+        }
+        $this->assertIban('', IBANGenerator::DE('10000000', '12345'));
+        $this->assertIban('', IBANGenerator::DE('10000000', '12300123'));
+        $this->assertIban('', IBANGenerator::DE('10000000', '1231200000'));
+        $this->assertIban('DE24100000000050462100', IBANGenerator::DE('10000000', '50462100'));
+        $this->assertIban('DE27100000000050402100', IBANGenerator::DE('10000000', '50402100'));
+        $this->assertIban('DE22100000001234400001', IBANGenerator::DE('10000000', '1234400001'));
+        $this->assertIban('DE08100000001234498999', IBANGenerator::DE('10000000', '1234498999'));
+    }
+
     public function testGenerateIbanForRuleDE004300()
     {
         $this->assertIban('DE49666500850000000868', IBANGenerator::DE('60651070', '868'));
@@ -489,6 +508,9 @@ class IBANGeneratorTest extends \PHPUnit_Framework_TestCase
 
     public function testGenerateIbanForRuleDE005200()
     {
+        if (IBANGeneratorDE::CURRENT_RULES >= 20161205) {
+            $this->markTestSkipped('No bank included in newest rules');
+        }
         $this->assertIban('DE38600501010002662604', IBANGenerator::DE('67220020', '5308810004'));
     }
 
