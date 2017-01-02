@@ -149,19 +149,18 @@ class IBAN
 
     private function local_bcmod($x, $y)
     {
-        if (!function_exists('bcmod')) {
-            $take = 5;
-            $mod = '';
-
-            do {
-                $a = (int)$mod . substr($x, 0, $take);
-                $x = substr($x, $take);
-                $mod = $a % $y;
-            } while (strlen($x));
-
-            return (string)$mod;
-        } else {
+        if (function_exists('bcmod')) {
             return bcmod($x, $y);
         }
+        $take = 5;
+        $mod = '';
+
+        do {
+            $a = (int)$mod . substr($x, 0, $take);
+            $x = substr($x, $take);
+            $mod = $a % $y;
+        } while (strlen($x));
+
+        return (string)$mod;
     }
 }
