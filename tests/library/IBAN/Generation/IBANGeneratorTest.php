@@ -259,6 +259,10 @@ class IBANGeneratorTest extends \PHPUnit_Framework_TestCase
 
     public function testGenerateIbanForRuleDE001900()
     {
+        if (IBANGeneratorDE::CURRENT_RULES >= 20170306) {
+            $this->markTestSkipped('No bank included in newest rules');
+        }
+
         $this->assertIban('DE82501203830020475000', IBANGenerator::DE('50130100', '20475000'));
         $this->assertFalse(strcmp('DE95501301000020475000', IBANGenerator::DE('50130100', '20475000')) == 0);
         $this->assertIban('DE82501203830020475000', IBANGenerator::DE('50220200', '20475000'));

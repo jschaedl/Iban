@@ -3,45 +3,29 @@
 A small library for validating and generating International Bankaccount Numbers (IBAN). It is build for PHP 5.3+.
 
 [![Build Status](https://travis-ci.org/jschaedl/Iban.png)](https://travis-ci.org/jschaedl/Iban) 
-[![Latest Stable Version](https://poser.pugx.org/jschaedl/iban/v/stable)](https://packagist.org/packages/jschaedl/iban) [![Total Downloads](https://poser.pugx.org/jschaedl/iban/downloads)](https://packagist.org/packages/jschaedl/iban) 
-[![Latest Unstable Version](https://poser.pugx.org/jschaedl/iban/v/unstable)](https://packagist.org/packages/jschaedl/iban) [![License](https://poser.pugx.org/jschaedl/iban/license)](https://packagist.org/packages/jschaedl/iban)
-![PHP Version](https://img.shields.io/badge/version-PHP%205.3%2B-lightgrey.svg)
+[![Latest Stable Version](https://poser.pugx.org/jschaedl/iban/v/stable)](https://packagist.org/packages/jschaedl/iban) 
+[![Total Downloads](https://poser.pugx.org/jschaedl/iban/downloads)](https://packagist.org/packages/jschaedl/iban) 
 
 ## Development status
-This library is ready to use. The iban validation should be run fine, but there is no warranty for the generation functionality. Please use it at your own risk.
+This library is ready to use. The Iban validation should be run fine, but there is no warranty for the generation functionality. Please use it at your own risk.
 
 ---
 
+## Changelog
+
+### Version 1.3.0
+
+* Activation of new german Iban rules valid from 6th of March 2016
+
+### Version 1.2.0
+
+* Activation of new german Iban rules valid from 5th of December 2016
+
 ## Installation
-To install jschaedl/iban install Composer first, if you haven't already 
+To install jschaedl/iban just run:
 
 ```
-curl -sS https://getcomposer.org/installer | php
-```
-
-Then just add the following to your composer.json file:
-
-```js
-// composer.json
-{
-	"require": {
-		"jschaedl/iban": "1.1.6"
-	}
-}
-```
-
-Then, you can install the new dependencies by running Composer’s update command from the directory where your `composer.json` file is located:
-
-```sh
-# install
-$ php composer.phar install
-# update
-$ php composer.phar update jschaedl/iban
-
-# or you can simply execute composer command if you set it to
-# your PATH environment variable
-$ composer install
-$ composer update jschaedl/iban
+$ composer require jschaedl/iban
 ```
 
 You can see this library on [Packagist](https://packagist.org/packages/jschaedl/iban).
@@ -52,15 +36,6 @@ Composer installs autoloader at `./vendor/autoload.php`. If you use jschaedl/iba
 require_once 'vendor/autoload.php';
 ```
 
-Or you can use git clone command:
-
-```sh
-# HTTP
-$ git clone https://github.com/jschaedl/Iban.git
-# SSH
-$ git clone git@github.com:jschaedl/Iban.git
-```
-
 
 ## Usage example
 
@@ -68,8 +43,8 @@ $ git clone git@github.com:jschaedl/Iban.git
 <?php
 
 use IBAN\Validation\IBANValidator;
-use IBAN\Generation\IBANGenerator;
-use IBAN\Rule\RuleFactory;
+use IBAN\Generation\IBANGeneratorDE;
+use IBAN\Generation\IBANGeneratorNL;
     
 // validation example
 $ibanValidator = new IBANValidator();
@@ -94,18 +69,22 @@ $generatedIban = $ibanGenerator->generate('ABNA', '123456789');
 // generate dutch iban example #2
 $generatedIban = IBANGenerator::NL('ABNA', '123456789');
 // $generatedIban => NL02ABNA0123456789
- 
- ```	
+
+```
 
 ---
  
 ## How to contribute
-If you want to fix some bugs or want to enhance some functionality, please fork the master branch and create your own development branch. 
-Then fix the bug you found or add your enhancements and make a pull request. Please commit your changes in tiny steps and add a detailed description on every commit. 
+If you want to fix some bugs or want to enhance some functionality, please fork this repository and 
+create a feature branch based on the develop branch or a htfix branch based on the master branch. 
+Then fix the bug you found or add your enhancements and make a pull request. 
+Please commit your changes in tiny steps and add a detailed description on every commit. 
 
 ### Unit Testing
 
-All pull requests must be accompanied by passing unit tests. This repository uses phpunit and Composer. You must run `composer install` to install this package's dependencies before the unit tests will run. You can run the test via:
+All pull requests must be accompanied by passing unit tests. This repository uses PHPUnit and Composer. 
+You must run `composer install` to install this package's dependencies before the unit tests will run. 
+You can run the test via:
 
 ```
 phpunit -c tests/phpunit.xml tests/
@@ -122,17 +101,8 @@ phpunit -c tests/phpunit.xml tests/
 
 ## Contributions
 
-* [Stefan Warnat](https://github.com/swarnat)
-* [Simon Mönch](https://github.com/smoench)
-* [Martin Abraham](https://github.com/mabrahamde)
-* [Benjamin Paap](https://github.com/benjaminpaap)
-* [Dennis Lassiter](https://github.com/pulseit-dennis)
-
+https://github.com/jschaedl/Iban/graphs/contributors
 
 ## License
 
 MIT Public License
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/jschaedl/iban/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
