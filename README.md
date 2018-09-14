@@ -1,6 +1,6 @@
 # Iban
 
-*Important: This library is derecated. Please use https://github.com/jschaedl/iban-validation instead.*
+**Important: This library is derecated. Please use https://github.com/jschaedl/iban-validation instead.**
 
 A small library for validating and generating International Bankaccount Numbers (IBAN). It is build for PHP 5.3+.
 
