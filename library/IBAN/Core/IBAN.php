@@ -100,7 +100,7 @@ class IBAN
         $localeCode = $this->getLocaleCode();
         $accountIdentification = $this->getAccountIdentification();
 
-        return !(preg_match('/' . Constants::$ibanFormatMap[$localeCode] . '/', $accountIdentification) !== 1);
+        return preg_match('/^' . Constants::$ibanFormatMap[$localeCode] . '$/', $accountIdentification) === 1;
     }
 
     private function isChecksumValid()
